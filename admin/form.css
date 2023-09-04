@@ -1,0 +1,191 @@
+div {
+    border: 0px solid black;
+    padding: 5px;
+}
+
+div.formulario {
+    border: 15px outset #dbdbdb;
+    background-color: #ededed;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+div.wrapper {
+    overflow: hidden;
+}
+
+div.abc {
+    width: 20%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+
+div.emp {
+    width: auto;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    float: left;
+}
+
+select {
+    border: 2px solid #d9d9d9;
+    font: 300 1rem Arial;
+    transition: 0.2s ease-out;
+    width: 50%;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+table,
+th,
+td {
+    border: 5px dashed purple;
+    text-align: center;
+    padding: 5px;
+    border-collapse: collapse;
+}
+
+tr {
+    border: 1px solid rgb(216, 216, 216);
+}
+
+td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+table {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+}
+
+label {
+    font: bold 1.4rem Arial;
+    color: #931914;
+    transition: 0.2s;
+}
+
+input {
+    border: 2px solid #d9d9d9;
+    font: 300 1rem Arial;
+    transition: 0.2s ease-out;
+    width: 50%;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+input:focus:not(input[type=reset], input[type=submit]),
+textarea:focus,
+select:focus,
+option:focus {
+    background-color: #f3f3f3;
+}
+
+input[type=file] {
+    display: none;
+}
+
+input[type=number] {
+    width: 4em;
+}
+
+input[type=tel] {
+    width: 9em;
+}
+
+input[type=reset],
+input[type=submit] {
+    width: auto;
+    margin-top: 40px;
+}
+
+input[type=radio] {
+    display: none;
+}
+
+input[type="radio"]:checked+label {
+    background-color: #931914;
+    color: white;
+    border: 3px solid #931914;
+}
+
+label[for=primeiro],
+label[for=segundo] {
+    border: 3px dashed #931914;
+    font-size: 0.8rem;
+    border-radius: 15px;
+    width: 70%;
+    padding: 5px;
+    margin: 3px;
+    text-align: center;
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: #931914;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 10px;
+    margin: 5px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background-color: #ed160e;
+}
+
+.btn:active {
+    position: relative;
+    top: 3px;
+    transition: 0s;
+}
+
+:root {
+    scroll-behavior: smooth;
+}
+
+#img-preview {
+    border: 5px outset #dbdbdb;
+    text-align: center;
+    line-height: 150px;
+    width: 150px;
+    height: 150px;
+}
+
+textarea {
+    resize: vertical;
+    border-radius: 5px;
+    width: 70%;
+}
+
+/* ----------------------------- AREA DE TESTES ----------------------------- */
+
+/* * {
+    border: 2px dashed red;
+} */
+
+input[required],
+label[for=foto],
+select[required],
+textarea[required] {
+    border-left: 5px solid red;
+}
+
+input,
+textarea {
+    border-left: 5px solid #c5c5c5;
+}

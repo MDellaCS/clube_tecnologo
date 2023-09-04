@@ -1,0 +1,111 @@
+img {
+    width: 5vw;
+    height: 5vw;
+}
+
+.title {
+    width: auto;
+    background-color: #931914;
+    color: #ffffff;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+
+th {
+    background-color: #931914;
+    color: #ffffff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+td {
+    color: #000000;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+table,
+th,
+td {
+    padding: 5px;
+    border: 2px solid white;
+    border-collapse: collapse;
+}
+
+th.foto {
+    width: 1%;
+}
+
+th.nome {
+    width: 17%;
+}
+
+th.idade {
+    width: 1%;
+}
+
+th.formacao {
+    width: 6%;
+}
+
+th.email {
+    width: 17%;
+}
+
+th.celular {
+    width: 7%;
+}
+
+th.curso {
+    width: 10%;
+}
+
+td.mais {
+    width: 5%;
+    padding: 0;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+tr:hover {
+    background-color: #ff080034;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    font: bold 25px Arial;
+    color: #ffffff;
+    background-color: #931914;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+input:hover {
+    background-color: #dc251f;
+}
+
+input:active {
+    position: relative;
+    top: 1px;
+}
+
+* {
+    border: 0px dashed red;
+}

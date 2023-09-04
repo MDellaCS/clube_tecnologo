@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="captacaoInfoTecnologo.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script src="funcoes.js"></script>
+    <title>Área do Tecnólogo</title>
+</head>
+
+<body id="content">
+    <header>Acessibilidade Alto Contraste A+ A-</header>
+    <div class="logo"><img src="imagens/fzl_logo.png"><img src="imagens/cps_logo.png"></div>
+    <div class="menu">Início Vestibular Cursos Institucional Área do Aluno Professores Secretaria Biblioteca Suporte</div>
+    <div class="container relativeClass">
+        <div class="title">Bem vindo à área do tecnólogo!</div>
+        <p id="justifiedText"> A FATEC-ZL está interessada em captar informações sobre a sua experiência como
+            tecnólogo.
+            É importante, não apenas para a instituição, como também para o mercado de trabalho e para
+            os alunos, que a carreira de tecnólogo seja cada vez mais valorizada. Ao compartilhar suas
+            experiências com a instituição, você contribui para um maior conhecimento sobre o quão importante
+            são os cursos de tecnologia. E isto resulta em melhores oportunidades para você e
+            para os contratantes. </p>
+    </div>
+    <div class="container relativeClass">
+        <p>É importante que: </p>
+        <ul>
+            <li>As informações divulgadas estejam corretas;</li>
+            <li>Seu e-mail e celular estejam corretos, pois faremos contato para confirmar a data de publicação caso
+                o texto seja aprovado, ou se o texto precisa de correções;
+            </li>
+            <li>O texto enviado não contenha palavras de baixo calão ou discurso de ódio;
+            </li>
+            <li>O texto enviado não possua ofensas a qualquer indivíduo ou instituição;</li>
+            <li>A foto enviada não possua conteúdo ofensivo;</li>
+            <li>Dimensões da imagem enviada: 512x512, ou em dimensão quadrada(altura e largura iguais).</li>
+        </ul>
+    </div>
+    <div class="container relativeClass">
+        <p id="justifiedText">
+            Seus dados e seus depoimentos passarão por uma avaliação, e então entraremos em contato
+            para informar a data em que o conteúdo será postado. Obrigado pela sua participação!
+        </p><br>
+    </div>
+    <form name="frmTecnologo" method="post" action="fateczle_ct_connect.php" enctype="multipart/form-data">
+        <div class="container relativeClass">
+            <div class="form-group row">
+                <label for="idNome" class="col-sm-2 col-form-label labelAlignLeft">
+                    Nome completo: </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="idNome" name="nm_nome"
+                        pattern="^[A-Za-z áàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" title="Apenas letras e espaços."
+                        required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="idIdade" class="col-sm-2 col-form-label labelAlignLeft">Idade: </label>
+                <div class="col-sm-1">
+                    <input type="number" min="18" max="140" class="form-control" id="idIdade" name="nm_idade"
+                        title="Idade mínima: 18 anos." required>
+                </div>
+                <div class="col-sm-2">
+                    <label for="idData" class="col-form-label labelAlignLeft">Ano de Formação: </label>
+                </div>
+                <div class="col-sm-3">
+                    <select class="form-control" id="idSelectAno" name="nm_anof" required>
+                        <option></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Semestre: </label>
+                <div class="form-check " id="primeiroSemPos">
+                    <input class="form-check-input" type="radio" name="radioSemestre" id="idPrimeiroSemestre"
+                        value="Primeiro Semestre" checked disabled>
+                    <label class="form-check-label col-sm-12" for="idPrimeiroSemestre">
+                        Primeiro Semestre
+                    </label>
+                </div>
+                <div class="form-check" id="segundoSemPos">
+                    <input class="form-check-input" type="radio" name="radioSemestre" id="idSegundoSemestre"
+                        value="Segundo Semestre" disabled>
+                    <label class="form-check-label col-sm-12" for="idSegundoSemestre">
+                        Segundo Semestre
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="idEmail" class="col-sm-2 col-form-label labelAlignLeft">E-Mail: </label>
+                <div class="col-sm-6">
+                    <input type="email" class="form-control" id="idEmail" name="nm_email" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="idCelular" class="col-sm-2 col-form-label">Celular: </label>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="De preferência, Whatsapp." class="form-control" id="idCelular"
+                        name="nm_celular" title="Formato (00) 00000-0000"
+                        pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{5})-([0-9]{4})" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="idCursoRealizado" class="col-sm-2 col-form-label labelAlignLeft">Curso realizado: </label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="idCursoRealizado" name="nm_curso" required>
+                        <option></option>
+                        <option>Análise e Desenvolvimento de Sistemas</option>
+                        <option>Informática para Gestão de Negócios</option>
+                        <option>Comércio Exterior</option>
+                        <option>Desenvolvimento de Produtos Plásticos</option>
+                        <option>Desenvolvimento de Software Multiplataforma</option>
+                        <option>Gestão de Recursos Humanos</option>
+                        <option>Gestão Empresarial</option>
+                        <option>Gestão Empresarial EAD</option>
+                        <option>Logística</option>
+                        <option>Polímeros</option>
+                    </select>
+                </div>
+            </div>
+            <p class="textAlignJustify">
+                Selecione uma foto sua para usarmos na divulgação do seu perfil. A foto não pode conter
+                conteúdo pejorativo.
+            </p>
+            <div class="form-group row">
+                <input type="file" class="form-control col-sm-6" id="idFoto" name="nm_foto" accept=".jpg, .jpeg"
+                    onchange="readURL(this)" required>
+            </div>
+            <div class="form-group row">
+                <label for="idFotoTecnologo" class="col-sm-2 col-form-label labelAlignLeft">Sua foto: </label>
+                <img id="idFotoTecnologo" />
+            </div>
+            <div class="form-group row">
+                <label for="idTxtQld" class="textAlignJustify">
+                    Fale sobre você hoje (O que faz e como está):</label>
+                <textarea class="form-control" name="nm_infoSobre" id="idTxtQld" rows="6" maxlength="500"
+                    onkeyup="countChar(idTxtQld)" required></textarea>
+                <div class="charLimitFontSize" id="charNumidTxtQld">Limite de caracteres: 500/500</div>
+            </div>
+            <div class="form-group row">
+                <label for="idFrmPrf" class="textAlignJustify">
+                    O que a FATEC representou (ou representa) para você?:</label>
+                <textarea class="form-control" name="nm_infoFatec" id="idFrmPrf" rows="6" maxlength="500"
+                    onkeyup="countChar(idFrmPrf)" required></textarea>
+                <div class="charLimitFontSize" id="charNumidFrmPrf">Limite de caracteres: 500/500</div>
+            </div>
+            <div class="form-group row">
+                <label for="idTxtLivre" class="textAlignJustify">
+                    Use esta área livre para contar sua história como tecnólogo, ou para adicionar qualquer
+                    observação
+                    desejada:
+                </label>
+                <textarea class="form-control" name="nm_infoAreaLivre" id="idTxtLivre" maxlength="500" rows="6"
+                    onkeyup="countChar(idTxtLivre)" required></textarea>
+                <div class="charLimitFontSize" id="charNumidTxtLivre">Limite de caracteres: 500/500</div>
+            </div>
+            <div class="form-group row tuiibox">
+                <input class="inputTuiibox" id="checkbox" type="checkbox" onclick="terms_changed(this)" />
+                <label for="checkbox"> &#160Concordo com os termos de uso de imagem e informação. <a
+                        href="#exampleModalLong" data-toggle="modal" data-target="#exampleModalLong">Termos de
+                        uso</a>.</label>
+            </div>
+            <div class="form-group row float-right" id="btnInfo">
+                <button type="submit" id="btnEnviar" class="btn btn-dark btn-lg" float="right" disabled>Enviar
+                    Informações</button>
+            </div>
+
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Termo de uso de imagem e informação</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="textAlignJustify">
+                                AUTORIZO o uso de minha imagem e informações coletadas nesta pesquisa, para ser
+                                utilizada pela FATEC ZONA LESTE, em qualquer material de divulgação da instituição e
+                                de suas atividades aos públicos externo e interno, desde que não haja desvirtuamento
+                                de sua finalidade. A presente autorização é concedida a título gratuito, abrangendo o
+                                uso em todo território nacional e no exterior, em todas as suas modalidades, inclusive
+                                na internet. Por esta ser a expressão da minha vontade, declaro que autorizo o uso acima
+                                descrito sem que nada haja a ser reclamado a título de direitos conexos à imagem e
+                                informações.
+                            </p>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-dark" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="bgGrad"></div>
+</body>
+
+</html>
