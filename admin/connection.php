@@ -13,8 +13,4 @@ if($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 
-function errorFound() {
-    header('Location: errPage.html');
-}
-set_error_handler('errorFound');
 ?>

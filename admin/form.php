@@ -10,11 +10,7 @@
 
 <body>
 
-    <?php
-    include_once('formValid.php');
-    ?>
-
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" autocomplete="on">
+    <form name="formEgresso" method="post" action="<?php echo htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
         <div class="formulario">
 
@@ -39,9 +35,6 @@
 
                 <div>
                     <input type="text" id="nome" name="nomeTec" size="50" maxlength="150" required />
-                    <span class="error">*
-                        <?php echo $nomeErr; ?>
-                    </span>
                 </div>
             </div>
 
@@ -106,8 +99,7 @@
 
                 <div class="wrapper">
                     <div class="abc">
-                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" checked
-                            required />
+                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" required />
                         <label for="primeiro">Primeiro Semestre</label>
 
                         <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />

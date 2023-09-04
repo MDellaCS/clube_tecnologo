@@ -16,3 +16,15 @@ function limparImagem() {
     const imgPreview = document.getElementById("img-preview");
     imgPreview.innerHTML = 'Sua foto aqui';
 }
+
+function validarForm() {
+    window.alert("JavaScript de Validação Rodando");
+
+    const nome = document.getElementById("nome");
+
+    if (nome == null) {
+        window.alert(nome.value, "Nome deve estar preenchido");
+        return false;
+    }
+
+}

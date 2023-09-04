@@ -1,16 +1,10 @@
 <?php
 
 $foto = $nome = $idade = $email = $celular = $ano = $semestre = $curso = $textoPessoal = $textoFatec = $textoLivre = "";
-$nomeErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $foto = test_input($_POST["fotoTec"]);
-
     $nome = test_input($_POST["nomeTec"]);
-    if (!preg_match("/^[a-zA-Z-' ]*$/", $nome)) {
-        $nomeErr = "Somente letras são aceitas";
-    }
-
     $idade = test_input($_POST["idadeTec"]);
     $email = test_input($_POST["emailTec"]);
     $celular = test_input($_POST["celularTec"]);
@@ -29,5 +23,7 @@ function test_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
+
+    include_once('formResult.php');
 
 ?>
