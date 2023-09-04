@@ -13,6 +13,7 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="admin.css">
+        <script src="lista.js"></script>
         <title>Clube do Técnologo - Lista de técnologos de sucesso</title>
     </head>
 
@@ -44,6 +45,8 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
 
             while ($row = $result->fetch_assoc()) {
 
+                echo "<form id='formID' method='post'><input type='hidden' name='id' value='$row[id_tecnologo]'></form>";
+
                 echo "<tr>";
                 echo "<td class='foto'><a target='_blank' href='../imagens/$row[foto]'><img src='../imagens/$row[foto]'</a></td>";
                 echo "<td>$row[nome]</td>";
@@ -52,13 +55,15 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
                 echo "<td>$row[email]</td>";
                 echo "<td>$row[celular]</td>";
                 echo "<td>$row[curso_realizado]</td>";
-                echo "<td class='mais'><form method='post' target='_blank' action='maisdetalhes.php'><input type='hidden' name='id' value='$row[id_tecnologo]'><input type='submit' value='...'></form></td>";
+                echo "<td class='mais'><button onclick='on()'>CLIQUE</button></td>";
                 echo "</tr>";
 
             }
             ?>
 
         </table>
+        
+        <div id="overlay" onclick="off()"><?php include('maisdetalhes.php');?></div>
 
         <div>
             <a href="deslogar.php" class="btn btn-primary">Sair</a>
