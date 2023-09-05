@@ -1,8 +1,7 @@
 <?php
 
-$id = $_POST['id'];
+$row[id_tecnologo]
 
-include_once('connection.php');
 $sql = "SELECT * FROM tbl_tecnologo WHERE id_tecnologo = $id";
 
 $result = $con->query($sql);

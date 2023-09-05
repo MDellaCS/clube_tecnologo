@@ -43,9 +43,9 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
                 die("Query inválida! " . $con->error);
             }
 
-            while ($row = $result->fetch_assoc()) {
+            $count = 0;
 
-                echo "<form id='formID' method='post'><input type='hidden' name='id' value='$row[id_tecnologo]'></form>";
+            while ($row = $result->fetch_assoc()) {
 
                 echo "<tr>";
                 echo "<td class='foto'><a target='_blank' href='../imagens/$row[foto]'><img src='../imagens/$row[foto]'</a></td>";
@@ -55,15 +55,30 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
                 echo "<td>$row[email]</td>";
                 echo "<td>$row[celular]</td>";
                 echo "<td>$row[curso_realizado]</td>";
-                echo "<td class='mais'><button onclick='on()'>CLIQUE</button></td>";
+                echo "<td class='mais'><input type='button' value='...' onclick='on($count)'></td>";
                 echo "</tr>";
 
+                echo "<div id='overlay$row[id_tecnologo]' class='overlay' onclick='off()'>
+
+                <div class='foto'><a target='_blank' href='../imagens/$row[foto]'><img src='../imagens/$row[foto]'></a></div>
+                <div>$row[nome]</div>
+                <div>$row[idade]</div>
+                <div>$row[ano_formacao]<br>$row[semestre_formacao]</div>
+                <div>$row[email]</div>
+                <div>$row[celular]</div>
+                <div>$row[curso_realizado]</div>
+
+                    </div>";
+
+                $count = $count + 1;
+
             }
+
             ?>
 
         </table>
-        
-        <div id="overlay" onclick="off()"><?php include('maisdetalhes.php');?></div>
+
+
 
         <div>
             <a href="deslogar.php" class="btn btn-primary">Sair</a>

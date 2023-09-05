@@ -1,8 +1,11 @@
-function on() {
-    document.getElementById("formID").submit();
-    document.getElementById("overlay").style.display = "block";
+function on(meuOL) {
+    var overlays = document.getElementsByClassName("overlay");
+    overlays[meuOL].style.display = "block";
 }
 
 function off() {
-    document.getElementById("overlay").style.display = "none";
+    var overlays = document.getElementsByClassName("overlay");
+    for (var i = 0; i < overlays.length; i++) {
+        overlays[i].style.display = "none";
+    }
 }
