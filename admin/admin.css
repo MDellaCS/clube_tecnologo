@@ -13,8 +13,10 @@
 }
 
 img {
-    width: 5vw;
-    height: 5vw;
+    background-size: cover;
+    background-position: center;
+    width: 64px;
+    height: 64px;
 }
 
 .title {
@@ -46,6 +48,10 @@ td {
     font-weight: 400;
 }
 
+table {
+    width: 100%;
+}
+
 table,
 th,
 td {
@@ -55,37 +61,41 @@ td {
 }
 
 th.foto {
-    width: 1%;
+    width: 8%;
 }
 
 th.nome {
-    width: 17%;
+    width: 20%;
 }
 
 th.idade {
-    width: 1%;
-}
-
-th.formacao {
     width: 6%;
 }
 
-th.email {
-    width: 17%;
-}
-
-th.celular {
-    width: 7%;
-}
-
-th.curso {
+th.formacao {
     width: 10%;
 }
 
+th.email {
+    width: 20%;
+}
+
+th.celular {
+    width: 8%;
+}
+
+th.curso {
+    width: 20%;
+}
+
+td.foto,
 td.mais {
-    width: 5%;
     padding: 0;
     text-align: center;
+}
+
+tr {
+    transition: 0.2s ease-in-out;
 }
 
 tr:nth-child(even) {
@@ -121,5 +131,23 @@ input:active {
 }
 
 * {
+    overflow-x: hidden;
     border: 0px dashed red;
+}
+
+#search {
+    width: 100%;
+    font-size: 1.2rem;
+    background-color: white;
+    color: #931914;
+    padding: 15px 0px 15px 40px;
+    border: none;
+    text-decoration: none;
+    border-radius: 0px;
+}
+
+#search:focus {
+    background-color: rgba(0, 0, 0, 0.073);
+    outline: none;
+    transition: 0.2s ease-in-out;
 }

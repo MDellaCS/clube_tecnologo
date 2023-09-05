@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<?php
-
-session_start();
-if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
-    header('Location:loginTecnologoSucesso.php');
-} else {
-
-    ?>
-
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="admin.css">
@@ -21,6 +12,7 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
         <div class="title">Egressos Cadastrados</div>
 
         <table>
+        <input type="text" id="search" onkeyup="myFunction()" placeholder="Pesquisar por nome..." autocomplete="off">
             <tr>
                 <th class="foto">Foto</th>
                 <th class="nome">Nome</th>
@@ -47,9 +39,9 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
 
             while ($row = $result->fetch_assoc()) {
 
-                echo "<tr>";
-                echo "<td class='foto'><a target='_blank' href='../imagens/$row[foto]'><img src='../imagens/$row[foto]'</a></td>";
-                echo "<td>$row[nome]</td>";
+                echo "<tr id='pessoa$row[id_tecnologo]' class='pessoa'>";
+                echo "<td class='foto'><a target='_blank' href='../fotos/$row[foto]'><img src='../fotos/$row[foto]'</a></td>";
+                echo "<td id='$row[nome]' class='nomePessoa'>$row[nome]</td>";
                 echo "<td>$row[idade]</td>";
                 echo "<td>$row[ano_formacao]<br>$row[semestre_formacao]</td>";
                 echo "<td>$row[email]</td>";
@@ -60,20 +52,20 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
 
                 echo "<div id='overlay$row[id_tecnologo]' class='overlay' onclick='off()'>
 
-                <div class='foto'><a target='_blank' href='../imagens/$row[foto]'><img src='../imagens/$row[foto]'></a></div>
-                <div>$row[nome]</div>
-                <div>$row[idade]</div>
-                <div>$row[ano_formacao]<br>$row[semestre_formacao]</div>
-                <div>$row[email]</div>
-                <div>$row[celular]</div>
-                <div>$row[curso_realizado]</div>
-                <div>$row[info_sobre]</div>
-                <div>$row[info_fatec]</div>
-                <div>$row[info_area_livre]</div>
+                    <div class='foto'><a target='_blank' href='../fotos/$row[foto]'><img src='../fotos/$row[foto]'></a></div>
+                    <div>$row[nome]</div>
+                    <div>$row[idade]</div>
+                    <div>$row[ano_formacao]<br>$row[semestre_formacao]</div>
+                    <div>$row[email]</div>
+                    <div>$row[celular]</div>
+                    <div>$row[curso_realizado]</div>
+                    <div>$row[info_sobre]</div>
+                    <div>$row[info_fatec]</div>
+                    <div>$row[info_area_livre]</div>
 
-                    </div>";
+                </div>";
 
-                $count = $count + 1;
+                $count++;
 
             }
 
@@ -81,15 +73,6 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
 
         </table>
 
-
-
-        <div>
-            <a href="deslogar.php" class="btn btn-primary">Sair</a>
-        </div>
     </body>
-
-    <?php
-}
-?>
 
 </html>
