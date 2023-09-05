@@ -67,6 +67,9 @@ if (!isset($_SESSION['login']) || !$_SESSION['login'] == "1") {
                 <div>$row[email]</div>
                 <div>$row[celular]</div>
                 <div>$row[curso_realizado]</div>
+                <div>$row[info_sobre]</div>
+                <div>$row[info_fatec]</div>
+                <div>$row[info_area_livre]</div>
 
                     </div>";
 

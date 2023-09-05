@@ -8,6 +8,8 @@
     backdrop-filter: blur(4px);
     z-index: 2;
     cursor: pointer;
+    color: white;
+    font-size: 30px;
 }
 
 img {
