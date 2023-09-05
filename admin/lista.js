@@ -10,7 +10,7 @@ function off() {
     }
 }
 
-function myFunction() {
+function attBusca() {
     var input, tr, i, nome;
 
     input = document.getElementById("search");

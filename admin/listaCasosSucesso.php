@@ -12,7 +12,7 @@
         <div class="title">Egressos Cadastrados</div>
 
         <table>
-        <input type="text" id="search" onkeyup="myFunction()" placeholder="Pesquisar por nome..." autocomplete="off">
+        <input type="text" id="search" onkeyup="attBusca()" placeholder="Pesquisar por nome..." autocomplete="off">
             <tr>
                 <th class="foto">Foto</th>
                 <th class="nome">Nome</th>
