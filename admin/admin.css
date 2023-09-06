@@ -1,15 +1,18 @@
 .overlay {
-    position: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: none;
     width: 100%;
     height: 100%;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.318);
     backdrop-filter: blur(4px);
-    z-index: 2;
+    z-index: 99;
     cursor: pointer;
     color: white;
     font-size: 30px;
+    border: 5px solid blue;
 }
 
 img {
@@ -132,11 +135,11 @@ input:active {
 
 * {
     overflow-x: hidden;
-    border: 0px dashed red;
+    border: 0px dashed blueviolet;
 }
 
 #search {
-    width: 100%;
+    width: 10%;
     font-size: 1.2rem;
     background-color: white;
     color: #931914;
