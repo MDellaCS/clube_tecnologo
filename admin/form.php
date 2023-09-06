@@ -34,7 +34,20 @@
                 </div>
 
                 <div>
-                    <input type="text" id="nome" name="nomeTec" size="50" maxlength="150" required />
+                    <input type="text" id="nome" name="nomeTec" maxlength="60" required />
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label for="ra">RA</label>
+                    <button class="tooltip"><img src="../imagens/tooltip.png"><span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
+                            matricula na Fatec</span></button>
+
+                </div>
+
+                <div>
+                    <input type="text" id="ra" name="raTec" maxlength="13" />
                 </div>
             </div>
 
@@ -44,7 +57,7 @@
                 </div>
 
                 <div>
-                    <input type="number" id="idade" name="idadeTec" min="18" max="99" required />
+                    <input type="number" id="idade" name="idadeTec" min="18" max="99" />
                 </div>
             </div>
 
@@ -99,7 +112,7 @@
 
                 <div class="wrapper">
                     <div class="abc">
-                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" required />
+                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
                         <label for="primeiro">Primeiro Semestre</label>
 
                         <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
@@ -110,8 +123,7 @@
                     <div class="emp">
                         <label for="ano">de:</label>
 
-                        <input type="number" id="ano" name="anoTec" min="2003" max="<?php echo date("Y"); ?>"
-                            required />
+                        <input type="number" id="ano" name="anoTec" min="2003" max="<?php echo date("Y"); ?>" />
                     </div>
                 </div>
             </div>
@@ -135,17 +147,6 @@
                     <textarea id="textoFatec" name="textoFatecTec" rows="4" required></textarea>
                 </div>
             </div>
-
-            <div>
-                <div>
-                    <label for="textoLivre">Texto Livre</label>
-                </div>
-
-                <div>
-                    <textarea id="textoLivre" name="textoLivreTec" rows="4"></textarea>
-                </div>
-            </div>
-
 
             <input type="reset" class="btn" onclick="limparImagem()" />
             <input type="submit" class="btn" value="Finalizar" />
