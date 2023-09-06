@@ -5,11 +5,11 @@ CREATE DATABASE db_clube;
 USE db_clube;
 CREATE TABLE tb_tecnologo (
     id INT NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
+    nome VARCHAR(60) NOT NULL,
     idade TINYINT NOT NULL,
     ano_formacao year(4) NOT NULL,
     semestre_formacao VARCHAR(17) NOT NULL,
-    email VARCHAR(100) NOT NULL,
+    email VARCHAR(60) NOT NULL,
     celular VARCHAR(15) NOT NULL,
     curso VARCHAR(43) NOT NULL,
     foto VARCHAR(261) NOT NULL,
