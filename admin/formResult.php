@@ -24,6 +24,24 @@ function test_input($data)
     return $data;
 }
 
+$celular = str_split($celular);
+
+for ($i = 0; $i < sizeof($celular); $i++) {
+
+    if ($i == 0) {
+        $celular[$i] = "(" . $celular[$i];
+    } else if ($i == 2) {
+        $celular[$i] = ") " . $celular[$i];
+    } else if ($i == 7) {
+        $celular[$i] = "-" . $celular[$i];
+    }
+
+    echo $celular[$i];
+
+}
+
+$celular = implode($celular);
+
 include_once('connection.php');
 
 $sql = "INSERT INTO tbl_tecnologo(nome, idade, ano_formacao, semestre_formacao, email, celular, curso_realizado, foto, info_sobre, info_fatec, info_area_livre) VALUES('$nome', $idade, $ano, '$semestre', '$email', '$celular', '$curso', '$foto', '$textoPessoal', '$textoFatec', '$textoLivre')";
