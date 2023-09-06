@@ -2,3 +2,4 @@
 [20-Mar-2023 14:21:02 America/Sao_Paulo] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/fateczle/public_html/clube_tecnologo/listaCasosSucesso.php:1) in /home1/fateczle/public_html/clube_tecnologo/listaCasosSucesso.php on line 5
 [20-Mar-2023 14:21:23 America/Sao_Paulo] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home1/fateczle/public_html/clube_tecnologo/listaCasosSucesso.php:1) in /home1/fateczle/public_html/clube_tecnologo/listaCasosSucesso.php on line 5
 [06-Apr-2023 13:39:15 America/Sao_Paulo] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home1/fateczle/public_html/clube_tecnologo/loginTecnologoSucesso.php:6) in /home1/fateczle/public_html/clube_tecnologo/connection.php on line 15
+f
