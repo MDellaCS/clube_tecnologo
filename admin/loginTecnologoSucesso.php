@@ -27,45 +27,26 @@ include_once('connection.php');
                 }
             </script>";
     }
-    if (isset($_SESSION["novousuario"]) && $_SESSION["novousuario"] == "1") {
-        echo "<script>
-        function alerta() {
-            alert('Seus dados foram enviados e estão sujeitos a análise e aprovação.');
-        }
-        </script>";
-    }
-    unset($_SESSION['novousuario']);
     unset($_SESSION['login']);
     session_destroy();
-
     ?>
     
 </head>
 
-<body onload="alerta()">
-
+<body>
     <div class="main">
-        <input type="checkbox" id="chk" aria-hidden="true">
-
-        <div class="signup">
-            <p id="mensagemInicialLogin">Preencha seus dados para ter acesso ao sistema Tecnólogos de Sucesso da FATEC-ZL.<br>
-                Seu login passará por análise e, se aprovado, você terá acesso liberado.</p>
-            <form name="frmUsuario" method="post" action="novoUsuario.php">
-                <input type="text" name="nm_enviar_nome" placeholder="Nome Completo" required>
-                <input type="text" name="nm_enviar_email" placeholder="Email" required>
-                <input type="password" name="nm_enviar_password" placeholder="Password" required>
-                <button type="submit">Enviar Dados</button>
-            </form>
-        </div>
-
-        <div class="login"><label for="chk" aria-hidden="true">Fazer Login</label>
+        <div class="login text-center">
+            <label for="chk" aria-hidden="true" class="login-label">Login - Clube dos Tecnólogos</label>
             <form name="frmLogar" method="post" action="logarUsuario.php">
                 <input type="email" name="nm_email" placeholder="Email" required>
                 <input type="password" name="nm_senha" placeholder="Password" required>
-                <button type="submit">Login</button>
+                <button type="submit" class="button" onclick="alerta()">Login</button>
             </form>
+            <div class="signup-message">
+                <p>Ainda não tem cadastro? <a href="cadastroTecnologo.php" class="btn-cadastrar">Cadastra-se</a></p>
+            </div>
         </div>
+    </div>
 </body>
-</div>
 
 </html>
