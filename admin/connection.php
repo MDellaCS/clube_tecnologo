@@ -3,7 +3,7 @@
 $dbHost = "127.0.0.1";
 $dbUsername = "root";
 $dbPassword = "";
-$dbName = "fateczle_clubetecnologo";
+$dbName = "db_clube";
 
 $con = new mysqli();
 

@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="admin.css">
         <script src="lista.js"></script>
-        <title>Clube do Técnologo - Lista de técnologos de sucesso</title>
+        <title>Clube do Técnologo - Lista de Técnologos de Cadastrados</title>
     </head>
 
     <body>
@@ -27,7 +27,7 @@
             <?php
 
             include_once('connection.php');
-            $sql = "SELECT * FROM tbl_tecnologo";
+            $sql = "SELECT * FROM tb_tecnologo";
 
             $result = $con->query($sql);
 
@@ -39,18 +39,18 @@
 
             while ($row = $result->fetch_assoc()) {
 
-                echo "<tr id='pessoa$row[id_tecnologo]' class='pessoa'>";
+                echo "<tr id='pessoa$row[id]' class='pessoa'>";
                 echo "<td class='foto'><a target='_blank' href='../fotos/$row[foto]'><img src='../fotos/$row[foto]'</a></td>";
                 echo "<td id='$row[nome]' class='nomePessoa'>$row[nome]</td>";
                 echo "<td>$row[idade]</td>";
                 echo "<td>$row[ano_formacao]<br>$row[semestre_formacao]</td>";
                 echo "<td>$row[email]</td>";
                 echo "<td>$row[celular]</td>";
-                echo "<td>$row[curso_realizado]</td>";
+                echo "<td>$row[curso]</td>";
                 echo "<td class='mais'><input type='button' value='...' onclick='on($count)'></td>";
                 echo "</tr>";
 
-                echo "<div id='overlay$row[id_tecnologo]' class='overlay' onclick='off()'>
+                echo "<div id='overlay$row[id]' class='overlay' onclick='off()'>
 
                     <div class='foto'><a target='_blank' href='../fotos/$row[foto]'><img src='../fotos/$row[foto]'></a></div>
                     <div>$row[nome]</div>
@@ -58,10 +58,9 @@
                     <div>$row[ano_formacao]<br>$row[semestre_formacao]</div>
                     <div>$row[email]</div>
                     <div>$row[celular]</div>
-                    <div>$row[curso_realizado]</div>
-                    <div>$row[info_sobre]</div>
-                    <div>$row[info_fatec]</div>
-                    <div>$row[info_area_livre]</div>
+                    <div>$row[curso]</div>
+                    <div>$row[texto_sobre]</div>
+                    <div>$row[texto_fatec]</div>
 
                 </div>";
 

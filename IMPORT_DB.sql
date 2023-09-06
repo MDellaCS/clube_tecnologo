@@ -16,7 +16,7 @@ CREATE TABLE tb_tecnologo (
     texto_sobre VARCHAR(400) NOT NULL,
     texto_fatec VARCHAR(400) NOT NULL,
     data_insercao TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    publicado TINYINT NOT NULL,
+    publicado TINYINT NOT NULL DEFAULT 0,
     PRIMARY KEY(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 CREATE TABLE tb_admin (
