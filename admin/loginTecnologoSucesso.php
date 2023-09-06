@@ -36,6 +36,7 @@ include_once('connection.php');
 <body>
     <div class="main">
         <div class="login text-center">
+        <img src="imagens/fzl_logo.png" id="bg" alt="">
             <label for="chk" aria-hidden="true" class="login-label">Login - Clube dos Tecnólogos</label>
             <form name="frmLogar" method="post" action="logarUsuario.php">
                 <input type="email" name="nm_email" placeholder="Email" required>

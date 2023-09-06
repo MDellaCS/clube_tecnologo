@@ -36,6 +36,7 @@ include_once('connection.php');
 <body>
     <div class="main">
         <div class="login text-center">
+        <img src="imagens/fzl_logo.png" id="bg" alt="">
             <p id="mensagemInicialLogin">Preencha seus dados para ter acesso ao sistema Tecnólogos de Sucesso da FATEC-ZL.<br>
                 Seu login passará por análise e, se aprovado, você terá acesso liberado.</p>
             <form name="frmUsuario" method="post" action="novoUsuario.php">
