@@ -17,37 +17,36 @@ include_once('connection.php');
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="loginTecnologoSucesso.css">
-    <title>Login Clube do Tecnólogo</title>
+    <title>Cadastro Clube do Tecnólogo</title>
     <?php
     session_start();
-    if (isset($_SESSION["login"]) && $_SESSION["login"] == "0") {
+    if (isset($_SESSION["novousuario"]) && $_SESSION["novousuario"] == "1") {
         echo "<script>
-                function alerta() {
-                    alert('Login não encontrado ou não aprovado.');
-                }
-            </script>";
+        function alerta() {
+            alert('Seus dados foram enviados e estão sujeitos a análise e aprovação.');
+        }
+        </script>";
     }
-    unset($_SESSION['login']);
+    unset($_SESSION['novousuario']);
     session_destroy();
     ?>
-    
+
 </head>
 
 <body>
     <div class="main">
         <div class="login text-center">
         <img src="imagens/fzl_logo.png" id="bg" alt="">
-            <label for="chk" aria-hidden="true" class="login-label">Login - Clube dos Tecnólogos</label>
-            <form name="frmLogar" method="post" action="logarUsuario.php">
-                <input type="email" name="nm_email" placeholder="Email" required>
-                <input type="password" name="nm_senha" placeholder="Password" required>
-                <button type="submit" class="button" onclick="alerta()">Login</button>
+            <p id="mensagemInicialLogin">Preencha seus dados para ter acesso ao sistema Tecnólogos de Sucesso da FATEC-ZL.<br>
+                Seu login passará por análise e, se aprovado, você terá acesso liberado.</p>
+            <form name="frmUsuario" method="post" action="novoUsuario.php">
+                <input type="text" name="nm_enviar_nome" placeholder="Nome Completo" required>
+                <input type="text" name="nm_enviar_email" placeholder="Email" required>
+                <input type="password" name="nm_enviar_password" placeholder="Password" required>
+                <button type="submit" class="button" onclick="alerta()">Enviar Dados</button>
             </form>
-            <div class="signup-message">
-                <p>Ainda não tem cadastro? <a href="cadastroTecnologo.php" class="btn-cadastrar">Cadastra-se</a></p>
-            </div>
         </div>
-    </div>
 </body>
+</div>
 
 </html>
