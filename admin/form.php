@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="form.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">
     <script src="form.js"></script>
     <title>Cadastro de Egresso</title>
 </head>
@@ -14,40 +15,66 @@
 
         <div class="formulario">
 
-            <div class="wrapper">
+            <div class="inicio">
+                <h1>Clube do Tecnólogo</h1>
+                <h2>A FATEC-ZL está interessada em captar informações sobre a sua experiência como tecnólogo. É
+                    importante, não apenas para a instituição, como também para o mercado de trabalho e para
+                    os alunos, que a carreira de tecnólogo seja cada vez mais valorizada. Ao compartilhar suas
+                    experiências com a instituição, você contribui para um maior conhecimento sobre o quão importante
+                    são os cursos de tecnologia. E isto resulta em melhores oportunidades para você e
+                    para os contratantes. É importante que:
+                    <ul>
+                        <li>As informações divulgadas estejam corretas;</li>
+                        <li>Seu e-mail e celular estejam corretos, pois faremos contato para confirmar a data de
+                            publicação
+                            caso
+                            o texto seja aprovado, ou se o texto precisa de correções;
+                        </li>
+                        <li>O texto enviado não contenha palavras de baixo calão ou discurso de ódio;
+                        </li>
+                        <li>O texto enviado não possua ofensas a qualquer indivíduo ou instituição;</li>
+                        <li>A foto enviada não possua conteúdo ofensivo;</li>
+                        <li>Imagem preferencialmente quadrada.</li>
+                    </ul>
+                </h2>
 
-                <div id="img-preview" class="emp">
-                    Sua foto aqui
-                </div>
-
-                <div class="emp">
-                    <label for="foto" class="btn">Escolher Foto</label>
-                    <input type="file" class="btn" id="foto" name="fotoTec" accept="image/*" onchange="mostrarImagem()"
-                        required />
-                </div>
+                <myTag class="req">Dados Obrigatórios</myTag>
+                <myTag class="opc">Dados Opcionais</myTag>
 
             </div>
 
             <div>
                 <div>
                     <label for="nome">Nome Completo</label>
+
+                    <label for="foto" class="btn floatR">
+                        <div class="tooltip" id="img-preview">
+                            Selecionar Foto
+                        </div>
+                        <span class="tooltiptext">Selecione uma foto sua (com a família, amigos ou sozinho), é
+                            importante que seja uma foto real e não um avatar</span>
+                    </label>
+
                 </div>
 
                 <div>
                     <input type="text" id="nome" name="nomeTec" maxlength="60" required />
+
+
+                    <input type="file" id="foto" name="fotoTec" accept="image/*" onchange="mostrarImagem()" required />
+
                 </div>
             </div>
 
             <div>
                 <div>
                     <label for="ra">RA</label>
-                    <button class="tooltip"><img src="../imagens/tooltip.png"><span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
-                            matricula na Fatec</span></button>
-
                 </div>
 
                 <div>
-                    <input type="text" id="ra" name="raTec" maxlength="13" />
+                    <input class="tooltip" type="text" id="ra" name="raTec" maxlength="13" />
+                    <span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
+                        matricula na Fatec (Este dado será validado)</span>
                 </div>
             </div>
 
@@ -67,7 +94,9 @@
                 </div>
 
                 <div>
-                    <input type="email" id="email" name="emailTec" size="50" maxlength="150" required />
+                    <input class="tooltip" type="email" id="email" name="emailTec" size="50" maxlength="150" required />
+                    <span class="tooltiptext">Endereço de e-mail para receber o status de seu post. Seu e-mail
+                        institucional, prefenrencialmente</span>
                 </div>
             </div>
 
@@ -77,8 +106,9 @@
                 </div>
 
                 <div>
-                    <input type="tel" id="celular" name="celularTec" placeholder="(XX)9XXXX-XXXX"
+                    <input class="tooltip" type="tel" id="celular" name="celularTec" placeholder="(XX)9XXXX-XXXX"
                         pattern="[0-9]{2}[9]{1}[0-9]{4}[0-9]{4}" maxlength="11" />
+                    <span class="tooltiptext">Este campo não será público</span>
                 </div>
             </div>
 
@@ -134,7 +164,12 @@
                 </div>
 
                 <div>
-                    <textarea id="textoPessoal" name="textoPessoalTec" rows="4" required></textarea>
+
+                    <textarea class="tooltip" id="textoPessoal" name="textoPessoalTec" rows="4" required></textarea>
+                    <span class="tooltiptext">Escreva um pouco sobre si mesmo(a). Conte sobre suas atividades
+                        e interesses profissionais. Isso pode incluir seu campo de trabalho, sua profissão, suas
+                        responsabilidades e qualquer projeto ou conquista significativa em que esteja
+                        envolvido(a).</span>
                 </div>
             </div>
 
@@ -144,7 +179,8 @@
                 </div>
 
                 <div>
-                    <textarea id="textoFatec" name="textoFatecTec" rows="4" required></textarea>
+                    <textarea class="tooltip" id="textoFatec" name="textoFatecTec" rows="4" required></textarea>
+                    <span class="tooltiptext"></span>
                 </div>
             </div>
 

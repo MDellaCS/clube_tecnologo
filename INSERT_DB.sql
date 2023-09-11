@@ -22,6 +22,18 @@ VALUES (
         "imagem.png",
         "Teste do texto Sobre Mim",
         "Teste do texto Agradecimentos Fatec"
+    ),
+(
+        "Tecnólogo de Teste para o Sistema",
+        "41",
+        "2011",
+        "Segundo Semestre",
+        "testandouser@hotmail.com",
+        "(11) 97769-1234",
+        "Logística",
+        "teste.png",
+        "Teste do texto Sobre Mim",
+        "Teste do texto Agradecimentos Fatec"
     );
 INSERT INTO tb_admin (nome, email, senha)
 VALUES ("ADMIN", "admin@admin.com", "admin");
