@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="form.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;700&display=swap"
+        rel="stylesheet">
+
     <script src="form.js"></script>
     <title>Cadastro de Egresso</title>
 </head>
@@ -25,29 +30,27 @@
                     para os contratantes. É importante que:
                     <ul>
                         <li>As informações divulgadas estejam corretas;</li>
-                        <li>Seu e-mail e celular estejam corretos, pois faremos contato para confirmar a data de
-                            publicação
-                            caso
-                            o texto seja aprovado, ou se o texto precisa de correções;
+                        <li>Seu e-mail esteja correto, pois faremos contato caso o texto seja aprovado, ou
+                            se o texto precisa de correções;
                         </li>
                         <li>O texto enviado não contenha palavras de baixo calão ou discurso de ódio;
                         </li>
                         <li>O texto enviado não possua ofensas a qualquer indivíduo ou instituição;</li>
-                        <li>A foto enviada não possua conteúdo ofensivo;</li>
-                        <li>Imagem preferencialmente quadrada.</li>
+                        <li>A foto enviada (preferencialmente quadrada) não possua conteúdo ofensivo.</li>
                     </ul>
+
+                    <span class="req"></span> = Dados Obrigatórios
+                    <br>
+                    <span class="res"></span> = Dados Restritos (Essas informações não serão compartilhadas
+                    publicamente)
                 </h2>
-
-                <myTag class="req">Dados Obrigatórios</myTag>
-                <myTag class="opc">Dados Opcionais</myTag>
-
             </div>
 
             <div>
                 <div>
-                    <label for="nome">Nome Completo</label>
+                    <label for="nome" class="req">Nome Completo</label>
 
-                    <label for="foto" class="btn floatR">
+                    <label for="foto" class="floatR req">
                         <div class="tooltip" id="img-preview">
                             Selecionar Foto
                         </div>
@@ -58,7 +61,7 @@
                 </div>
 
                 <div>
-                    <input type="text" id="nome" name="nomeTec" maxlength="60" required />
+                    <input type="text" class="formInput" id="nome" name="nomeTec" maxlength="60" required />
 
 
                     <input type="file" id="foto" name="fotoTec" accept="image/*" onchange="mostrarImagem()" required />
@@ -68,13 +71,13 @@
 
             <div>
                 <div>
-                    <label for="ra">RA</label>
+                    <label for="ra" class="req res">RA</label>
                 </div>
 
                 <div>
-                    <input class="tooltip" type="text" id="ra" name="raTec" maxlength="13" />
+                    <input class="tooltip formInput" type="text" id="ra" name="raTec" maxlength="13" />
                     <span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
-                        matricula na Fatec (Este dado será validado)</span>
+                        matricula na Fatec (este dado será validado).</span>
                 </div>
             </div>
 
@@ -84,41 +87,30 @@
                 </div>
 
                 <div>
-                    <input type="number" id="idade" name="idadeTec" min="18" max="99" />
+                    <input type="number" class="formInput" id="idade" name="idadeTec" min="18" max="99" />
                 </div>
             </div>
 
             <div>
                 <div>
-                    <label for="email">E-mail</label>
+                    <label for="email" class="req res">E-mail</label>
                 </div>
 
                 <div>
-                    <input class="tooltip" type="email" id="email" name="emailTec" size="50" maxlength="150" required />
+                    <input class="tooltip formInput" type="email" id="email" name="emailTec" size="50" maxlength="150"
+                        required />
                     <span class="tooltiptext">Endereço de e-mail para receber o status de seu post. Seu e-mail
-                        institucional, prefenrencialmente</span>
+                        institucional, preferencialmente.</span>
                 </div>
             </div>
 
             <div>
                 <div>
-                    <label for="celular">Celular</label>
+                    <label for="curso" class="req">Curso Realizado</label>
                 </div>
 
                 <div>
-                    <input class="tooltip" type="tel" id="celular" name="celularTec" placeholder="(XX)9XXXX-XXXX"
-                        pattern="[0-9]{2}[9]{1}[0-9]{4}[0-9]{4}" maxlength="11" />
-                    <span class="tooltiptext">Este campo não será público</span>
-                </div>
-            </div>
-
-            <div>
-                <div>
-                    <label for="curso">Curso Realizado</label>
-                </div>
-
-                <div>
-                    <select id="curso" name="cursoTec" required>
+                    <select class="formInput" id="curso" name="cursoTec" required>
                         <option value="" selected disabled hidden>Escolha</option>
                         <option>Análise e Desenvolvimento de Sistemas</option>
                         <option>Informática para Gestão de Negócios</option>
@@ -141,7 +133,7 @@
                 </div>
 
                 <div class="wrapper">
-                    <div class="abc">
+                    <div class="semestres">
                         <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
                         <label for="primeiro">Primeiro Semestre</label>
 
@@ -150,37 +142,41 @@
 
                     </div>
 
-                    <div class="emp">
+                    <div>
                         <label for="ano">de:</label>
 
-                        <input type="number" id="ano" name="anoTec" min="2003" max="<?php echo date("Y"); ?>" />
+                        <input type="number" class="formInput" id="ano" name="anoTec" min="2003"
+                            max="<?php echo date("Y"); ?>" />
                     </div>
                 </div>
             </div>
 
             <div>
                 <div>
-                    <label for="textoPessoal">Texto Pessoal</label>
+                    <label for="textoPessoal" class="req">Texto Pessoal</label>
                 </div>
 
                 <div>
 
-                    <textarea class="tooltip" id="textoPessoal" name="textoPessoalTec" rows="4" required></textarea>
+                    <textarea class="tooltip formInput" id="textoPessoal" name="textoPessoalTec" rows="4"
+                        required></textarea>
                     <span class="tooltiptext">Escreva um pouco sobre si mesmo(a). Conte sobre suas atividades
-                        e interesses profissionais. Isso pode incluir seu campo de trabalho, sua profissão, suas
-                        responsabilidades e qualquer projeto ou conquista significativa em que esteja
-                        envolvido(a).</span>
+                        e interesses profissionais. Isso pode incluir seu campo de trabalho e sua profissão, por
+                        exemplo.</span>
                 </div>
             </div>
 
             <div>
                 <div>
-                    <label for="textoFatec">Texto Fatec</label>
+                    <label for="textoFatec" class="req">Texto Fatec</label>
                 </div>
 
                 <div>
-                    <textarea class="tooltip" id="textoFatec" name="textoFatecTec" rows="4" required></textarea>
-                    <span class="tooltiptext"></span>
+                    <textarea class="tooltip formInput" id="textoFatec" name="textoFatecTec" rows="4"
+                        required></textarea>
+                    <span class="tooltiptext">Compartilhe como a Instituição impactou positivamente sua vida.
+                        Conte-nos as melhorias, as experiências enriquecedoras e os momentos que você valoriza graças à
+                        nossa parceria.</span>
                 </div>
             </div>
 
