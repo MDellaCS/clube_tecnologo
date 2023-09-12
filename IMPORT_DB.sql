@@ -10,7 +10,6 @@ CREATE TABLE tb_tecnologo (
     ano_formacao year(4) NOT NULL,
     semestre_formacao VARCHAR(17) NOT NULL,
     email VARCHAR(60) NOT NULL,
-    celular VARCHAR(15) NOT NULL,
     curso VARCHAR(43) NOT NULL,
     foto VARCHAR(261) NOT NULL,
     texto_sobre VARCHAR(400) NOT NULL,
