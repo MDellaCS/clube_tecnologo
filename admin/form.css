@@ -1,17 +1,17 @@
 div {
-    border: 0px solid black;
     padding: 5px;
 }
 
 div.formulario {
     border: 15px outset #dbdbdb;
     background-color: #ededed;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 div.wrapper {
+    line-height: 100px;
     overflow: hidden;
 }
 
@@ -78,6 +78,7 @@ label {
 }
 
 input {
+    background-color: white;
     border: 2px solid #d9d9d9;
     font: 300 1rem Arial;
     transition: 0.2s ease-out;
@@ -90,7 +91,7 @@ input:focus:not(input[type=reset], input[type=submit]),
 textarea:focus,
 select:focus,
 option:focus {
-    background-color: #f3f3f3;
+    background-color: transparent;
 }
 
 input[type=file] {
@@ -159,11 +160,10 @@ label[for=segundo] {
 }
 
 #img-preview {
-    border: 5px outset #dbdbdb;
     text-align: center;
-    line-height: 150px;
-    width: 150px;
-    height: 150px;
+    line-height: 260px;
+    width: 260px;
+    height: 260px;
 }
 
 textarea {
@@ -178,10 +178,8 @@ textarea {
     border: 2px dashed red;
 } */
 
-input[required],
 label[for=foto],
-select[required],
-textarea[required] {
+:required {
     border-left: 5px solid red;
 }
 
@@ -190,50 +188,72 @@ textarea {
     border-left: 5px solid #c5c5c5;
 }
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border: 2px solid #931914;
-    border-radius: 100%;
-    color: #931914;
-    font: bolder 0.9rem Arial;
-}
-
 .tooltiptext {
+    max-width: 30%;
     visibility: hidden;
-    width: 120px;
-    background-color: rgb(0, 0, 0);
-    backdrop-filter: blur(3px);
-    color: #fff;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px;
-    margin-bottom: 10px;
-    text-align: center;
-    padding: 15px;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
     opacity: 0;
-    transition: all 0.2s;
-}
-
-.tooltiptext::after {
-    content: " ";
     position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
+    z-index: 999;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font:200 1rem Arial;
+    border-radius: 5px;
+    padding: 10px;
+    transition: all 0.2s ease-in-out;
 }
 
-.tooltip:hover .tooltiptext {
-    opacity: 1;
+.tooltip:hover+.tooltiptext {
     visibility: visible;
+    opacity: 1;
 }
 
-div{
-    border: 2px solid black;
+.floatR {
+    margin: 0;
+    float: right;
+}
+
+button {
+    width: 300px;
+    height: 300px;
+}
+
+.inicio {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+
+h1 {
+    font-family: Cinzel, serif;
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+h2 {
+    padding: 10px;
+    text-align: justify;
+    font-family: 'Fauna One', serif;
+    font-size: 0.9rem;
+    font-weight: 100;
+    margin-bottom: 50px;
+}
+
+myTag {
+    background-color: white;
+    border: 2px solid #d9d9d9;
+    font: 300 0.8rem Arial;
+    transition: 0.2s ease-out;
+    width: 50%;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.req {
+    border-left: 5px solid red;
+}
+
+.opc {
+    border-left: 5px solid #c5c5c5;
 }
