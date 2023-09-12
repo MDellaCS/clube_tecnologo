@@ -1,1 +1,2 @@
-# clube_tecnologo
+# Página Clube do Tecnólogo
+para o site da FatecZL
