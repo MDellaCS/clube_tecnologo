@@ -1,9 +1,9 @@
 <?php
 
-include_once('connection.php');
+include_once('admin/connection.php');
 //O atributo publicacao verifica se o depoimento do tecnólogo foi programado para ser publicado no site.
 $publicacao = 1;
-$sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso_realizado, foto, info_sobre, info_fatec, info_area_livre FROM tbl_tecnologo WHERE publicado=?";
+$sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec FROM tb_tecnologo WHERE publicado=?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("i", $publicacao);
 $stmt->execute();
@@ -33,13 +33,13 @@ $user = $result->fetch_assoc();
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-    <title>Casos de sucesso de tecnólogos</title>
+    <title>Casos de sucesso de Tecnólogos</title>
 </head>
 
 <body id="bgTecnologoSucesso">
     <div id="container relativeClass">
         <img src="imagens/fzl_logo.png" id="bg" alt="">
-        <h1 class="titlePadding">Caso de sucesso da semana</h1>
+        <h1 class="titlePadding">Casos de sucesso da Fatec ZL</h1>
         <?php if ($user) {
             //Se existir algum registro no banco de dados com o atributo 'publicado', mostra os dados deste registro na pagina
             echo "<img src='" . $user['foto'] . "' id='fotoTecnologo' alt='' >" ?>
@@ -69,7 +69,7 @@ $user = $result->fetch_assoc();
                     <div class="col-sm-6">
                         <p>
                         <h5>Curso realizado:</h5>
-                        <?= $user['curso_realizado'] ?>
+                        <?= $user['curso'] ?>
                         </p><br>
                         <br>
                     </div>
