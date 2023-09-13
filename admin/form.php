@@ -57,38 +57,41 @@
                         <span class="tooltiptext">Selecione uma foto sua (com a família, amigos ou sozinho), é
                             importante que seja uma foto real e não um avatar</span>
                     </label>
-
                 </div>
 
                 <div>
                     <input type="text" class="formInput" id="nome" name="nomeTec" maxlength="60" required />
 
-
                     <input type="file" id="foto" name="fotoTec" accept="image/*" onchange="mostrarImagem()" required />
+                </div>
+            </div>
 
+            <div class="flexRow">
+                <div>
+                    <div>
+                        <label for="ra" class="req res">RA</label>
+                    </div>
+
+                    <div>
+                        <input class="tooltip formInput" type="text" id="ra" name="raTec" maxlength="13" />
+                        <span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
+                            matricula na Fatec (este dado será validado).</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label for="idade">Idade Atual</label>
+                    </div>
+
+                    <div>
+                        <input type="number" class="formInput" id="idade" name="idadeTec" min="18" max="99" />
+                    </div>
                 </div>
             </div>
 
             <div>
-                <div>
-                    <label for="ra" class="req res">RA</label>
-                </div>
 
-                <div>
-                    <input class="tooltip formInput" type="text" id="ra" name="raTec" maxlength="13" />
-                    <span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
-                        matricula na Fatec (este dado será validado).</span>
-                </div>
-            </div>
-
-            <div>
-                <div>
-                    <label for="idade">Idade Atual</label>
-                </div>
-
-                <div>
-                    <input type="number" class="formInput" id="idade" name="idadeTec" min="18" max="99" />
-                </div>
             </div>
 
             <div>
@@ -127,23 +130,23 @@
             </div>
 
             <div>
-
                 <div>
-                    <label>Formação</label>
+                    <label>Formação</label> <input type="checkbox" id="formado" name="formado"
+                        onchange="mudarFormado()"> <label for="formado">Estou cursando</label>
                 </div>
 
                 <div class="wrapper">
                     <div class="semestres">
                         <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
-                        <label for="primeiro">Primeiro Semestre</label>
+                        <label for="primeiro" id="labelPrimeiro">Primeiro Semestre</label>
 
                         <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
-                        <label for="segundo">Segundo Semestre</label>
+                        <label for="segundo" id="labelSegundo">Segundo Semestre</label>
 
                     </div>
 
                     <div>
-                        <label for="ano">de:</label>
+                        <label for="ano" id="labelAno">de:</label>
 
                         <input type="number" class="formInput" id="ano" name="anoTec" min="2003"
                             max="<?php echo date("Y"); ?>" />

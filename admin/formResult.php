@@ -2,6 +2,11 @@
 
 $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = $textoLivre = "";
 
+if (isset($_POST["formado"])) {
+    $_POST["anoTec"] = "";
+    $_POST["semestreTec"] = "";
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $foto = test_input($_POST["fotoTec"]);
     $nome = test_input($_POST["nomeTec"]);
@@ -12,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $curso = test_input($_POST["cursoTec"]);
     $textoPessoal = test_input($_POST["textoPessoalTec"]);
     $textoFatec = test_input($_POST["textoFatecTec"]);
-    $textoLivre = test_input($_POST["textoLivreTec"]);
 }
 
 function test_input($data)
@@ -25,7 +29,7 @@ function test_input($data)
 
 include_once('connection.php');
 
-$sql = "INSERT INTO tb_tecnologo (nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec) VALUES ('$nome', $idade, $ano, '$semestre', '$email', '$curso', '$foto', '$textoPessoal', '$textoFatec')";
+$sql = "INSERT INTO tb_tecnologo (nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec) VALUES ('$nome', '$idade', '$ano', '$semestre', '$email', '$curso', '$foto', '$textoPessoal', '$textoFatec')";
 
 $con->query($sql);
 
