@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="admin.css">
+        <link rel="stylesheet" href="lista.css">
         <script src="lista.js"></script>
         <title>Clube do Técnologo - Lista de Técnologos de Cadastrados</title>
     </head>
