@@ -82,13 +82,13 @@ $user = $result->fetch_assoc();
                 <div class="carousel-item active">
                     <h4 class="subTituloPos">Fale sobre você (O que faz e como está):</h4>
                     <p class="infoPos">
-                        <?= $user['info_sobre'] ?>
+                        <?= $user['texto_sobre'] ?>
                     </p>
                 </div>
                 <div class="carousel-item">
                     <h4 class="subTituloPos">O que a FATEC representou (ou representa) <br> para você?:</h4>
                     <p class="infoPos">
-                        <?= $user['info_fatec'] ?>
+                        <?= $user['texto_fatec'] ?>
                     </p>
                 </div>
                 <div class="carousel-item">
@@ -121,11 +121,13 @@ $user = $result->fetch_assoc();
         }
         ?>
 
-    <div>
-        <img id="fatec20anosPos" src="imagens/fatec20anos.png" alt="Fatec 20 Anos">
-        <img id="brasaoSaoPauloPos" src="imagens/brasaoSaoPaulo.png" alt="...">
+    <footer id="rodape">    
+    <div id="logos">
+        <img class="logofatec" src="imagens/fzl_logo.png" alt="Fatec 20 Anos">
+        <img class="logofatec" src="imagens/cps_logo.png" alt="...">
 
     </div>
+    </footer>
 
 </body>
 
