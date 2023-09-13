@@ -4,7 +4,7 @@ div {
 
 div.formulario {
     border-radius: 30px;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
     background-color: #FFFFFF;
     width: 65%;
@@ -22,6 +22,11 @@ div.semestres {
     float: left;
 }
 
+.flexRow {
+    display: flex;
+    flex-direction: row;
+}
+
 select {
     width: 50%;
 }
@@ -36,12 +41,11 @@ img {
 
 #img-preview {
     border: 4px solid #7E0000;
-    padding: 4px;
     border-radius: 30px;
     text-align: center;
-    line-height: 260px;
-    width: 260px;
-    height: 260px;
+    line-height: 270px;
+    width: 270px;
+    height: 270px;
 }
 
 label {
@@ -90,13 +94,12 @@ label[for=segundo] {
 
 textarea {
     resize: vertical;
-    width: 70%;
 }
 
 /* ----------------------------- AREA DE TESTES ----------------------------- */
 
 /* * {
-    border: 2px dashed red;
+    border: 2px dotted red;
 } */
 
 .tooltiptext {
@@ -105,7 +108,7 @@ textarea {
     opacity: 0;
     position: absolute;
     margin-left: -256px;
-    margin-top: -40px;
+    margin-top: -80px;
     z-index: 999;
     background-color: #FF4C4D;
     color: white;
@@ -119,8 +122,7 @@ textarea {
     line-height: 20px;
 }
 
-.tooltip:hover+.tooltiptext,
-.tooltiptext:hover {
+.tooltip:hover+.tooltiptext {
     visibility: visible;
     opacity: 1;
 }
@@ -142,7 +144,7 @@ h1 {
     font-size: 44px;
     font-weight: 500;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
 }
 
 h2 {
@@ -154,6 +156,8 @@ h2 {
     color: #666666;
 }
 
+/* ------------------------------------- INPUTS ------------------------------------- */
+
 .formInput {
     border: none;
     border-bottom: 4px solid #00000026;
@@ -164,7 +168,7 @@ h2 {
     padding: 10px;
     border-radius: 5px;
     color: #666666;
-    width: 50%;
+    width: 53%;
     margin-bottom: 32px;
 }
 
@@ -173,15 +177,42 @@ h2 {
     background-color: #F0F0F0;
 }
 
-input[type=file] {
+.formInput[id=ra] {
+    width: 61%;
+}
+
+.formInput[id=idade] {
+    width: 30%;
+}
+
+.formInput[id=ano] {
+    width: 9%;
+}
+
+.formInput[id=textoPessoal] {
+    width: 90%;
+}
+
+.formInput[id=textoFatec] {
+    width: 90%;
+}
+
+input[type=radio],
+input[type=file],
+input[type=checkbox] {
     display: none;
 }
 
-input[type=radio] {
-    display: none;
+input[type="checkbox"]+label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    transition: 0.2s ease-out;
+    margin-left: 20px;
 }
 
-input[type="radio"]:checked+label {
+input[type="radio"]:checked+label,
+input[type="checkbox"]:checked+label {
     background-color: #7E0000;
     color: white;
     border: 3px solid #7E0000;
@@ -201,4 +232,26 @@ input[type="radio"]:checked+label {
     font-weight: 500;
     color: #7C25CF;
     content: "| ";
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
 }

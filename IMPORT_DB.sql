@@ -7,15 +7,15 @@ CREATE TABLE tb_tecnologo (
     id INT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(60) NOT NULL,
     idade TINYINT NOT NULL,
-    ano_formacao year(4) NOT NULL,
-    semestre_formacao VARCHAR(17) NOT NULL,
+    ano_formacao year(4),
+    semestre_formacao VARCHAR(17),
     email VARCHAR(60) NOT NULL,
     curso VARCHAR(43) NOT NULL,
     foto VARCHAR(261) NOT NULL,
-    texto_sobre VARCHAR(400) NOT NULL,
-    texto_fatec VARCHAR(400) NOT NULL,
+    texto_sobre VARCHAR(700) NOT NULL,
+    texto_fatec VARCHAR(700) NOT NULL,
     data_insercao TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    publicado TINYINT NOT NULL DEFAULT 0,
+    publicado TINYINT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 CREATE TABLE tb_admin (

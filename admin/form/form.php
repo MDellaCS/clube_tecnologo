@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
     <link rel="stylesheet" href="form.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,12 +12,13 @@
         rel="stylesheet">
 
     <script src="form.js"></script>
-    <title>Cadastro de Egresso</title>
+    <title>Cadastro | Clube do Tecnólogo</title>
 </head>
 
 <body>
 
-    <form name="formEgresso" method="post" action="<?php echo htmlspecialchars('formResult.php'); ?>" autocomplete="on">
+    <form name="formEgresso" id="formEgresso" method="post" action="<?php echo htmlspecialchars('formResult.php'); ?>"
+        autocomplete="on">
 
         <div class="formulario">
 
@@ -55,40 +57,43 @@
                             Selecionar Foto
                         </div>
                         <span class="tooltiptext">Selecione uma foto sua (com a família, amigos ou sozinho), é
-                            importante que seja uma foto real e não um avatar</span>
+                            importante que seja uma foto real e não um avatar.</span>
                     </label>
-
                 </div>
 
                 <div>
                     <input type="text" class="formInput" id="nome" name="nomeTec" maxlength="60" required />
 
-
                     <input type="file" id="foto" name="fotoTec" accept="image/*" onchange="mostrarImagem()" required />
+                </div>
+            </div>
 
+            <div class="flexRow">
+                <div>
+                    <div>
+                        <label for="ra" class="req res">RA</label>
+                    </div>
+
+                    <div>
+                        <input class="tooltip formInput" type="text" id="ra" name="raTec" maxlength="13" />
+                        <span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
+                            matricula na Fatec (este dado será validado).</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label for="idade" class="req">Idade Atual</label>
+                    </div>
+
+                    <div>
+                        <input type="number" class="formInput" id="idade" name="idadeTec" min="18" max="99" required />
+                    </div>
                 </div>
             </div>
 
             <div>
-                <div>
-                    <label for="ra" class="req res">RA</label>
-                </div>
 
-                <div>
-                    <input class="tooltip formInput" type="text" id="ra" name="raTec" maxlength="13" />
-                    <span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
-                        matricula na Fatec (este dado será validado).</span>
-                </div>
-            </div>
-
-            <div>
-                <div>
-                    <label for="idade">Idade Atual</label>
-                </div>
-
-                <div>
-                    <input type="number" class="formInput" id="idade" name="idadeTec" min="18" max="99" />
-                </div>
             </div>
 
             <div>
@@ -127,23 +132,23 @@
             </div>
 
             <div>
-
                 <div>
-                    <label>Formação</label>
+                    <label id="labelFormado">Formação</label> <input type="checkbox" id="formado" name="formado"
+                        onchange="mudarFormado()"> <label for="formado" id="cursando">Estou cursando</label>
                 </div>
 
                 <div class="wrapper">
                     <div class="semestres">
                         <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
-                        <label for="primeiro">Primeiro Semestre</label>
+                        <label for="primeiro" id="labelPrimeiro">Primeiro Semestre</label>
 
                         <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
-                        <label for="segundo">Segundo Semestre</label>
+                        <label for="segundo" id="labelSegundo">Segundo Semestre</label>
 
                     </div>
 
                     <div>
-                        <label for="ano">de:</label>
+                        <label for="ano" id="labelAno">de:</label>
 
                         <input type="number" class="formInput" id="ano" name="anoTec" min="2003"
                             max="<?php echo date("Y"); ?>" />
@@ -154,12 +159,13 @@
             <div>
                 <div>
                     <label for="textoPessoal" class="req">Texto Pessoal</label>
+                    <h2 id="contadorP">Caracteres Restantes: 700</h2>
                 </div>
 
                 <div>
 
-                    <textarea class="tooltip formInput" id="textoPessoal" name="textoPessoalTec" rows="4"
-                        required></textarea>
+                    <textarea class="tooltip formInput" oninput="contChars(this, 'contadorP')" id="textoPessoal"
+                        name="textoPessoalTec" maxlength="700" rows="3" required></textarea>
                     <span class="tooltiptext">Escreva um pouco sobre si mesmo(a). Conte sobre suas atividades
                         e interesses profissionais. Isso pode incluir seu campo de trabalho e sua profissão, por
                         exemplo.</span>
@@ -169,18 +175,29 @@
             <div>
                 <div>
                     <label for="textoFatec" class="req">Texto Fatec</label>
+                    <h2 id="contadorF">Caracteres Restantes: 700</h2>
                 </div>
 
                 <div>
-                    <textarea class="tooltip formInput" id="textoFatec" name="textoFatecTec" rows="4"
-                        required></textarea>
+                    <textarea class="tooltip formInput" oninput="contChars(this, 'contadorF')" id="textoFatec"
+                        name="textoFatecTec" rows="3" required></textarea>
                     <span class="tooltiptext">Compartilhe como a Instituição impactou positivamente sua vida.
                         Conte-nos as melhorias, as experiências enriquecedoras e os momentos que você valoriza graças à
                         nossa parceria.</span>
                 </div>
             </div>
 
-            <input type="reset" class="btn" onclick="limparImagem()" />
+            <div id="minhaModal" class="modal">
+                <div class="modal-content">
+                    <h1>Deseja redefinir o formulário?</h1>
+                    <div style="text-align: center;">
+                        <input type="button" class="btn" onclick="resetForm()" value="Sim">
+                        <input type="button" class="btn" onclick="fecharModal()" value="Não">
+                    </div>
+                </div>
+            </div>
+
+            <input type="button" class="btn" onclick="limparImagem(); abrirModal()" value="Redefinir" />
             <input type="submit" class="btn" value="Finalizar" />
 
         </div>
