@@ -2,7 +2,7 @@
 
 $id = $_GET['id'];
 include_once('../connection.php');
-$sql = $con->prepare("DELETE FROM tbl_tecnologo WHERE id_tecnologo = ?");
+$sql = $con->prepare("DELETE FROM tb_tecnologo WHERE id = ?");
 $sql->bind_param("i", $id);
 $sql->execute();
 if ($sql == true && $con == true) {
