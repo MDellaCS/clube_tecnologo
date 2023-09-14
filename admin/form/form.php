@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
-    <link rel="stylesheet" href="form.css">
+    <link rel="icon" type="image/x-icon" href="../../imagens/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;700&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="form.css">
     <script src="form.js"></script>
     <title>Cadastro | Clube do Tecnólogo</title>
 </head>
@@ -102,7 +102,7 @@
                 </div>
 
                 <div>
-                    <input class="tooltip formInput" type="email" id="email" name="emailTec" size="50" maxlength="150"
+                    <input class="tooltip formInput" type="email" id="email" name="emailTec" size="50" maxlength="60"
                         required />
                     <span class="tooltiptext">Endereço de e-mail para receber o status de seu post. Seu e-mail
                         institucional, preferencialmente.</span>
@@ -111,7 +111,7 @@
 
             <div>
                 <div>
-                    <label for="curso" class="req">Curso Realizado</label>
+                    <label for="curso" class="req">Curso</label>
                 </div>
 
                 <div>
@@ -187,7 +187,7 @@
                 </div>
             </div>
 
-            <div id="minhaModal" class="modal">
+            <div id="minhaModal" class="modal" onclick="fecharModal()">
                 <div class="modal-content">
                     <h1>Deseja redefinir o formulário?</h1>
                     <div style="text-align: center;">

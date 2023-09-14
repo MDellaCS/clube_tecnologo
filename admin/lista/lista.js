@@ -1,12 +1,19 @@
-function on(meuOL) {
-    var overlays = document.getElementsByClassName("overlay");
-    overlays[meuOL].style.display = "block";
+function abrirModal(id) {
+    let modais = document.getElementsByClassName("modal");
+
+    for (let i = 0; i < modais.length; i++) {
+        if (id == i) {
+            modais[i].style.display = "block";
+        }
+    }
+
 }
 
-function off() {
-    var overlays = document.getElementsByClassName("overlay");
-    for (var i = 0; i < overlays.length; i++) {
-        overlays[i].style.display = "none";
+function fecharModal() {
+    let modais = document.getElementsByClassName("modal");
+
+    for (let i = 0; i < modais.length; i++) {
+        modais[i].style.display = "none";
     }
 }
 

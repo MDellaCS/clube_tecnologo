@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
-    <link rel="stylesheet" href="form.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -13,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         type="text/css" type="text/css" media="all">
 
+    <link rel="stylesheet" href="form.css">
     <script src="form.js"></script>
     <title>Resultado | Clube do Tecnólogo</title>
 </head>
@@ -24,8 +24,8 @@
     $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = $textoLivre = "";
 
     if (isset($_POST["formado"]) || !isset($_POST["anoTec"]) || !isset($_POST["semestreTec"])) {
-        $_POST["anoTec"] = "";
-        $_POST["semestreTec"] = "";
+        $_POST["anoTec"] = null;
+        $_POST["semestreTec"] = null;
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -49,7 +49,7 @@
         return $data;
     }
 
-    include_once('connection.php');
+    include_once('../connection.php');
 
     $sql = "INSERT INTO tb_tecnologo (nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec) VALUES ('$nome', '$idade', '$ano', '$semestre', '$email', '$curso', '$foto', '$textoPessoal', '$textoFatec')";
 
@@ -64,9 +64,9 @@
 
     <div class="formulario">
         <h1>Enviado com Sucesso!</h1>
-        <h2>Por favor, verifique o seu e-mail <strong>
-                <?php echo "(", $email, ")" ?>
-            </strong> para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
+        <h2>Por favor, verifique o seu e-mail (<strong>
+                <?php echo $email ?>
+            </strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
         <h2>Obrigado
             <strong>
                 <?php echo $nome ?>
