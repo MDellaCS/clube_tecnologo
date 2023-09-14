@@ -3,7 +3,7 @@
 include_once('admin/connection.php');
 //O atributo publicacao verifica se o depoimento do tecnólogo foi programado para ser publicado no site.
 $publicacao = 1;
-$sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec FROM tb_tecnologo WHERE publicado=?";
+$sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec FROM tb_tecnologo WHERE publicado = ?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("i", $publicacao);
 $stmt->execute();
@@ -123,9 +123,10 @@ $user = $result->fetch_assoc();
 
     <footer id="rodape">    
     <div id="logos">
-        <img class="logofatec" src="imagens/fzl_logo.png" alt="Fatec 20 Anos">
+      <a href="https://www.fateczl.edu.br/">
+        <img class="logofatec" src="imagens/fzl_logo.png" href="https://www.fateczl.edu.br/">
         <img class="logofatec" src="imagens/cps_logo.png" alt="...">
-
+     </a>
     </div>
     </footer>
 
