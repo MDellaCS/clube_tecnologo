@@ -67,7 +67,7 @@
             <tr id="pessoa<?php echo $row['id'] ?>" class="pessoa">
 
                 <td class="foto">
-                    <img class="foto" src="../fotos/<?php echo $row['foto'] ?>">
+                    <img class="foto" src="../../profilePictures/<?php echo $row['foto'] ?>">
                 </td>
 
                 <td class="nomePessoa" id="<?php echo $row['nome'] ?>">
@@ -138,7 +138,7 @@
                     <h1>
                         <div class="container">
 
-                            <img class="foto2" src="../../imagens/teste_hor.png">
+                            <img class="foto2" src="../../profilePictures/<?php echo $row['foto'] ?>">
                             <div class="texto-sobre-imagem">
                                 <?php echo $row['nome'] ?>
                             </div>

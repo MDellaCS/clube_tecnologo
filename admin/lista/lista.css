@@ -11,7 +11,7 @@
 
 .modal-content {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
@@ -230,4 +230,22 @@ h3 {
 
 .highlighted {
     background-color: #FFC24C;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e3e3e3;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #565656;
+    height: 15%;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
 }

@@ -68,7 +68,16 @@ label[for=segundo] {
     width: 70%;
     padding: 5px;
     text-align: center;
-    margin-bottom: 28px;
+    margin-bottom: 12px;
+}
+
+label[for=formado],
+label[for=cursando] {
+    border: 3px dashed #7E0000;
+    width: 70%;
+    padding: 5px;
+    text-align: center;
+    
 }
 
 label[for=ano] {

@@ -21,15 +21,63 @@
 
     <?php
 
+    // -------------------- ENVIAR A IMAGEM PARA O DIRETÓRIO --------------------
+    
+    $targetDir = "../../profilePictures/";
+    $uploadOk = 1;
+    $dataAtual = microtime(true);
+    $variavelString = $_POST["nomeTec"];
+    $nomeArquivo = $dataAtual . "_" . $variavelString . "_" . basename($_FILES["fotoTec"]["name"]);
+    $targetFile = $targetDir . $nomeArquivo;
+
+    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+    if (isset($_POST["submit"])) {
+        $check = getimagesize($_FILES["fotoTec"]["tmp_name"]);
+        if ($check !== false) {
+            $uploadOk = 1;
+        } else {
+            echo "O arquivo não é uma imagem real.";
+            $uploadOk = 0;
+        }
+    }
+
+    if (file_exists($targetFile)) {
+        echo "Desculpe, o arquivo já existe.";
+        $uploadOk = 0;
+    }
+
+    if ($_FILES["fotoTec"]["size"] > 5000000) { // 5MB
+        echo "Desculpe, seu arquivo é muito grande.";
+        $uploadOk = 0;
+    }
+
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+        echo "Desculpe, apenas arquivos JPG, JPEG, PNG são permitidos.";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) {
+        echo "Desculpe, seu arquivo não foi enviado.";
+    } else {
+        if (move_uploaded_file($_FILES["fotoTec"]["tmp_name"], $targetFile)) {
+            echo "O arquivo " . basename($_FILES["fotoTec"]["name"]) . " foi enviado com sucesso.";
+        } else {
+            echo "Desculpe, houve um erro ao enviar o arquivo.";
+        }
+    }
+
+    // -------------------- PEGAR DADOS DO FORM --------------------
+    
     $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = $textoLivre = "";
 
-    if (isset($_POST["formado"]) || !isset($_POST["anoTec"]) || !isset($_POST["semestreTec"])) {
-        $_POST["anoTec"] = null;
-        $_POST["semestreTec"] = null;
+    if ($_POST["formacaoTec"] == "Cursando") {
+        $_POST["anoTec"] = 0000;
+        $_POST["semestreTec"] = "";
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $foto = test_input($_POST["fotoTec"]);
+        $foto = test_input($_FILES["fotoTec"]["name"]);
         $nome = test_input($_POST["nomeTec"]);
         $idade = test_input($_POST["idadeTec"]);
         $email = test_input($_POST["emailTec"]);
@@ -49,13 +97,29 @@
         return $data;
     }
 
+    // -------------------- INSERT BD --------------------
+    
     include_once('../connection.php');
 
     $sql = "INSERT INTO tb_tecnologo (nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec) VALUES ('$nome', '$idade', '$ano', '$semestre', '$email', '$curso', '$foto', '$textoPessoal', '$textoFatec')";
 
     $con->query($sql);
 
-    // mail($email, 'Obrigado por se cadastrar no Clube do Tecnólogo', 'mensagem');
+    $con->close();
+
+    // -------------------- ENVIAR EMAIL --------------------
+    
+    $to = $email;
+    $subject = "Confirmação de Dados FATEC-ZL Clube do Tecnólogo";
+    $message = "Teste";
+    $headers = "From: matheusdellacrocce@hotmail.com" . "\r\n" .
+        "Reply-To: matheusdellacrocce@hotmail.com" . "\r\n" .
+        'Content-Type: text/plain; charset=utf-8' . "\r\n" .
+        "X-Mailer: PHP/" . phpversion();
+
+    mail($to, $subject, $message, $headers);
+
+    // -------------------- DISPLAY HTML --------------------
     
     $nome = explode(" ", $nome);
     $nome = $nome[0];
@@ -64,9 +128,13 @@
 
     <div class="formulario">
         <h1>Enviado com Sucesso!</h1>
-        <h2>Obrigado <strong><?php echo $nome ?></strong>!</h2>
-        <h2>Por favor, verifique o seu e-mail (<strong><?php echo $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
-        
+        <h2>Obrigado <strong>
+                <?php echo $nome ?>
+            </strong>!</h2>
+        <h2>Por favor, verifique o seu e-mail (<strong>
+                <?php echo $email ?>
+            </strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
+
         <div style="text-align: center;">
             <a href="form.php">
                 <input type="button" class="btn" value="Voltar">
