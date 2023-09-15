@@ -20,16 +20,16 @@
         Egressos Cadastrados
     </div>
 
-    <div>
-        <input type="text" id="search" class="formInput" onkeyup="attBusca()" placeholder="Pesquisar por nome..."
-            autocomplete="off">
-    </div>
-
     <table>
 
         <tr>
             <th class="foto">Foto</th>
-            <th class="nome">Nome</th>
+            <th class="nome">
+                <div>
+                    <input type="text" id="search" class="formInput center" onkeyup="attBusca()" placeholder="Nome"
+                        autocomplete="off">
+                </div>
+            </th>
             <th class="formacao">Formação</th>
             <th class="email">Email</th>
             <th class="curso">Curso</th>
@@ -91,13 +91,43 @@
                     <?php echo $row['publicado'] ?>
                 </td>
 
-                <td class="acoes">
+                <td class="acoes center">
+
                     <img class="icon green" src="https://img.icons8.com/ios-glyphs/480/FFFFFF/checkmark--v1.png"
-                        onclick="publicarCadastro(<?php echo $row['id'] ?>)" />
+                        onclick="abrirPublicar(<?php echo $row['id'] ?>)" />
+
+                    <div id="confirmPublicar<?php echo $row['id'] ?>" class="modal">
+                        <div class="modal-content">
+                            <h1>Deseja publicar
+                                <?php echo $row['nome'] ?>?
+                            </h1>
+                            <div style="text-align: center;">
+                                <input type="button" class="btn" onclick="publicarCadastro(<?php echo $row['id'] ?>)"
+                                    value="Sim">
+                                <input type="button" class="btn" onclick="fecharModal()" value="Não">
+                            </div>
+                        </div>
+                    </div>
+
                     <img class="icon yellow" src="https://img.icons8.com/android/480/FFFFFF/plus.png"
                         onclick="abrirModal(<?php echo $count ?>)" />
+
                     <img class="icon red" src="https://img.icons8.com/ios/480/FFFFFF/delete-sign--v1.png"
-                        onclick="deletarCadastro(<?php echo $row['id'] ?>)" />
+                        onclick="abrirDeletar(<?php echo $row['id'] ?>)" />
+
+                    <div id="confirmDeletar<?php echo $row['id'] ?>" class="modal">
+                        <div class="modal-content">
+                            <h1>Deseja deletar
+                                <?php echo $row['nome'] ?>?
+                            </h1>
+                            <div style="text-align: center;">
+                                <input type="button" class="btn" onclick="deletarCadastro(<?php echo $row['id'] ?>)"
+                                    value="Sim">
+                                <input type="button" class="btn" onclick="fecharModal()" value="Não">
+                            </div>
+                        </div>
+                    </div>
+
                 </td>
 
             </tr>
@@ -118,7 +148,7 @@
 
                     <h2>
                         <div>
-                            <?php echo $row['idade'] ?>
+                            <?php echo $row['idade'], " anos" ?>
                         </div>
 
                         <div>
@@ -162,6 +192,9 @@
 
             <?php
             $count++;
+        }
+        if ($count == 0) {
+            echo "<h1>NÃO TEM NINGUÉM</h1>";
         }
         ?>
 

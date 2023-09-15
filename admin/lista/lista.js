@@ -30,6 +30,14 @@ function publicarCadastro(valor) {
     window.location = window.location;
 }
 
+function abrirPublicar(id) {
+    document.getElementById("confirmPublicar" + id).style.display = "block";
+}
+
+function abrirDeletar(id) {
+    document.getElementById("confirmDeletar" + id).style.display = "block";
+}
+
 function abrirModal(id) {
     let modais = document.getElementsByClassName("modal");
 
@@ -50,23 +58,27 @@ function fecharModal() {
 }
 
 function attBusca() {
-    var input, tr, i, nome;
+    var input, tr, i, nome, nomeAtual;
 
     input = document.getElementById("search");
-    input = input.value.toUpperCase();
+    input = input.value.toLowerCase();
 
     tr = document.getElementsByClassName("pessoa");
     nome = document.getElementsByClassName("nomePessoa");
 
     for (i = 0; i < tr.length; i++) {
+        nomeAtual = nome[i].id.toLowerCase();
+        var nomeOriginal = nome[i].id;
 
-        nomeAtual = nome[i].id.toUpperCase();
-
-        if (nomeAtual.match(input)) {
+        if (nomeAtual.indexOf(input) !== -1) {
+            var nomeDestacado = nomeOriginal.replace(new RegExp(input, 'gi'), function (match) {
+                return "<span class='highlighted'>" + match + "</span>";
+            });
             tr[i].style.display = "";
         } else {
             tr[i].style.display = "none";
         }
 
+        nome[i].innerHTML = nomeDestacado;
     }
 }

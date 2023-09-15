@@ -11,7 +11,7 @@
 
 .modal-content {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
@@ -203,7 +203,7 @@ h3 {
     padding: 10px;
     border-radius: 5px;
     color: #666666;
-    width: 30%;
+    width: 50%;
 }
 
 .formInput:hover,
@@ -226,4 +226,8 @@ h3 {
     color: white;
     padding: 5px;
     width: 100%;
+}
+
+.highlighted {
+    background-color: #FFC24C;
 }
