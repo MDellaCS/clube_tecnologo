@@ -121,15 +121,6 @@ $user = $result->fetch_assoc();
         }
         ?>
 
-    <footer id="rodape">    
-    <div id="logos">
-      <a href="https://www.fateczl.edu.br/">
-        <img class="logofatec" src="imagens/fzl_logo.png" href="https://www.fateczl.edu.br/">
-        <img class="logofatec" src="imagens/cps_logo.png" alt="...">
-     </a>
-    </div>
-    </footer>
-
 </body>
 
 </html>
