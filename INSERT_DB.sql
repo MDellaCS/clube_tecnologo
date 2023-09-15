@@ -1,4 +1,4 @@
-USE db_clube;
+USE fateczle_clubetecnologo;
 INSERT INTO tb_tecnologo (
         nome,
         idade,
