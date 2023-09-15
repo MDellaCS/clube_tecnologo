@@ -30,10 +30,10 @@
         <tr>
             <th class="foto">Foto</th>
             <th class="nome">Nome</th>
-            <th class="idade">Idade</th>
             <th class="formacao">Formação</th>
             <th class="email">Email</th>
             <th class="curso">Curso</th>
+            <th class="publicado">Publicado</th>
             <th class="acoes">Ações</th>
         </tr>
 
@@ -57,7 +57,11 @@
                 $row['semestre_formacao'] .= " de ";
             }
 
-            $row['idade'] .= " anos";
+            if ($row['publicado'] == 0) {
+                $row['publicado'] = "Não";
+            } else {
+                $row['publicado'] = "Sim";
+            }
             ?>
 
             <tr id="pessoa<?php echo $row['id'] ?>" class="pessoa">
@@ -68,10 +72,6 @@
 
                 <td class="nomePessoa" id="<?php echo $row['nome'] ?>">
                     <?php echo $row['nome'] ?>
-                </td>
-
-                <td>
-                    <?php echo $row['idade'] ?>
                 </td>
 
                 <td>
@@ -87,13 +87,17 @@
                     <?php echo $row['curso'] ?>
                 </td>
 
+                <td>
+                    <?php echo $row['publicado'] ?>
+                </td>
+
                 <td class="acoes">
                     <img class="icon green" src="https://img.icons8.com/ios-glyphs/480/FFFFFF/checkmark--v1.png"
-                        alt="asoidjoaidoia" />
-                    <img class="icon yellow" src="https://img.icons8.com/android/480/FFFFFF/plus.png" alt="plus"
+                        onclick="publicarCadastro(<?php echo $row['id'] ?>)" />
+                    <img class="icon yellow" src="https://img.icons8.com/android/480/FFFFFF/plus.png"
                         onclick="abrirModal(<?php echo $count ?>)" />
                     <img class="icon red" src="https://img.icons8.com/ios/480/FFFFFF/delete-sign--v1.png"
-                        alt="delete-sign--v1" />
+                        onclick="deletarCadastro(<?php echo $row['id'] ?>)" />
                 </td>
 
             </tr>
@@ -140,7 +144,6 @@
                             <h3>
                                 <?php echo $row['texto_sobre'] ?>
                             </h3>
-                            <br><br>
                         </div>
 
                         <div>
