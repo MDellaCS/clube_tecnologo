@@ -17,8 +17,8 @@
 
 <body>
 
-    <form name="formEgresso" id="formEgresso" method="post" action="<?php echo htmlspecialchars('formResult.php'); ?>"
-        autocomplete="on">
+    <form name="formEgresso" id="formEgresso" method="post" enctype="multipart/form-data"
+        action="<?php echo htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
         <div class="formulario">
 
@@ -133,24 +133,27 @@
 
             <div>
                 <div>
-                    <label id="labelFormado">Formação</label> <input type="checkbox" id="formado" name="formado"
-                        onchange="mudarFormado()"> <label for="formado" id="cursando">Estou cursando</label>
+                    <input type="radio" id="formado" name="formacaoTec" onclick="mudarFormado()" value="Formado" checked
+                        required />
+                    <label for="formado" id="labelFormado">Já me Formei</label>
+
+                    <input type="radio" id="cursando" name="formacaoTec" onclick="mudarFormado()" value="Cursando" />
+                    <label for="cursando" id="labelCursando">Estou Cursando</label>
                 </div>
 
-                <div class="wrapper">
+                <div id="dadosFormado" class="wrapper">
                     <div class="semestres">
-                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
+                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre"/>
                         <label for="primeiro" id="labelPrimeiro">Primeiro Semestre</label>
 
                         <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
                         <label for="segundo" id="labelSegundo">Segundo Semestre</label>
-
                     </div>
 
-                    <div>
+                    <div class="semestres">
                         <label for="ano" id="labelAno">de:</label>
 
-                        <input type="number" class="formInput" id="ano" name="anoTec" min="2003"
+                        <input type="number" placeholder="Ano" class="formInput" id="ano" name="anoTec" min="2003"
                             max="<?php echo date("Y"); ?>" />
                     </div>
                 </div>
@@ -159,7 +162,7 @@
             <div>
                 <div>
                     <label for="textoPessoal" class="req">Texto Pessoal</label>
-                    <h2 id="contadorP">Caracteres Restantes: 700</h2>
+                    <h2 class="contador" id="contadorP">Caracteres Restantes: 700</h2>
                 </div>
 
                 <div>
@@ -175,7 +178,7 @@
             <div>
                 <div>
                     <label for="textoFatec" class="req">Texto Fatec</label>
-                    <h2 id="contadorF">Caracteres Restantes: 700</h2>
+                    <h2 class="contador" id="contadorF">Caracteres Restantes: 700</h2>
                 </div>
 
                 <div>

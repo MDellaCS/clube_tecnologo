@@ -203,7 +203,7 @@ h3 {
     padding: 10px;
     border-radius: 5px;
     color: #666666;
-    width: 30%;
+    width: 50%;
 }
 
 .formInput:hover,
@@ -226,4 +226,26 @@ h3 {
     color: white;
     padding: 5px;
     width: 100%;
+}
+
+.highlighted {
+    background-color: #FFC24C;
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e3e3e3;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #565656;
+    height: 15%;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
 }

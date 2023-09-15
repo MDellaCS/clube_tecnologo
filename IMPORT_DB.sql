@@ -1,8 +1,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "-03:00";
-CREATE DATABASE db_clube;
-USE db_clube;
+CREATE DATABASE IF NOT EXISTS fateczle_clubetecnologo;
+USE fateczle_clubetecnologo;
 CREATE TABLE tb_tecnologo (
     id INT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(60) NOT NULL,
