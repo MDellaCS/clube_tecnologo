@@ -12,7 +12,7 @@
     $sql->execute();
     if ($sql == true && $con == true) {
         mysqli_close($con);
-        header('Location: listaCasosSucesso.php');
+        header('Location: lista/lista.php');
         exit;
     } else {
         echo "Erro ao tentar deletar o registro.";
