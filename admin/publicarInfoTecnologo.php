@@ -4,10 +4,10 @@
 
     include_once('connection.php');
 
-    $sql = $con->prepare("UPDATE tbl_tecnologo SET publicado = 0 WHERE publicado = 1");
+    $sql = $con->prepare("UPDATE tb_tecnologo SET publicado = 0 WHERE publicado = 1");
     $sql->execute();
 
-    $sql = $con->prepare("UPDATE tbl_tecnologo SET publicado = ? WHERE id_tecnologo = ?");
+    $sql = $con->prepare("UPDATE tb_tecnologo SET publicado = ? WHERE id = ?");
     $sql->bind_param("ii", $publicar, $id);
     $sql->execute();
     if ($sql == true && $con == true) {

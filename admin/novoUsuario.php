@@ -3,15 +3,14 @@
 include_once('connection.php');
 
 $sql = $con->prepare
-("INSERT INTO `tbl_usuario` (`nome`, `email`, `senha`, `aprovado`) 
-VALUES (?,?,?,?)");
+("INSERT INTO `tb_admin` (`nome`, `email`, `senha`) 
+VALUES (?,?,?)");
 
-$sql->bind_param("sssi", $nome, $email, $senha, $aprovado);
+$sql->bind_param("sssi", $nome, $email, $senha);
 
 $nome = $_POST['nm_enviar_nome'];
 $email = $_POST['nm_enviar_email'];
 $senha = hash('sha512', $_POST['nm_enviar_password']);
-$aprovado = 1;
 
 $sql->execute();
 $sql->close();
