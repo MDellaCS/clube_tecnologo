@@ -1,3 +1,35 @@
+function deletarCadastro(valor) {
+    var url = "deletarCadastro.php";
+
+    var formData = new FormData();
+    formData.append("id", valor);
+
+    var config = {
+        method: "POST",
+        body: formData
+    };
+
+    fetch(url, config);
+
+    window.location = window.location;
+}
+
+function publicarCadastro(valor) {
+    var url = "publicarCadastro.php";
+
+    var formData = new FormData();
+    formData.append("id", valor);
+
+    var config = {
+        method: "POST",
+        body: formData
+    };
+
+    fetch(url, config);
+
+    window.location = window.location;
+}
+
 function abrirModal(id) {
     let modais = document.getElementsByClassName("modal");
 
