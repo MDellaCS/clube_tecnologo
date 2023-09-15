@@ -144,13 +144,12 @@
 
                         <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
                         <label for="segundo" id="labelSegundo">Segundo Semestre</label>
-
                     </div>
 
-                    <div>
+                    <div class="semestres">
                         <label for="ano" id="labelAno">de:</label>
 
-                        <input type="number" class="formInput" id="ano" name="anoTec" min="2003"
+                        <input type="number" placeholder="Ano" class="formInput" id="ano" name="anoTec" min="2003"
                             max="<?php echo date("Y"); ?>" />
                     </div>
                 </div>

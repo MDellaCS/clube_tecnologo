@@ -64,15 +64,9 @@
 
     <div class="formulario">
         <h1>Enviado com Sucesso!</h1>
-        <h2>Por favor, verifique o seu e-mail (<strong>
-                <?php echo $email ?>
-            </strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
-        <h2>Obrigado
-            <strong>
-                <?php echo $nome ?>
-            </strong>!
-        </h2>
-
+        <h2>Obrigado <strong><?php echo $nome ?></strong>!</h2>
+        <h2>Por favor, verifique o seu e-mail (<strong><?php echo $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
+        
         <div style="text-align: center;">
             <a href="form.php">
                 <input type="button" class="btn" value="Voltar">

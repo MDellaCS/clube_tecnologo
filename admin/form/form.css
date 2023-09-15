@@ -67,8 +67,12 @@ label[for=segundo] {
     border-radius: 30px;
     width: 70%;
     padding: 5px;
-    margin: 3px;
     text-align: center;
+    margin-bottom: 28px;
+}
+
+label[for=ano] {
+    margin-top: 16px;
 }
 
 .btn {
@@ -186,7 +190,9 @@ h2 {
 }
 
 .formInput[id=ano] {
-    width: 9%;
+    width: 80%;
+    margin: 0;
+    margin-top: 12px;
 }
 
 .formInput[id=textoPessoal] {
@@ -251,7 +257,25 @@ input[type="checkbox"]:checked+label {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 15px;
+    padding: 40px;
     border-radius: 30px;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+::-webkit-scrollbar {
+    width: 13px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e3e3e3;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #565656;
+    height: 15%;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
 }
