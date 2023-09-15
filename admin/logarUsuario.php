@@ -7,7 +7,7 @@ $senha = $_POST['nm_senha'];
 
 $sql = "SELECT * FROM tb_admin WHERE email = ? AND senha = ?";
 $stmt = $con->prepare($sql);
-$stmt->bind_param("ss", $email, $senha);
+$stmt->bind_param("ss", $email, hash('sha512', $senha));
 $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
