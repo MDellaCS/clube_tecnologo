@@ -29,8 +29,6 @@
     $nomeArquivo = $dataAtual . "_" . basename($_FILES["fotoTec"]["name"]);
     $targetFile = $targetDir . $nomeArquivo;
 
-//commit
-
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
     if (isset($_POST["submit"])) {
