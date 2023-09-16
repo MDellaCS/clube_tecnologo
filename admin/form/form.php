@@ -142,21 +142,26 @@
                 </div>
 
                 <div id="dadosFormado" class="wrapper">
-                    <div class="semestres">
-                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre"/>
+                    <div style="display: inline-block; width: 30%;">
+                        <label>Me formei no:</label>
+                    </div>
+
+                    <div class="semestres" style="display: inline-block; width: 30%;">
+                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
                         <label for="primeiro" id="labelPrimeiro">Primeiro Semestre</label>
 
                         <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
                         <label for="segundo" id="labelSegundo">Segundo Semestre</label>
                     </div>
 
-                    <div class="semestres">
-                        <label for="ano" id="labelAno">de:</label>
+                    <div style="display: inline-block; width: 30%;">
+                        <label for="ano" id="labelAno">no ano de:</label>
 
-                        <input type="number" placeholder="Ano" class="formInput" id="ano" name="anoTec" min="2003"
+                        <input type="number" class="formInput" id="ano" name="anoTec" min="2003"
                             max="<?php echo date("Y"); ?>" />
                     </div>
                 </div>
+
             </div>
 
             <div>
