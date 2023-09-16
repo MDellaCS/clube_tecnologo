@@ -26,8 +26,7 @@
     $targetDir = "../../profilePictures/";
     $uploadOk = 1;
     $dataAtual = microtime(true);
-    $variavelString = $_POST["nomeTec"];
-    $nomeArquivo = $dataAtual . "_" . $variavelString . "_" . basename($_FILES["fotoTec"]["name"]);
+    $nomeArquivo = $dataAtual . "_" . basename($_FILES["fotoTec"]["name"]);
     $targetFile = $targetDir . $nomeArquivo;
 
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
@@ -47,13 +46,13 @@
         $uploadOk = 0;
     }
 
-    if ($_FILES["fotoTec"]["size"] > 5000000) { // 5MB
+    if ($_FILES["fotoTec"]["size"] > 4000000) { // 4MB
         echo "Desculpe, seu arquivo é muito grande.";
         $uploadOk = 0;
     }
 
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-        echo "Desculpe, apenas arquivos JPG, JPEG, PNG são permitidos.";
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "webp") {
+        echo "Desculpe, apenas arquivos JPG, JPEG, PNG e WEBP são permitidos.";
         $uploadOk = 0;
     }
 
@@ -61,11 +60,40 @@
         echo "Desculpe, seu arquivo não foi enviado.";
     } else {
         if (move_uploaded_file($_FILES["fotoTec"]["tmp_name"], $targetFile)) {
-            echo "O arquivo " . basename($_FILES["fotoTec"]["name"]) . " foi enviado com sucesso.";
+            // Redimensionar a imagem
+            $newWidth = 512;
+            $newHeight = 512;
+
+            list($width, $height) = getimagesize($targetFile);
+            $image = imagecreatetruecolor($newWidth, $newHeight);
+
+            if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
+                $source = imagecreatefromjpeg($targetFile);
+            } elseif ($imageFileType == "png") {
+                $source = imagecreatefrompng($targetFile);
+            } elseif ($imageFileType == "webp") {
+                $source = imagecreatefromwebp($targetFile);
+            }
+
+            imagecopyresampled($image, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+            if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
+                imagejpeg($image, $targetFile);
+            } elseif ($imageFileType == "png") {
+                imagepng($image, $targetFile);
+            } elseif ($imageFileType == "webp") {
+                imagewebp($image, $targetFile);
+            }
+
+            imagedestroy($image);
+            imagedestroy($source);
+
+            echo "O arquivo " . basename($_FILES["fotoTec"]["name"]) . " foi enviado e redimensionado com sucesso.";
         } else {
             echo "Desculpe, houve um erro ao enviar o arquivo.";
         }
     }
+
 
     // -------------------- PEGAR DADOS DO FORM --------------------
     
@@ -77,7 +105,7 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $foto = test_input($_FILES["fotoTec"]["name"]);
+        $foto = test_input($nomeArquivo);
         $nome = test_input($_POST["nomeTec"]);
         $idade = test_input($_POST["idadeTec"]);
         $email = test_input($_POST["emailTec"]);
@@ -101,7 +129,8 @@
     
     include_once('../connection.php');
 
-    $sql = "INSERT INTO tb_tecnologo (nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec) VALUES ('$nome', '$idade', '$ano', '$semestre', '$email', '$curso', '$foto', '$textoPessoal', '$textoFatec')";
+    $sql = "INSERT INTO tb_tecnologo (nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec)
+    VALUES ('$nome', '$idade', '$ano', '$semestre', '$email', '$curso', '$foto', '$textoPessoal', '$textoFatec')";
 
     $con->query($sql);
 
@@ -128,12 +157,8 @@
 
     <div class="formulario">
         <h1>Enviado com Sucesso!</h1>
-        <h2>Obrigado <strong>
-                <?php echo $nome ?>
-            </strong>!</h2>
-        <h2>Por favor, verifique o seu e-mail (<strong>
-                <?php echo $email ?>
-            </strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
+        <h2>Obrigado <strong><?php echo $nome ?></strong>!</h2>
+        <h2>Por favor, verifique o seu e-mail (<strong><?php echo $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
 
         <div style="text-align: center;">
             <a href="form.php">
