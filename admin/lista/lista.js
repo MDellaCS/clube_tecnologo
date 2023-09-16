@@ -1,8 +1,6 @@
-function deletarCadastro(valor) {
-    var url = "deletarCadastro.php";
-
+function alterarCadastro(idCadastro, url) {
     var formData = new FormData();
-    formData.append("id", valor);
+    formData.append("id", idCadastro);
 
     var config = {
         method: "POST",
@@ -11,23 +9,11 @@ function deletarCadastro(valor) {
 
     fetch(url, config);
 
-    window.location = window.location;
+    setTimeout(F5, 100);
 }
 
-function publicarCadastro(valor) {
-    var url = "publicarCadastro.php";
-
-    var formData = new FormData();
-    formData.append("id", valor);
-
-    var config = {
-        method: "POST",
-        body: formData
-    };
-
-    fetch(url, config);
-
-    window.location = window.location;
+function F5(){
+    window.location.reload();
 }
 
 function abrirPublicar(id) {
