@@ -51,7 +51,7 @@
         $count = 0;
 
         while ($row = $result->fetch_assoc()) {
-            if ($row['ano_formacao'] == "0000") {
+            if ($row['ano_formacao'] == "1901") {
                 $row['ano_formacao'] = "Cursando";
             } else {
                 $row['semestre_formacao'] .= " de ";

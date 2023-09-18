@@ -18,7 +18,7 @@
 <body>
 
     <form name="formEgresso" id="formEgresso" method="post" enctype="multipart/form-data"
-        action="<?php echo htmlspecialchars('formResult.php'); ?>" autocomplete="on">
+        action="<?= htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
         <div class="formulario">
 
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="margin">
                 <div>
                     <input type="radio" id="formado" name="formacaoTec" onclick="mudarFormado()" value="Formado" checked
                         required />
@@ -142,24 +142,30 @@
                 </div>
 
                 <div id="dadosFormado" class="wrapper">
-                    <div style="display: inline-block; width: 30%;">
+
+                    <div style="display: inline-block;">
                         <label>Me formei no:</label>
                     </div>
 
-                    <div class="semestres" style="display: inline-block; width: 30%;">
-                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
-                        <label for="primeiro" id="labelPrimeiro">Primeiro Semestre</label>
+                    <div class="semestres" style="display: inline-block;">
+                        <div class="semestres">
+                            <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
+                            <label for="primeiro" id="labelPrimeiro">Primeiro Semestre</label>
 
-                        <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
-                        <label for="segundo" id="labelSegundo">Segundo Semestre</label>
+                            <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
+                            <label for="segundo" id="labelSegundo">Segundo Semestre</label>
+                        </div>
                     </div>
 
-                    <div style="display: inline-block; width: 30%;">
+                    <div style="display: inline-block;">
                         <label for="ano" id="labelAno">no ano de:</label>
+                    </div>
 
-                        <input type="number" class="formInput" id="ano" name="anoTec" min="2003"
+                    <div class="aaa">
+                        <input type="number" class="centered formInput" id="ano" name="anoTec" min="2003"
                             max="<?php echo date("Y"); ?>" />
                     </div>
+
                 </div>
             </div>
 

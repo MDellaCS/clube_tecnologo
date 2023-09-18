@@ -88,19 +88,17 @@
             imagedestroy($image);
             imagedestroy($source);
 
-            echo "O arquivo " . basename($_FILES["fotoTec"]["name"]) . " foi enviado e redimensionado com sucesso.";
         } else {
             echo "Desculpe, houve um erro ao enviar o arquivo.";
         }
     }
-
 
     // -------------------- PEGAR DADOS DO FORM --------------------
     
     $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = $textoLivre = "";
 
     if ($_POST["formacaoTec"] == "Cursando") {
-        $_POST["anoTec"] = 0000;
+        $_POST["anoTec"] = 1901;
         $_POST["semestreTec"] = "";
     }
 
@@ -121,7 +119,6 @@
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
-        // echo $data, "  |  ";
         return $data;
     }
 
@@ -146,8 +143,8 @@
         'Content-Type: text/plain; charset=utf-8' . "\r\n" .
         "X-Mailer: PHP/" . phpversion();
 
-    mail($to, $subject, $message, $headers);
-
+    // mail($to, $subject, $message, $headers);
+    
     // -------------------- DISPLAY HTML --------------------
     
     $nome = explode(" ", $nome);
@@ -157,8 +154,8 @@
 
     <div class="formulario">
         <h1>Enviado com Sucesso!</h1>
-        <h2>Obrigado <strong><?php echo $nome ?></strong>!</h2>
-        <h2>Por favor, verifique o seu e-mail (<strong><?php echo $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
+        <h2>Obrigado <strong><?= $nome ?></strong>!</h2>
+        <h2>Por favor, verifique o seu e-mail (<strong><?= $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
 
         <div style="text-align: center;">
             <a href="form.php">
