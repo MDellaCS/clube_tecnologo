@@ -234,8 +234,7 @@ h2 {
 }
 
 input[type=radio],
-input[type=file],
-input[type=checkbox] {
+input[type=file]{
     display: none;
 }
 
@@ -310,7 +309,13 @@ input[type="checkbox"]:checked+label {
     background: #a1a1a1;
 }
 
-button:disabled {
+:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+:disabled:hover {
     background-color: #ccc;
     color: #666;
     cursor: not-allowed;

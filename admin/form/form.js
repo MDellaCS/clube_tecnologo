@@ -83,6 +83,15 @@ function mudarFormado() {
     });
 }
 
-function liberarEnviar(){
-    alert("Liberado");
+function liberarEnviar() {
+    const btnSubmit = document.getElementById("submit");
+    const chkTermo = document.getElementById("chkTermo");
+
+    if (chkTermo.checked) {
+        btnSubmit.disabled = false;
+        btnSubmit.classList.remove("tooltip");
+    } else {
+        btnSubmit.disabled = true;
+        btnSubmit.classList.add("tooltip");
+    }
 }
