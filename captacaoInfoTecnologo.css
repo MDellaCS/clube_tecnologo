@@ -159,16 +159,6 @@ input[type=number] {
   padding: 10px;
 }
 
-#rodape {
-  background-color: #585858;
-  color: #ffffff;
-  text-align: center;
-  padding: 20px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
 #logos {
   text-align: center; 
 }
@@ -187,6 +177,8 @@ input[type=number] {
 }
 
 .textLarge {
+  justify-content: center;
+  text-align: justify;
   font-size: large;
 }
 

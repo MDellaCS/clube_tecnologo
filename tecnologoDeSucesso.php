@@ -39,7 +39,7 @@ $user = $result->fetch_assoc();
 <body id="bgTecnologoSucesso">
     <div id="container relativeClass">
         <img src="imagens/fzl_logo.png" id="bg" alt="">
-        <h1 class="titlePadding">Casos de sucesso da Fatec ZL</h1>
+        <h1 class="titlePadding">Casos de sucesso de Tecnólogos</h1>
         <?php if ($user) {
             //Se existir algum registro no banco de dados com o atributo 'publicado', mostra os dados deste registro na pagina
             echo "<img src='" . $user['foto'] . "' id='fotoTecnologo' alt='' >" ?>
@@ -120,15 +120,6 @@ $user = $result->fetch_assoc();
             conteúdo. Aguarde!</p></div>";
         }
         ?>
-
-    <footer id="rodape">    
-    <div id="logos">
-      <a href="https://www.fateczl.edu.br/">
-        <img class="logofatec" src="imagens/fzl_logo.png" href="https://www.fateczl.edu.br/">
-        <img class="logofatec" src="imagens/cps_logo.png" alt="...">
-     </a>
-    </div>
-    </footer>
 
 </body>
 
