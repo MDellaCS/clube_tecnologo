@@ -200,18 +200,41 @@
                 </div>
             </div>
 
-            <div id="minhaModal" class="modal" onclick="fecharModal()">
+            <div id="modalReset" class="modal" onclick="fecharModal()">
                 <div class="modal-content">
                     <h1>Deseja redefinir o formulário?</h1>
                     <div style="text-align: center;">
-                        <input type="button" class="btn" onclick="resetForm()" value="Sim">
+                        <input type="button" class="btn" onclick="resetForm(); fecharModal()" value="Sim">
                         <input type="button" class="btn" onclick="fecharModal()" value="Não">
                     </div>
                 </div>
             </div>
 
-            <input type="button" class="btn" onclick="limparImagem(); abrirModal()" value="Redefinir" />
-            <input type="submit" class="btn" value="Finalizar" />
+            <div id="modalTermo" class="modal" onclick="fecharModal()">
+                <div class="modal-content">
+                    <h1>
+                        Termo de Uso de Imagem e Informação
+                    </h1>
+                    <h2>
+                        AUTORIZO o uso de minha imagem e informações coletadas nesta pesquisa, para ser
+                        utilizada pela FATEC ZONA LESTE, em qualquer material de divulgação da instituição e
+                        de suas atividades aos públicos externo e interno, desde que não haja desvirtuamento
+                        de sua finalidade. A presente autorização é concedida a título gratuito, abrangendo o
+                        uso em todo território nacional e no exterior, em todas as suas modalidades, inclusive
+                        na internet. Por esta ser a expressão da minha vontade, declaro que autorizo o uso acima
+                        descrito sem que nada haja a ser reclamado a título de direitos conexos à imagem e
+                        informações.
+                    </h2>
+                    <div style="text-align: center;">
+                        <input type="button" class="btn" onclick="liberarEnviar(); fecharModal()" value="Entendido">
+                        <input type="button" class="btn" onclick="fecharModal()" value="Não Concordo">
+                    </div>
+                </div>
+            </div>
+
+            <input type="button" class="btn" onclick="abrirModal('modalTermo')" value="Termo" />
+            <input type="button" class="btn" onclick="limparImagem(); abrirModal('modalReset')" value="Redefinir" />
+            <input type="submit" class="btn" value="Finalizar" disabled />
 
         </div>
 
