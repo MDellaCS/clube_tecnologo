@@ -102,7 +102,7 @@
                                 <?php echo $row['nome'] ?>?
                             </h1>
                             <div style="text-align: center;">
-                                <input type="button" class="btn" onclick="publicarCadastro(<?php echo $row['id'] ?>)"
+                                <input type="button" class="btn" onclick="alterarCadastro(<?php echo $row['id'] ?>, 'publicarCadastro.php')"
                                     value="Sim">
                                 <input type="button" class="btn" onclick="fecharModal()" value="Não">
                             </div>
@@ -121,7 +121,7 @@
                                 <?php echo $row['nome'] ?>?
                             </h1>
                             <div style="text-align: center;">
-                                <input type="button" class="btn" onclick="deletarCadastro(<?php echo $row['id'] ?>)"
+                                <input type="button" class="btn" onclick="alterarCadastro(<?php echo $row['id'] ?>, 'deletarCadastro.php')"
                                     value="Sim">
                                 <input type="button" class="btn" onclick="fecharModal()" value="Não">
                             </div>

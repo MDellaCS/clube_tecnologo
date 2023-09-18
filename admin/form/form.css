@@ -19,7 +19,6 @@ div.wrapper {
 div.semestres {
     display: flex;
     flex-direction: column;
-    float: left;
 }
 
 .flexRow {
@@ -68,7 +67,7 @@ label[for=segundo] {
     width: 70%;
     padding: 5px;
     text-align: center;
-    margin-bottom: 12px;
+    margin: 12px 0px 12px 0px;
 }
 
 label[for=formado],
@@ -111,9 +110,9 @@ textarea {
 
 /* ----------------------------- AREA DE TESTES ----------------------------- */
 
-/* * {
+* {
     border: 2px dotted red;
-} */
+}
 
 .tooltiptext {
     max-width: 25%;
