@@ -1,17 +1,18 @@
 <?php
 
-include_once('admin/connection.php');
+include_once('../admin/connection.php');
 //O atributo publicacao verifica se o depoimento do tecnólogo foi programado para ser publicado no site.
 $publicacao = 1;
-$sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec FROM tb_tecnologo WHERE publicado = ?";
-$stmt = $con->prepare($sql);
-$stmt->bind_param("i", $publicacao);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
+$sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec FROM tb_tecnologo WHERE publicado = $publicacao";
+$result = $con->query($sql);
 
+if (!$result) {
+    die("Query inválida!" . $con->error);
+}
 ?>
+
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -38,66 +39,59 @@ $user = $result->fetch_assoc();
 
 <body id="bgTecnologoSucesso">
     <div id="container relativeClass">
-        <img src="imagens/fzl_logo.png" id="bg" alt="">
+        <img src="../admin/imagens/fzl_logo.png" id="bg" alt="">
         <h1 class="titlePadding">Casos de sucesso de Tecnólogos</h1>
-        <?php if ($user) {
-            //Se existir algum registro no banco de dados com o atributo 'publicado', mostra os dados deste registro na pagina
-            echo "<img src='" . $user['foto'] . "' id='fotoTecnologo' alt='' >" ?>
-            <div id="dadosTecnologoPos">
-                <div class="row textCentering">
-                    <div class="col-sm-6">
-                        <p>
-                        <h5>Nome:</h5>
-                        <?= $user['nome'] ?>
-                        </p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p>
-                        <h5>Idade:</h5>
-                        <?= $user['idade'] ?>
-                        </p><br>
-                    </div>
-                </div>
-                <div class="row textLarge">
-                    <div class="col-sm-6">
-                        <p>
-                        <h5>Ano de formação:</h5>
-                        <?= $user['semestre_formacao'] ?> de
-                        <?= $user['ano_formacao'] ?>
-                        </p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p>
-                        <h5>Curso realizado:</h5>
-                        <?= $user['curso'] ?>
-                        </p><br>
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <h4 class="subTituloPos">Fale sobre você (O que faz e como está):</h4>
-                    <p class="infoPos">
-                        <?= $user['texto_sobre'] ?>
-                    </p>
+                <?php
+                $first = true;
+                while ($row = $result->fetch_assoc()) {                    
+                    echo '<div class="carousel-item ' . ($first ? 'active' : '') . '">';
+                    $first = false;
+                ?>
+                <img src="profilePictures/<?php echo $row['foto'] ?>" id="fotoTecnologo" alt="">
+                <div id="dadosTecnologoPos">
+                    <div class="row textCentering">
+                        <div class="col-sm-6">
+                            <p>
+                                <h5>Nome:</h5>
+                                <?= $row['nome'] ?>
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p>
+                                <h5>Idade:</h5>
+                                <?= $row['idade'] ?>
+                            </p><br>
+                        </div>
+                    </div>
+                    <div class="row textLarge">
+                        <div class="col-sm-6">
+                            <p>
+                                <h5>Ano de formação:</h5>
+                                <?= $row['semestre_formacao'] ?> de
+                                <?= $row['ano_formacao'] ?>
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p>
+                                <h5>Curso realizado:</h5>
+                                <?= $row['curso'] ?>
+                            </p><br>
+                            <br>
+                        </div>
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <h4 class="subTituloPos">O que a FATEC representou (ou representa) <br> para você?:</h4>
-                    <p class="infoPos">
-                        <?= $user['texto_fatec'] ?>
-                    </p>
+                <h4 class="subTituloPos">Fale sobre você (O que faz e como está):</h4>
+                <p class="infoPos">
+                    <?= $row['texto_sobre'] ?>
+                </p>
+                <h4 class="subTituloPos">O que a FATEC representou (ou representa) <br> para você?:</h4>
+                <p class="infoPos">
+                    <?= $row['texto_fatec'] ?>
+                </p>
                 </div>
-                <div class="carousel-item">
-                    <h4 class="subTituloPos">Use esta área livre para contar sua história como tecnólogo, <br>
-                        ou para adicionar qualquer observação desejada:</h4>
-                    <p class="infoPos">
-                        <?= $user['info_area_livre'] ?>
-                    </p>
-                </div>
+                <?php } ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -108,19 +102,11 @@ $user = $result->fetch_assoc();
                 <span class="sr-only">Next</span>
             </a>
         </div>
-
         <div class="container">
             <p id="dicaPos">*Mantenha o cursor sobre o slide para parar o rolamento automático.</p>
         </div>
-
-        <?php
-            //senão, mostra uma mensagem especial
-        } else {
-            echo "<div class='row textCentering'><p>Página dedicada a mostrar casos de sucesso de tecnólogos formados pela FATEC-ZL. Em breve, postaremos novo<br>
-            conteúdo. Aguarde!</p></div>";
-        }
-        ?>
-
+    </div>
+ 
 </body>
 
 </html>
