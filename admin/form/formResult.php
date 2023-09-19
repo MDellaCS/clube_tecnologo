@@ -51,8 +51,8 @@
         $uploadOk = 0;
     }
 
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "webp") {
-        echo "Desculpe, apenas arquivos JPG, JPEG, PNG e WEBP são permitidos.";
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "webp" && $imageFileType != "jfif") {
+        echo "Desculpe, apenas arquivos JPG, JPEG, PNG, JFIF e WEBP são permitidos.";
         $uploadOk = 0;
     }
 

@@ -204,7 +204,8 @@
                 <div class="modal-content">
                     <h1>Deseja redefinir o formulário?</h1>
                     <div style="text-align: center;">
-                        <input type="button" class="btn" onclick="resetForm(); fecharModal()" value="Sim">
+                        <input type="button" class="btn" onclick="resetForm();liberarEnviar() ;fecharModal()"
+                            value="Sim">
                         <input type="button" class="btn" onclick="fecharModal()" value="Não">
                     </div>
                 </div>
