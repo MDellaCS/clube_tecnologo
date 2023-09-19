@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="../../imagens/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@
         <?php
 
         include_once('../connection.php');
-        $sql = "SELECT id, nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado FROM tb_tecnologo";
+        $sql = "SELECT id, nome, idade, ra, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado FROM tb_tecnologo";
 
         $result = $con->query($sql);
 
@@ -67,65 +67,65 @@
             $primeiroUltimoNome = $primeiroUltimoNome[0] . " " . end($primeiroUltimoNome);
             ?>
 
-            <tr id="pessoa<?php echo $row['id'] ?>" class="pessoa">
+            <tr id="pessoa<?= $row['id'] ?>" class="pessoa">
 
                 <td class="foto">
-                    <img class="foto" src="../../profilePictures/<?php echo $row['foto'] ?>">
+                    <img class="foto" src="../../user/profilePictures/<?= $row['foto'] ?>">
                 </td>
 
-                <td class="nomePessoa" id="<?php echo $row['nome'] ?>">
-                    <?php echo $row['nome'] ?>
-                </td>
-
-                <td>
-                    <?php echo $row['semestre_formacao'] ?>
-                    <?php echo $row['ano_formacao'] ?>
+                <td class="nomePessoa" id="<?= $row['nome'] ?>">
+                    <?= $row['nome'] ?>
                 </td>
 
                 <td>
-                    <?php echo $row['email'] ?>
+                    <?= $row['semestre_formacao'] ?>
+                    <?= $row['ano_formacao'] ?>
                 </td>
 
                 <td>
-                    <?php echo $row['curso'] ?>
+                    <?= $row['email'] ?>
                 </td>
 
                 <td>
-                    <?php echo $row['publicado'] ?>
+                    <?= $row['curso'] ?>
+                </td>
+
+                <td>
+                    <?= $row['publicado'] ?>
                 </td>
 
                 <td class="acoes center">
 
                     <img class="icon green" src="https://img.icons8.com/ios-glyphs/480/FFFFFF/checkmark--v1.png"
-                        onclick="abrirPublicar(<?php echo $row['id'] ?>)" />
+                        onclick="abrirPublicar(<?= $row['id'] ?>)" />
 
-                    <div id="confirmPublicar<?php echo $row['id'] ?>" class="modal">
+                    <div id="confirmPublicar<?= $row['id'] ?>" class="modal">
                         <div class="modal-content">
                             <h1>Deseja publicar
-                                <?php echo $row['nome'] ?>?
+                                <?= $row['nome'] ?>?
                             </h1>
                             <div style="text-align: center;">
                                 <input type="button" class="btn"
-                                    onclick="alterarCadastro(<?php echo $row['id'] ?>, 'publicarCadastro.php')" value="Sim">
+                                    onclick="alterarCadastro(<?= $row['id'] ?>, 'publicarCadastro.php')" value="Sim">
                                 <input type="button" class="btn" onclick="fecharModal()" value="Não">
                             </div>
                         </div>
                     </div>
 
                     <img class="icon yellow" src="https://img.icons8.com/android/480/FFFFFF/plus.png"
-                        onclick="abrirModal(<?php echo $count ?>)" />
+                        onclick="abrirModal(<?= $count ?>)" />
 
                     <img class="icon red" src="https://img.icons8.com/ios/480/FFFFFF/delete-sign--v1.png"
-                        onclick="abrirDeletar(<?php echo $row['id'] ?>)" />
+                        onclick="abrirDeletar(<?= $row['id'] ?>)" />
 
-                    <div id="confirmDeletar<?php echo $row['id'] ?>" class="modal">
+                    <div id="confirmDeletar<?= $row['id'] ?>" class="modal">
                         <div class="modal-content">
                             <h1>Deseja deletar
-                                <?php echo $row['nome'] ?>?
+                                <?= $row['nome'] ?>?
                             </h1>
                             <div style="text-align: center;">
                                 <input type="button" class="btn"
-                                    onclick="alterarCadastro(<?php echo $row['id'] ?>, 'deletarCadastro.php')" value="Sim">
+                                    onclick="alterarCadastro(<?= $row['id'] ?>, 'deletarCadastro.php')" value="Sim">
                                 <input type="button" class="btn" onclick="fecharModal()" value="Não">
                             </div>
                         </div>
@@ -135,16 +135,16 @@
 
             </tr>
 
-            <div id="modal<?php echo $row['id'] ?>" class="modal" onclick="fecharModal()">
+            <div id="modal<?= $row['id'] ?>" class="modal" onclick="fecharModal()">
                 <div class="modal-content">
 
                     <h1>
                         <div class="container">
 
-                            <img class="foto2" src="../../profilePictures/<?php echo $row['foto'] ?>">
+                            <img class="foto2" src="../../user/profilePictures/<?= $row['foto'] ?>">
                             <div class="texto-sobre-imagem">
 
-                                <?php echo $primeiroUltimoNome ?>
+                                <?= $primeiroUltimoNome ?>
                             </div>
 
                         </div>
@@ -152,21 +152,24 @@
 
                     <h2>
                         <div>
-                            <?php echo $row['idade'], " anos" ?>
+                            <?= $row['idade'], " anos" ?>
                         </div>
 
                         <div>
-                            <?php echo $row['email'] ?>
-                            <br><br>
+                            <?= $row['email'] ?>
                         </div>
 
                         <div>
-                            <?php echo $row['curso'] ?>
+                            <?= $row['ra'] ?>
                         </div>
 
                         <div>
-                            <?php echo $row['semestre_formacao'] ?>
-                            <?php echo $row['ano_formacao'] ?>
+                            <?= $row['curso'] ?>
+                        </div>
+
+                        <div>
+                            <?= $row['semestre_formacao'] ?>
+                            <?= $row['ano_formacao'] ?>
                             <br><br>
                         </div>
 
@@ -176,7 +179,7 @@
 
                         <div>
                             <h3>
-                                <?php echo $row['texto_sobre'] ?>
+                                <?= $row['texto_sobre'] ?>
                             </h3>
                         </div>
 
@@ -186,7 +189,7 @@
 
                         <div>
                             <h3>
-                                <?php echo $row['texto_fatec'] ?>
+                                <?= $row['texto_fatec'] ?>
                             </h3>
                         </div>
                     </h2>

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="../../imagens/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -203,7 +203,7 @@
             <div id="modalReset" class="modal" onclick="fecharModal()">
                 <div class="modal-content">
                     <h1>Deseja redefinir o formulário?</h1>
-                    <div style="text-align: center;">
+                    <div class="centerItems">
                         <input type="button" class="btn" onclick="resetForm();liberarEnviar() ;fecharModal()"
                             value="Sim">
                         <input type="button" class="btn" onclick="fecharModal()" value="Não">
@@ -225,7 +225,7 @@
                         vontade desta forma, declaro que autorizo o uso descrito acima sem qualquer reclamação a ser
                         feita quanto a direitos conexos à minha imagem e informações.
                     </h2>
-                    <div style="text-align: center;">
+                    <div class="centerItems">
                         <label for="chkTermo" class="btn">Aceito<input id="chkTermo" type="checkbox"
                                 onclick="liberarEnviar()"></label>
 

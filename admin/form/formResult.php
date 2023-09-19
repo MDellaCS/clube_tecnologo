@@ -23,7 +23,7 @@
 
     // -------------------- ENVIAR A IMAGEM PARA O DIRETÓRIO --------------------
     
-    $targetDir = "../../profilePictures/";
+    $targetDir = "../../user/profilePictures/";
     $uploadOk = 1;
     $dataAtual = microtime(true);
     $nomeArquivo = $dataAtual . "_" . basename($_FILES["fotoTec"]["name"]);
@@ -95,7 +95,7 @@
 
     // -------------------- PEGAR DADOS DO FORM --------------------
     
-    $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = "";
+    $foto = $nome = $idade = $ra = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = "";
 
     if ($_POST["formacaoTec"] == "Cursando") {
         $_POST["anoTec"] = 1901;
@@ -106,6 +106,7 @@
         $foto = test_input($nomeArquivo);
         $nome = test_input($_POST["nomeTec"]);
         $idade = test_input($_POST["idadeTec"]);
+        $ra = test_input($_POST["raTec"]);
         $email = test_input($_POST["emailTec"]);
         $ano = test_input($_POST["anoTec"]);
         $semestre = test_input($_POST["semestreTec"]);
@@ -129,6 +130,7 @@
     $sql = "CALL insertTecnologo(
     '$nome',
     '$idade',
+    '$ra',
     '$ano',
     '$semestre',
     '$email',
@@ -166,7 +168,7 @@
         <h2>Obrigado <strong><?= $nome ?></strong>!</h2>
         <h2>Por favor, verifique o seu e-mail (<strong><?= $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
 
-        <div style="text-align: center;">
+        <div class="centerItems">
             <a href="form.php">
                 <input type="button" class="btn" value="Voltar">
             </a>
