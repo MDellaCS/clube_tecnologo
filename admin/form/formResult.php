@@ -51,8 +51,8 @@
         $uploadOk = 0;
     }
 
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "webp") {
-        echo "Desculpe, apenas arquivos JPG, JPEG, PNG e WEBP são permitidos.";
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "webp" && $imageFileType != "jfif") {
+        echo "Desculpe, apenas arquivos JPG, JPEG, PNG, JFIF e WEBP são permitidos.";
         $uploadOk = 0;
     }
 
@@ -88,19 +88,17 @@
             imagedestroy($image);
             imagedestroy($source);
 
-            echo "O arquivo " . basename($_FILES["fotoTec"]["name"]) . " foi enviado e redimensionado com sucesso.";
         } else {
             echo "Desculpe, houve um erro ao enviar o arquivo.";
         }
     }
 
-
     // -------------------- PEGAR DADOS DO FORM --------------------
     
-    $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = $textoLivre = "";
+    $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = "";
 
     if ($_POST["formacaoTec"] == "Cursando") {
-        $_POST["anoTec"] = 0000;
+        $_POST["anoTec"] = 1901;
         $_POST["semestreTec"] = "";
     }
 
@@ -121,7 +119,6 @@
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
-        // echo $data, "  |  ";
         return $data;
     }
 
@@ -129,8 +126,17 @@
     
     include_once('../connection.php');
 
-    $sql = "INSERT INTO tb_tecnologo (nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec)
-    VALUES ('$nome', '$idade', '$ano', '$semestre', '$email', '$curso', '$foto', '$textoPessoal', '$textoFatec')";
+    $sql = "CALL insertTecnologo(
+    '$nome',
+    '$idade',
+    '$ano',
+    '$semestre',
+    '$email',
+    '$curso',
+    '$foto',
+    '$textoPessoal',
+    '$textoFatec'
+    )";
 
     $con->query($sql);
 
@@ -146,8 +152,8 @@
         'Content-Type: text/plain; charset=utf-8' . "\r\n" .
         "X-Mailer: PHP/" . phpversion();
 
-    mail($to, $subject, $message, $headers);
-
+    // mail($to, $subject, $message, $headers);
+    
     // -------------------- DISPLAY HTML --------------------
     
     $nome = explode(" ", $nome);
@@ -157,8 +163,8 @@
 
     <div class="formulario">
         <h1>Enviado com Sucesso!</h1>
-        <h2>Obrigado <strong><?php echo $nome ?></strong>!</h2>
-        <h2>Por favor, verifique o seu e-mail (<strong><?php echo $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
+        <h2>Obrigado <strong><?= $nome ?></strong>!</h2>
+        <h2>Por favor, verifique o seu e-mail (<strong><?= $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
 
         <div style="text-align: center;">
             <a href="form.php">

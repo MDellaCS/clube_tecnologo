@@ -14,16 +14,18 @@ function resetForm() {
         contador.textContent = "Caracteres Restantes: " + 700;
     });
 
-    fecharModal();
-
 }
 
-function abrirModal() {
-    document.getElementById("minhaModal").style.display = "block";
+function abrirModal(idModal) {
+    document.getElementById(idModal).style.display = "block";
 }
 
 function fecharModal() {
-    document.getElementById("minhaModal").style.display = "none";
+    var modais = document.getElementsByClassName("modal");
+
+    Array.from(modais).forEach(elemento => {
+        elemento.style.display = "none";
+    });
 }
 
 function mostrarImagem() {
@@ -79,4 +81,17 @@ function mudarFormado() {
             ano.required = false;
         }
     });
+}
+
+function liberarEnviar() {
+    const btnSubmit = document.getElementById("submit");
+    const chkTermo = document.getElementById("chkTermo");
+
+    if (chkTermo.checked) {
+        btnSubmit.disabled = false;
+        btnSubmit.classList.remove("tooltip");
+    } else {
+        btnSubmit.disabled = true;
+        btnSubmit.classList.add("tooltip");
+    }
 }

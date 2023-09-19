@@ -18,7 +18,7 @@
 <body>
 
     <form name="formEgresso" id="formEgresso" method="post" enctype="multipart/form-data"
-        action="<?php echo htmlspecialchars('formResult.php'); ?>" autocomplete="on">
+        action="<?= htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
         <div class="formulario">
 
@@ -131,7 +131,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="margin">
                 <div>
                     <input type="radio" id="formado" name="formacaoTec" onclick="mudarFormado()" value="Formado" checked
                         required />
@@ -142,26 +142,31 @@
                 </div>
 
                 <div id="dadosFormado" class="wrapper">
-                    <div style="display: inline-block; width: 30%;">
+
+                    <div style="display: inline-block;">
                         <label>Me formei no:</label>
                     </div>
 
-                    <div class="semestres" style="display: inline-block; width: 30%;">
-                        <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
-                        <label for="primeiro" id="labelPrimeiro">Primeiro Semestre</label>
+                    <div class="semestres" style="display: inline-block;">
+                        <div class="semestres">
+                            <input type="radio" id="primeiro" name="semestreTec" value="Primeiro Semestre" />
+                            <label for="primeiro" id="labelPrimeiro">Primeiro Semestre</label>
 
-                        <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
-                        <label for="segundo" id="labelSegundo">Segundo Semestre</label>
+                            <input type="radio" id="segundo" name="semestreTec" value="Segundo Semestre" />
+                            <label for="segundo" id="labelSegundo">Segundo Semestre</label>
+                        </div>
                     </div>
 
-                    <div style="display: inline-block; width: 30%;">
-                        <label for="ano" id="labelAno">no ano de:</label>
+                    <div style="display: inline-block;">
+                        <label for="ano" id="labelAno">do ano de:</label>
+                    </div>
 
-                        <input type="number" class="formInput" id="ano" name="anoTec" min="2003"
+                    <div class="aaa">
+                        <input type="number" class="centered formInput" id="ano" name="anoTec" min="2003"
                             max="<?php echo date("Y"); ?>" />
                     </div>
-                </div>
 
+                </div>
             </div>
 
             <div>
@@ -195,18 +200,50 @@
                 </div>
             </div>
 
-            <div id="minhaModal" class="modal" onclick="fecharModal()">
+            <div id="modalReset" class="modal" onclick="fecharModal()">
                 <div class="modal-content">
                     <h1>Deseja redefinir o formulário?</h1>
                     <div style="text-align: center;">
-                        <input type="button" class="btn" onclick="resetForm()" value="Sim">
+                        <input type="button" class="btn" onclick="resetForm();liberarEnviar() ;fecharModal()"
+                            value="Sim">
                         <input type="button" class="btn" onclick="fecharModal()" value="Não">
                     </div>
                 </div>
             </div>
 
-            <input type="button" class="btn" onclick="limparImagem(); abrirModal()" value="Redefinir" />
-            <input type="submit" class="btn" value="Finalizar" />
+            <div id="modalTermo" class="modal" onclick="fecharModal()">
+                <div class="modal-content">
+                    <h1>
+                        Termo de Uso de Imagem e Informação
+                    </h1>
+                    <h2>
+                        Eu autorizo o uso da minha imagem e das informações coletadas nesta pesquisa pela FATEC ZONA
+                        LESTE. Essas podem ser utilizadas em qualquer material de divulgação da instituição e de suas
+                        atividades, tanto para o público externo quanto interno, desde que sua finalidade não seja
+                        desvirtuada. Esta autorização é concedida de forma gratuita e abrange o uso em todo o território
+                        nacional e no exterior, em todas as suas modalidades, inclusive na internet. Ao expressar minha
+                        vontade desta forma, declaro que autorizo o uso descrito acima sem qualquer reclamação a ser
+                        feita quanto a direitos conexos à minha imagem e informações.
+                    </h2>
+                    <div style="text-align: center;">
+                        <label for="chkTermo" class="btn">Aceito<input id="chkTermo" type="checkbox"
+                                onclick="liberarEnviar()"></label>
+
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <input type="button" class="btn" onclick="abrirModal('modalTermo')" value="Termo de Uso" />
+            </div>
+
+            <div>
+                <input type="button" class="btn" onclick="limparImagem(); abrirModal('modalReset')" value="Redefinir" />
+                <input id="submit" type="submit" class="tooltip btn" value="Finalizar" disabled />
+                <span class="tooltiptext">É necessário concordar com os Termos de Uso de Imagem e Informação antes de
+                    enviar
+                    seus dados.</span>
+            </div>
 
         </div>
 

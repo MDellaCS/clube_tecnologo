@@ -40,7 +40,7 @@
         <?php
 
         include_once('../connection.php');
-        $sql = "SELECT * FROM tb_tecnologo";
+        $sql = "SELECT id, nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado FROM tb_tecnologo";
 
         $result = $con->query($sql);
 
@@ -51,7 +51,7 @@
         $count = 0;
 
         while ($row = $result->fetch_assoc()) {
-            if ($row['ano_formacao'] == "0000") {
+            if ($row['ano_formacao'] == "1901") {
                 $row['ano_formacao'] = "Cursando";
             } else {
                 $row['semestre_formacao'] .= " de ";
@@ -62,6 +62,9 @@
             } else {
                 $row['publicado'] = "Sim";
             }
+
+            $primeiroUltimoNome = explode(" ", $row['nome']);
+            $primeiroUltimoNome = $primeiroUltimoNome[0] . " " . end($primeiroUltimoNome);
             ?>
 
             <tr id="pessoa<?php echo $row['id'] ?>" class="pessoa">
@@ -102,8 +105,8 @@
                                 <?php echo $row['nome'] ?>?
                             </h1>
                             <div style="text-align: center;">
-                                <input type="button" class="btn" onclick="alterarCadastro(<?php echo $row['id'] ?>, 'publicarCadastro.php')"
-                                    value="Sim">
+                                <input type="button" class="btn"
+                                    onclick="alterarCadastro(<?php echo $row['id'] ?>, 'publicarCadastro.php')" value="Sim">
                                 <input type="button" class="btn" onclick="fecharModal()" value="Não">
                             </div>
                         </div>
@@ -121,8 +124,8 @@
                                 <?php echo $row['nome'] ?>?
                             </h1>
                             <div style="text-align: center;">
-                                <input type="button" class="btn" onclick="alterarCadastro(<?php echo $row['id'] ?>, 'deletarCadastro.php')"
-                                    value="Sim">
+                                <input type="button" class="btn"
+                                    onclick="alterarCadastro(<?php echo $row['id'] ?>, 'deletarCadastro.php')" value="Sim">
                                 <input type="button" class="btn" onclick="fecharModal()" value="Não">
                             </div>
                         </div>
@@ -140,7 +143,8 @@
 
                             <img class="foto2" src="../../profilePictures/<?php echo $row['foto'] ?>">
                             <div class="texto-sobre-imagem">
-                                <?php echo $row['nome'] ?>
+
+                                <?php echo $primeiroUltimoNome ?>
                             </div>
 
                         </div>
@@ -194,7 +198,7 @@
             $count++;
         }
         if ($count == 0) {
-            echo "<h1>NÃO TEM NINGUÉM</h1>";
+            echo "<h1>Nenhum registro encontrado</h1>";
         }
         ?>
 
