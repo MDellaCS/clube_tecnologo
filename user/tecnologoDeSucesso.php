@@ -3,7 +3,7 @@
 include_once('admin/connection.php');
 //O atributo publicacao verifica se o depoimento do tecnólogo foi programado para ser publicado no site.
 $publicacao = 1;
-$sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec FROM tb_tecnologo WHERE publicado = ?";
+$sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec FROM tb_tecnologo WHERE publicado=?";
 $stmt = $con->prepare($sql);
 $stmt->bind_param("i", $publicacao);
 $stmt->execute();
@@ -11,7 +11,9 @@ $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
 ?>
+
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -35,11 +37,11 @@ $user = $result->fetch_assoc();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <title>Casos de sucesso de Tecnólogos</title>
 </head>
-
+ 
 <body id="bgTecnologoSucesso">
     <div id="container relativeClass">
         <img src="imagens/fzl_logo.png" id="bg" alt="">
-        <h1 class="titlePadding">Casos de sucesso de Tecnólogos</h1>
+        <h1 class="titlePadding">Casos de sucesso da Fatec ZL</h1>
         <?php if ($user) {
             //Se existir algum registro no banco de dados com o atributo 'publicado', mostra os dados deste registro na pagina
             echo "<img src='" . $user['foto'] . "' id='fotoTecnologo' alt='' >" ?>
@@ -76,19 +78,18 @@ $user = $result->fetch_assoc();
                 </div>
             </div>
         </div>
-
         <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <h4 class="subTituloPos">Fale sobre você (O que faz e como está):</h4>
                     <p class="infoPos">
-                        <?= $user['texto_sobre'] ?>
+                        <?= $user['info_sobre'] ?>
                     </p>
                 </div>
                 <div class="carousel-item">
                     <h4 class="subTituloPos">O que a FATEC representou (ou representa) <br> para você?:</h4>
                     <p class="infoPos">
-                        <?= $user['texto_fatec'] ?>
+                        <?= $user['info_fatec'] ?>
                     </p>
                 </div>
                 <div class="carousel-item">
@@ -108,11 +109,9 @@ $user = $result->fetch_assoc();
                 <span class="sr-only">Next</span>
             </a>
         </div>
-
         <div class="container">
             <p id="dicaPos">*Mantenha o cursor sobre o slide para parar o rolamento automático.</p>
         </div>
-
         <?php
             //senão, mostra uma mensagem especial
         } else {
@@ -120,7 +119,9 @@ $user = $result->fetch_assoc();
             conteúdo. Aguarde!</p></div>";
         }
         ?>
-
+    <div>
+        <img id="fatec20anosPos" src="imagens/fatec20anos.png" alt="Fatec 20 Anos">
+        <img id="brasaoSaoPauloPos" src="imagens/brasaoSaoPaulo.png" alt="...">
+    </div>
 </body>
-
 </html>
