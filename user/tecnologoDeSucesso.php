@@ -49,7 +49,7 @@ if (!$result) {
                     echo '<div class="carousel-item ' . ($first ? 'active' : '') . '">';
                     $first = false;
                 ?>
-                <img src="/profilePictures/<?php echo $row['foto'] ?>" id="fotoTecnologo" alt="">
+                <img src="profilePictures/<?php echo $row['foto'] ?>" id="fotoTecnologo" alt="">
                 <div id="dadosTecnologoPos">
                     <div class="row textCentering">
                         <div class="col-sm-6">
