@@ -39,7 +39,7 @@ if (!$result) {
 
 <body id="bgTecnologoSucesso">
     <div id="container relativeClass">
-        <img src="imagens/fzl_logo.png" id="bg" alt="">
+        <img src="../admin/imagens/fzl_logo.png" id="bg" alt="">
         <h1 class="titlePadding">Casos de sucesso de Tecnólogos</h1>
         <div id="carouselExampleIndicators" class="carousel slide container" data-ride="carousel">
             <div class="carousel-inner">
@@ -49,7 +49,7 @@ if (!$result) {
                     echo '<div class="carousel-item ' . ($first ? 'active' : '') . '">';
                     $first = false;
                 ?>
-                <img src="<?= $row['foto'] ?>" id="fotoTecnologo" alt="">
+                <img src="/profilePictures/<?php echo $row['foto'] ?>" id="fotoTecnologo" alt="">
                 <div id="dadosTecnologoPos">
                     <div class="row textCentering">
                         <div class="col-sm-6">
