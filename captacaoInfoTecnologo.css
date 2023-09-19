@@ -1,4 +1,4 @@
-header{
+header {
   margin-left: -40px;
   margin-right: -40px;
   background-color: #931914;
@@ -8,20 +8,18 @@ header{
 }
 
 .logo {
-  display:flex;
+  display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-	align-items: center;
+  align-items: center;
   margin-top: 30px;
   margin-bottom: 30px;
   border: 5px solid red;
 }
 
-.menu{
+.menu {}
 
-}
-
-img{
+img {
   width: 15%;
 
 }
@@ -29,7 +27,7 @@ img{
 #bg {
   position: absolute;
   top: 0;
-  left: 50%; 
+  left: 50%;
   transform: translate(-50%);
 }
 
@@ -160,14 +158,14 @@ input[type=number] {
 }
 
 #logos {
-  text-align: center; 
+  text-align: center;
 }
 
 .logofatec {
   display: inline-block;
-  width: 150px; 
-  height: auto; 
-  margin: 10px; 
+  width: 150px;
+  height: auto;
+  margin: 10px;
 }
 
 .textCentering {
@@ -228,19 +226,19 @@ input[type=number] {
 }
 
 ::-webkit-scrollbar {
-	width: 13px;
+  width: 13px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #e3e3e3;
+  background: #e3e3e3;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #565656;
-	height: 15%;
-	border-radius: 10px;
+  background: #565656;
+  height: 15%;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #a1a1a1;
+  background: #a1a1a1;
 }

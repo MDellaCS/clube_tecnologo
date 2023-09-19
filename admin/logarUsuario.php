@@ -12,11 +12,11 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-if($user == true){
+if ($user == true) {
     session_start();
     $_SESSION['login'] = "1";
-	header('Location: lista/lista.php');
-}else{
+    header('Location: lista/lista.php');
+} else {
     session_start();
     $_SESSION['login'] = "0";
     header('Location: loginTecnologoSucesso.php');
