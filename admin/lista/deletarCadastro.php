@@ -21,10 +21,15 @@ unlink($caminhoArquivo);
 
 // -------------------- APAGAR O CADASTRO NO BANCO --------------------
 
-$sql = $con->prepare("DELETE FROM tb_tecnologo WHERE id = ?");
-$sql->bind_param("i", $id);
-$sql->execute();
+include_once('../connection.php');
 
-mysqli_close($con);
+$sql = "CALL deleteTecnologo(?)";
+
+$stmt = $con->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$stmt->close();
+$con->close();
 
 ?>

@@ -95,7 +95,7 @@
 
     // -------------------- PEGAR DADOS DO FORM --------------------
     
-    $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = $textoLivre = "";
+    $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = "";
 
     if ($_POST["formacaoTec"] == "Cursando") {
         $_POST["anoTec"] = 1901;
@@ -126,8 +126,17 @@
     
     include_once('../connection.php');
 
-    $sql = "INSERT INTO tb_tecnologo (nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec)
-    VALUES ('$nome', '$idade', '$ano', '$semestre', '$email', '$curso', '$foto', '$textoPessoal', '$textoFatec')";
+    $sql = "CALL insertTecnologo(
+    '$nome',
+    '$idade',
+    '$ano',
+    '$semestre',
+    '$email',
+    '$curso',
+    '$foto',
+    '$textoPessoal',
+    '$textoFatec'
+    )";
 
     $con->query($sql);
 
