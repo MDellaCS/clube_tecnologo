@@ -4,6 +4,7 @@ DROP PROCEDURE IF EXISTS deleteTecnologo;
 DELIMITER $$ CREATE PROCEDURE insertTecnologo(
   IN nome_Proc VARCHAR(60),
   IN idade_Proc TINYINT,
+  IN ra_Proc CHAR(13),
   IN ano_Proc year(4),
   IN semestre_Proc VARCHAR(17),
   IN email_Proc VARCHAR(60),
@@ -15,6 +16,7 @@ DELIMITER $$ CREATE PROCEDURE insertTecnologo(
 INSERT INTO tb_tecnologo (
     nome,
     idade,
+    ra,
     ano_formacao,
     semestre_formacao,
     email,
@@ -26,6 +28,7 @@ INSERT INTO tb_tecnologo (
 VALUES (
     nome_Proc,
     idade_Proc,
+    ra_Proc,
     ano_Proc,
     semestre_Proc,
     email_Proc,

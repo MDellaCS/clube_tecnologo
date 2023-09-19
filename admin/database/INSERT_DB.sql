@@ -2,6 +2,7 @@ USE fateczle_clubetecnologo;
 CALL insertTecnologo(
     "Teste da Silva Santos",
     "20",
+    "1231231231231",
     "2007",
     "Primeiro Semestre",
     "emailteste@gmail.com",
@@ -13,6 +14,7 @@ CALL insertTecnologo(
 CALL insertTecnologo(
     "Tecnólogo de Teste para o Sistema",
     "41",
+    "4564738291090",
     "2011",
     "Segundo Semestre",
     "testandouser@hotmail.com",

@@ -1,12 +1,14 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "-03:00";
-CREATE DATABASE IF NOT EXISTS fateczle_clubetecnologo;
+DROP DATABASE IF EXISTS fateczle_clubetecnologo;
+CREATE DATABASE fateczle_clubetecnologo;
 USE fateczle_clubetecnologo;
 CREATE TABLE tb_tecnologo (
     id INT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(60) NOT NULL,
-    idade TINYINT NOT NULL,
+    idade TINYINT(2) NOT NULL,
+    ra CHAR(13) NOT NULL,
     ano_formacao year(4),
     semestre_formacao VARCHAR(17),
     email VARCHAR(60) NOT NULL,
