@@ -127,21 +127,17 @@
     
     include_once('../connection.php');
 
-    $sql = "CALL insertTecnologo(
-    '$nome',
-    '$idade',
-    '$ra',
-    '$ano',
-    '$semestre',
-    '$email',
-    '$curso',
-    '$foto',
-    '$textoPessoal',
-    '$textoFatec'
-    )";
+    $sql = "CALL insertTecnologo(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    $con->query($sql);
+    $stmt = $con->prepare($sql);
 
+    $stmt->bind_param("sissssssss", $nome, $idade, $ra, $ano, $semestre, $email, $curso, $foto, $textoPessoal, $textoFatec);
+
+    if (!$stmt->execute()) {
+        echo "Erro na inserção: " . $stmt->error;
+    }
+
+    $stmt->close();
     $con->close();
 
     // -------------------- ENVIAR EMAIL --------------------
