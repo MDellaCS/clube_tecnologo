@@ -17,6 +17,9 @@
 
 <body>
 
+    <button onclick="toggleTheme()">Toggle Dark Mode</button>
+
+
     <form name="formEgresso" id="formEgresso" method="post" enctype="multipart/form-data"
         action="<?= htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 

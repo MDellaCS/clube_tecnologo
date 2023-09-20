@@ -95,3 +95,24 @@ function liberarEnviar() {
         btnSubmit.classList.add("tooltip");
     }
 }
+
+const root = document.documentElement;
+let lightTheme = true;
+
+function toggleTheme() {
+    lightTheme = !lightTheme;
+    alert("Trocando tema " + lightTheme);
+    if (lightTheme === true) {
+        root.style.setProperty('--main-color', 'var(--main-color-light)');
+        root.style.setProperty('--main-bgcolor', 'var(--main-bgcolor-light)');
+        root.style.setProperty('--main-h1', 'var(--main-h1-light)');
+        root.style.setProperty('--main-h2', 'var(--main-h2-light)');
+        root.style.setProperty('--main-shadow', 'var(--main-shadow-light)');
+    } else {
+        root.style.setProperty('--main-color', 'var(--main-color-dark)');
+        root.style.setProperty('--main-bgcolor', 'var(--main-bgcolor-dark)');
+        root.style.setProperty('--main-h1', 'var(--main-h1-dark)');
+        root.style.setProperty('--main-h2', 'var(--main-h2-dark)');
+        root.style.setProperty('--main-shadow', 'var(--main-shadow-dark)');
+    }
+}
