@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="../../admin/imagens/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="admin/imagens/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -21,6 +21,8 @@
         action="<?= htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
         <div>
+            <img onclick="" class="icon btn floatL"
+                src="https://img.icons8.com/ios-filled/100/FFFFFF/long-arrow-left.png" />
             <img onclick="invertTheme()" class="icon btn floatR" />
         </div>
 
