@@ -15,7 +15,7 @@ $user = $result->fetch_assoc();
 if ($user == true) {
     session_start();
     $_SESSION['login'] = "1";
-    header('Location: lista/lista.php');
+    header('Location: lista.php');
 } else {
     session_start();
     $_SESSION['login'] = "0";

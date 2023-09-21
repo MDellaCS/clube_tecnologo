@@ -2,7 +2,7 @@
 
 $id = $_POST['id'];
 
-include_once('../connection.php');
+include_once('connection.php');
 
 $sql = "CALL publishTecnologo(?)";
 

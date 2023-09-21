@@ -2,7 +2,7 @@
 
 $id = $_POST['id'];
 
-include_once('../connection.php');
+include_once('connection.php');
 
 // -------------------- APAGAR A IMAGEM NO DIRETÓRIO --------------------
 
@@ -15,13 +15,13 @@ if (!$result) {
 }
 
 $row = $result->fetch_assoc();
-$caminhoArquivo = "../../profilePictures/" . $row['foto'];
+$caminhoArquivo = "../profilePictures/" . $row['foto'];
 
 unlink($caminhoArquivo);
 
 // -------------------- APAGAR O CADASTRO NO BANCO --------------------
 
-include_once('../connection.php');
+include_once('connection.php');
 
 $sql = "CALL deleteTecnologo(?)";
 

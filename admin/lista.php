@@ -39,7 +39,7 @@
 
         <?php
 
-        include_once('../connection.php');
+        include_once('connection.php');
         $sql = "SELECT id, nome, idade, ra, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado FROM tb_tecnologo";
 
         $result = $con->query($sql);
