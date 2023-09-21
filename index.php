@@ -1,6 +1,6 @@
 <?php
 
-include_once('../admin/connection.php');
+include_once('admin/connection.php');
 //O atributo publicacao verifica se o depoimento do tecnólogo foi programado para ser publicado no site.
 $publicacao = 1;
 $sql = "SELECT nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec FROM tb_tecnologo WHERE publicado = $publicacao";
@@ -38,6 +38,11 @@ if (!$result) {
 </head>
 
 <body id="bgTecnologoSucesso">
+
+    <a href="form.php">
+        <input type="button" class="btn" value="Formulário">
+    </a>
+
     <div id="container relativeClass">
         <img src="../admin/imagens/fzl_logo.png" id="bg" alt="">
         <h1 class="titlePadding">Casos de sucesso de Tecnólogos</h1>
@@ -45,68 +50,68 @@ if (!$result) {
             <div class="carousel-inner">
                 <?php
                 $first = true;
-                while ($row = $result->fetch_assoc()) {                    
+                while ($row = $result->fetch_assoc()) {
                     echo '<div class="carousel-item ' . ($first ? 'active' : '') . '">';
                     $first = false;
-                ?>
-                <img src="profilePictures/<?php echo $row['foto'] ?>" id="fotoTecnologo" alt="">
-                <div id="dadosTecnologoPos">
-                    <div class="row textCentering">
-                        <div class="col-sm-6">
-                            <p>
+                    ?>
+                    <img src="profilePictures/<?php echo $row['foto'] ?>" id="fotoTecnologo" alt="">
+                    <div id="dadosTecnologoPos">
+                        <div class="row textCentering">
+                            <div class="col-sm-6">
+                                <p>
                                 <h5>Nome:</h5>
                                 <?= $row['nome'] ?>
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p>
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>
                                 <h5>Idade:</h5>
                                 <?= $row['idade'] ?>
-                            </p><br>
+                                </p><br>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row textLarge">
-                        <div class="col-sm-6">
-                            <p>
+                        <div class="row textLarge">
+                            <div class="col-sm-6">
+                                <p>
                                 <h5>Ano de formação:</h5>
                                 <?= $row['semestre_formacao'] ?> de
                                 <?= $row['ano_formacao'] ?>
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p>
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>
                                 <h5>Curso realizado:</h5>
                                 <?= $row['curso'] ?>
-                            </p><br>
-                            <br>
+                                </p><br>
+                                <br>
+                            </div>
                         </div>
                     </div>
+                    <h4 class="subTituloPos">Fale sobre você (O que faz e como está):</h4>
+                    <p class="infoPos">
+                        <?= $row['texto_sobre'] ?>
+                    </p>
+                    <h4 class="subTituloPos">O que a FATEC representou (ou representa) <br> para você?:</h4>
+                    <p class="infoPos">
+                        <?= $row['texto_fatec'] ?>
+                    </p>
                 </div>
-                <h4 class="subTituloPos">Fale sobre você (O que faz e como está):</h4>
-                <p class="infoPos">
-                    <?= $row['texto_sobre'] ?>
-                </p>
-                <h4 class="subTituloPos">O que a FATEC representou (ou representa) <br> para você?:</h4>
-                <p class="infoPos">
-                    <?= $row['texto_fatec'] ?>
-                </p>
-                </div>
-                <?php } ?>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <?php } ?>
         </div>
-        <div class="container">
-            <p id="dicaPos">*Mantenha o cursor sobre o slide para parar o rolamento automático.</p>
-        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
- 
+    <div class="container">
+        <p id="dicaPos">*Mantenha o cursor sobre o slide para parar o rolamento automático.</p>
+    </div>
+    </div>
+
 </body>
 
 </html>

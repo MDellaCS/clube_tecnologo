@@ -23,7 +23,7 @@
 
     // -------------------- ENVIAR A IMAGEM PARA O DIRETÓRIO --------------------
     
-    $targetDir = "../profilePictures/";
+    $targetDir = "profilePictures/";
     $uploadOk = 1;
     $dataAtual = microtime(true);
     $nomeArquivo = $dataAtual . "_" . basename($_FILES["fotoTec"]["name"]);
@@ -125,7 +125,7 @@
 
     // -------------------- INSERT BD --------------------
     
-    include_once('../admin/connection.php');
+    include_once('admin/connection.php');
 
     $sql = "CALL insertTecnologo(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -160,20 +160,16 @@
     ?>
 
     <div>
-        <img onclick="toggleTheme()" class="icon btn floatR" />
+        <img onclick="invertTheme()" class="icon btn floatR" />
     </div>
 
     <div class="formulario">
         <h1>Enviado com Sucesso!</h1>
-        <h2>Obrigado <strong>
-                <?= $nome ?>
-            </strong>!</h2>
-        <h2>Por favor, verifique o seu e-mail (<strong>
-                <?= $email ?>
-            </strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
+        <h2>Obrigado <strong><?= $nome ?></strong>!</h2>
+        <h2>Por favor, verifique o seu e-mail (<strong><?= $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
 
         <div class="centerItems">
-            <a href="../index.php">
+            <a href="index.php">
                 <input type="button" class="btn" value="Voltar">
             </a>
         </div>

@@ -21,7 +21,7 @@
         action="<?= htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
         <div>
-            <img onclick="toggleTheme()" class="icon btn floatR" />
+            <img onclick="invertTheme()" class="icon btn floatR" />
         </div>
 
         <div class="formulario">
