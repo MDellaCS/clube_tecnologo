@@ -120,6 +120,7 @@ label[for=segundo] {
     padding: 5px;
     text-align: center;
     margin: 4px 0px 4px 0px;
+    cursor: pointer;
 }
 
 label[for=formado],

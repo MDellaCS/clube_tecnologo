@@ -100,13 +100,14 @@ const root = document.documentElement;
 
 let lightTheme = false;
 
-setTimeout(toggleTheme, 100);
+setTimeout(toggleTheme, 1);
 
 function toggleTheme() {
     lightTheme = !lightTheme;
     if (lightTheme === true) {
 
         document.getElementsByClassName("icon btn")[0].src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
+
         root.style.setProperty('--main', 'var(--light-main)');
         root.style.setProperty('--main-hover', 'var(--light-main-hover)');
         root.style.setProperty('--bg', 'var(--light-bg)');
