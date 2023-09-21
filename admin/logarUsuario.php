@@ -1,25 +1,45 @@
 <?php
 
+$email = $senha = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = test_input($_POST["emailAdm"]);
+    $senha = test_input($_POST["senhaAdm"]);
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 include_once('connection.php');
 
-$email = $_POST['nm_email'];
-$senha = $_POST['nm_senha'];
-
-$sql = "SELECT * FROM tb_admin WHERE email = ? AND senha = ?";
+$sql = "SELECT email, senha FROM tb_admin WHERE email = ? AND senha = ?";
 $stmt = $con->prepare($sql);
-$stmt->bind_param("ss", $email, hash('sha512', $senha));
+//$senha = hash('sha512', $senha);
+$stmt->bind_param("ss", $email, $senha);
 $stmt->execute();
 $result = $stmt->get_result();
-$user = $result->fetch_assoc();
 
-if ($user == true) {
+if ($result->num_rows === 1) {
+    $stmt->close();
+    $con->close();
+
     session_start();
-    $_SESSION['login'] = "1";
-    header('Location: lista.php');
+    $_SESSION["email"] = $email;
+    $_SESSION["senha"] = $senha;
+
+    header("Location: lista.php");
+    exit();
 } else {
-    session_start();
-    $_SESSION['login'] = "0";
-    header('Location: loginTecnologoSucesso.php');
+    $stmt->close();
+    $con->close();
+    
+    header("Location: index.php");
+    exit();
 }
 
 ?>
