@@ -20,11 +20,11 @@
     <form name="formEgresso" id="formEgresso" method="post" enctype="multipart/form-data"
         action="<?= htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
-        <div class="formulario">
+        <div>
+            <img onclick="toggleTheme()" class="icon btn floatR" />
+        </div>
 
-            <div style="text-align: right;">
-                <img onclick="toggleTheme()" class="icon btn"/>
-            </div>
+        <div class="formulario">
 
             <div class="inicio">
                 <h1>Clube do Tecnólogo</h1>

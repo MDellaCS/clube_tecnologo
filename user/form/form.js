@@ -97,18 +97,16 @@ function liberarEnviar() {
 }
 
 const root = document.documentElement;
-var icon = document.getElementsByClassName("icon btn");
 
 let lightTheme = false;
 
-toggleTheme();
+setTimeout(toggleTheme, 100);
 
 function toggleTheme() {
     lightTheme = !lightTheme;
     if (lightTheme === true) {
 
-        // icon.src = "creeper.jpg";
-
+        document.getElementsByClassName("icon btn")[0].src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
         root.style.setProperty('--main', 'var(--light-main)');
         root.style.setProperty('--main-hover', 'var(--light-main-hover)');
         root.style.setProperty('--bg', 'var(--light-bg)');
@@ -118,7 +116,7 @@ function toggleTheme() {
         root.style.setProperty('--tooltip', 'var(--light-tooltip)');
     } else {
 
-        // icon.src = "colevas.jfif";
+        document.getElementsByClassName("icon btn")[0].src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
 
         root.style.setProperty('--main', 'var(--dark-main)');
         root.style.setProperty('--main-hover', 'var(--dark-main-hover)');

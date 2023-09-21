@@ -6,16 +6,15 @@
     --light-bg: #FFFFFF;
     --light-h1: #000000;
     --light-h2: #666666;
-    --light-shadow: #00000030;
+    --light-shadow: #00000022;
     --light-tooltip: #FF4C4D;
-    --input-hover: var(--light-bg)*2;
 
     --dark-main: #00137e;
     --dark-main-hover: #00137eCC;
     --dark-bg: #000000;
-    --dark-h1: #a1a1a1;
-    --dark-h2: #666666;
-    --dark-shadow: #ffffff30;
+    --dark-h1: #b3b3b3;
+    --dark-h2: #979797;
+    --dark-shadow: #ffffff22;
     --dark-tooltip: #4c91ff;
 }
 
@@ -158,8 +157,8 @@ textarea {
 }
 
 /* ----------------------------- AREA DE TESTES ----------------------------- */
-
-/* * {
+/* 
+* {
     border: 2px dotted red;
 } */
 
@@ -200,7 +199,7 @@ textarea {
 .inicio {
     padding: 0 48px 56px 48px;
     margin-bottom: 56px;
-    border-bottom: 4px dashed #E0E0E0;
+    border-bottom: 4px dashed var(--shadow);
 }
 
 
@@ -225,7 +224,7 @@ h2 {
 
 .formInput {
     border: none;
-    border-bottom: 4px solid var(--h2);
+    border-bottom: 4px solid var(--shadow);
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 300;
@@ -279,8 +278,7 @@ input[type="checkbox"]+label {
 input[type="radio"]:checked+label,
 input[type="checkbox"]:checked+label {
     background-color: var(--main);
-    color: white;
-    border: 3px solid var(--main);
+    color: var(--bg);
 }
 
 .req::after {
@@ -352,9 +350,9 @@ input[type="checkbox"]:checked+label {
 }
 
 .icon {
-    width: 26px;
-    height: 26px;
-    border-radius: 30px;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
     padding: 4px;
     margin: 4px;
     transition: 0.2s ease-out;
