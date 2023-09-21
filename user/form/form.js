@@ -97,22 +97,35 @@ function liberarEnviar() {
 }
 
 const root = document.documentElement;
-let lightTheme = true;
+var icon = document.getElementsByClassName("icon btn");
+
+let lightTheme = false;
+
+toggleTheme();
 
 function toggleTheme() {
     lightTheme = !lightTheme;
-    alert("Trocando tema " + lightTheme);
     if (lightTheme === true) {
-        root.style.setProperty('--main-color', 'var(--main-color-light)');
-        root.style.setProperty('--main-bgcolor', 'var(--main-bgcolor-light)');
-        root.style.setProperty('--main-h1', 'var(--main-h1-light)');
-        root.style.setProperty('--main-h2', 'var(--main-h2-light)');
-        root.style.setProperty('--main-shadow', 'var(--main-shadow-light)');
+
+        // icon.src = "creeper.jpg";
+
+        root.style.setProperty('--main', 'var(--light-main)');
+        root.style.setProperty('--main-hover', 'var(--light-main-hover)');
+        root.style.setProperty('--bg', 'var(--light-bg)');
+        root.style.setProperty('--h1', 'var(--light-h1)');
+        root.style.setProperty('--h2', 'var(--light-h2)');
+        root.style.setProperty('--shadow', 'var(--light-shadow)');
+        root.style.setProperty('--tooltip', 'var(--light-tooltip)');
     } else {
-        root.style.setProperty('--main-color', 'var(--main-color-dark)');
-        root.style.setProperty('--main-bgcolor', 'var(--main-bgcolor-dark)');
-        root.style.setProperty('--main-h1', 'var(--main-h1-dark)');
-        root.style.setProperty('--main-h2', 'var(--main-h2-dark)');
-        root.style.setProperty('--main-shadow', 'var(--main-shadow-dark)');
+
+        // icon.src = "colevas.jfif";
+
+        root.style.setProperty('--main', 'var(--dark-main)');
+        root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
+        root.style.setProperty('--bg', 'var(--dark-bg)');
+        root.style.setProperty('--h1', 'var(--dark-h1)');
+        root.style.setProperty('--h2', 'var(--dark-h2)');
+        root.style.setProperty('--shadow', 'var(--dark-shadow)');
+        root.style.setProperty('--tooltip', 'var(--dark-tooltip)');
     }
 }
