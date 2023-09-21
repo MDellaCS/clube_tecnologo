@@ -113,7 +113,7 @@ function invertTheme() {
 function toggleTheme() {
     if (localStorage.getItem("theme") == "light") {
 
-        document.getElementsByClassName("icon btn")[0].src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
+        document.getElementsByClassName("icon btn floatR")[0].src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
 
         root.style.setProperty('--main', 'var(--light-main)');
         root.style.setProperty('--main-hover', 'var(--light-main-hover)');
@@ -122,9 +122,10 @@ function toggleTheme() {
         root.style.setProperty('--h2', 'var(--light-h2)');
         root.style.setProperty('--shadow', 'var(--light-shadow)');
         root.style.setProperty('--tooltip', 'var(--light-tooltip)');
+        root.style.setProperty('--input-hover', 'var(--light-input-hover)');
     } else if (localStorage.getItem("theme") == "dark") {
 
-        document.getElementsByClassName("icon btn")[0].src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
+        document.getElementsByClassName("icon btn floatR")[0].src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
 
         root.style.setProperty('--main', 'var(--dark-main)');
         root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
@@ -133,6 +134,7 @@ function toggleTheme() {
         root.style.setProperty('--h2', 'var(--dark-h2)');
         root.style.setProperty('--shadow', 'var(--dark-shadow)');
         root.style.setProperty('--tooltip', 'var(--dark-tooltip)');
+        root.style.setProperty('--input-hover', 'var(--dark-input-hover)');
     }
 }
 
@@ -144,6 +146,7 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--h2', 'var(--light-h2)');
     root.style.setProperty('--shadow', 'var(--light-shadow)');
     root.style.setProperty('--tooltip', 'var(--light-tooltip)');
+    root.style.setProperty('--input-hover', 'var(--light-input-hover)');
 } else if (localStorage.getItem("theme") == "dark") {
     root.style.setProperty('--main', 'var(--dark-main)');
     root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
@@ -152,4 +155,5 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--h2', 'var(--dark-h2)');
     root.style.setProperty('--shadow', 'var(--dark-shadow)');
     root.style.setProperty('--tooltip', 'var(--dark-tooltip)');
+    root.style.setProperty('--input-hover', 'var(--dark-input-hover)');
 }
