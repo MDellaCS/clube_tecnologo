@@ -144,13 +144,13 @@
     
     $to = $email;
     $subject = "Confirmação de Dados FATEC-ZL Clube do Tecnólogo";
-    $message = "Teste";
-    $headers = "From: matheusdellacrocce@hotmail.com" . "\r\n" .
-        "Reply-To: matheusdellacrocce@hotmail.com" . "\r\n" .
+    $message = "$nome, $idade, $ra, $ano, $semestre, $email, $curso, $foto, $textoPessoal, $textoFatec";
+    $headers = "From: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
+        "Reply-To: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
         'Content-Type: text/plain; charset=utf-8' . "\r\n" .
         "X-Mailer: PHP/" . phpversion();
 
-    // mail($to, $subject, $message, $headers);
+    mail($to, $subject, $message, $headers);
     
     // -------------------- DISPLAY HTML --------------------
     
