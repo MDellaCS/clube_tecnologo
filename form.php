@@ -21,8 +21,9 @@
         action="<?= htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
         <div>
-            <img onclick="" class="icon btn floatL"
-                src="https://img.icons8.com/ios-filled/100/FFFFFF/long-arrow-left.png" />
+            <a href="index.php">
+                <input type="button" class="btn floatL" value="Voltar">
+            </a>
             <img onclick="invertTheme()" class="icon btn floatR" />
         </div>
 

@@ -99,7 +99,6 @@ function liberarEnviar() {
 const root = document.documentElement;
 
 if (localStorage.getItem("theme") === null) {
-    alert("Não definido um tema");
     localStorage.setItem("theme", "light");
 }
 
