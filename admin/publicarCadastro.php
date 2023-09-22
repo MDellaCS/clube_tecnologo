@@ -10,9 +10,6 @@ $stmt = $con->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
 
-$stmt->close();
-$con->close();
-
 // -------------------- ENVIAR EMAIL --------------------
 
 $sql = "SELECT nome, ra, email FROM tb_tecnologo WHERE id = ?";
@@ -37,6 +34,6 @@ $headers = "From: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
     'Content-Type: text/plain; charset=utf-8' . "\r\n" .
     "X-Mailer: PHP/" . phpversion();
 
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 
 ?>

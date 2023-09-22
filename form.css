@@ -10,14 +10,53 @@
     --light-tooltip: #FF4C4D;
     --light-input-hover: #EEEEEE;
 
-    --dark-main: #00137e;
-    --dark-main-hover: #00137eCC;
+    --dark-main: #b3b3b3;
+    --dark-main-hover: #b3b3b3cc;
     --dark-bg: #000000;
     --dark-h1: #b3b3b3;
     --dark-h2: #979797;
     --dark-shadow: #ffffff22;
-    --dark-tooltip: #4c91ff;
+    --dark-tooltip: #b3b3b3;
     --dark-input-hover: #111111;
+
+    --float: float .3s cubic-bezier(0.15, 0.75, 0.55, 1.25);
+    --appear: appear .3s cubic-bezier(0.15, 0.75, 0.55, 1.25) forwards;
+    --spin: spin 2s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes appear {
+
+    0% {
+        transform: translate(-50%, 100%);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes spin {
+
+    0% {
+        transform: rotate(0deg);
+    }
+
+    80%,
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 body {
@@ -178,7 +217,7 @@ textarea {
     margin-top: -80px;
     z-index: 999;
     background-color: var(--tooltip);
-    color: white;
+    color: var(--bg);
     text-align: center;
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
@@ -190,6 +229,7 @@ textarea {
 }
 
 .tooltip:hover+.tooltiptext {
+    animation: var(--float);
     visibility: visible;
     opacity: 1;
 }
@@ -319,11 +359,11 @@ input[type="checkbox"]:checked+label {
     position: absolute;
     top: 45%;
     left: 50%;
-    transform: translate(-50%, -50%);
     background-color: var(--bg);
     padding: 40px;
     border-radius: 30px;
     box-shadow: 0px 4px 20px 0px var(--shadow);
+    animation: var(--appear);
 }
 
 ::-webkit-scrollbar {

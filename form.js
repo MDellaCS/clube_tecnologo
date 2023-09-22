@@ -156,3 +156,8 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--tooltip', 'var(--dark-tooltip)');
     root.style.setProperty('--input-hover', 'var(--dark-input-hover)');
 }
+
+document.getElementById("formEgresso").addEventListener("submit", function(event) {
+    event.preventDefault();
+    alert("AAA");
+});
