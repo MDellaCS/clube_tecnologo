@@ -37,8 +37,10 @@ if ($result->num_rows === 1) {
 } else {
     $stmt->close();
     $con->close();
-    
-    header("Location: index.php");
+
+    header("refresh:0.001;url=index.php");
+
+    echo "<script>alert('Email e/ou Senha inválidos');</script>";
     exit();
 }
 

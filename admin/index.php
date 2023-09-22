@@ -28,10 +28,12 @@
 
             <h1>Fazer Login</h1>
 
-                <div>
-                    <input id="email" type="email" name="emailAdm" class="formInput" placeholder="Email" required>
-                    <input type="password" name="senhaAdm" class="formInput" placeholder="Senha" required>
-                </div>
+            <div>
+                <input id="email" type="email" name="emailAdm" class="formInput" placeholder="Email" required>
+                <input type="password" name="senhaAdm" class="formInput" placeholder="Senha" required>
+            </div>
+
+            <span id="erroLogin"></span>
 
             <div>
                 <button type="submit" class="btn">Login</button>

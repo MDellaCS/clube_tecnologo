@@ -68,3 +68,4 @@ function attBusca() {
         nome[i].innerHTML = nomeDestacado;
     }
 }
+
