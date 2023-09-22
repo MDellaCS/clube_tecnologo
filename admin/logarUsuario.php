@@ -19,7 +19,7 @@ include_once('connection.php');
 
 $sql = "SELECT email, senha FROM tb_admin WHERE email = ? AND senha = ?";
 $stmt = $con->prepare($sql);
-//$senha = hash('sha512', $senha);
+$senha = hash('sha512', $senha);
 $stmt->bind_param("ss", $email, $senha);
 $stmt->execute();
 $result = $stmt->get_result();

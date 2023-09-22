@@ -9,7 +9,7 @@ function alterarCadastro(idCadastro, url) {
 
     fetch(url, config);
 
-    setTimeout(F5, 100);
+    setTimeout(F5, 500);
 }
 
 function F5(){
