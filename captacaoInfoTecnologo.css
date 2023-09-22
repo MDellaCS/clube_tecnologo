@@ -44,7 +44,7 @@ img {
 }
 
 #bgTecnologoSucesso {
-  background-image: url("imagens/bg_tds.jpeg");
+  background-image: url("admin/imagens/bg_tds.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -70,7 +70,7 @@ img {
 }
 
 #dadosTecnologoPos {
-  text-align: right;
+  text-align: center;
   margin: auto;
   width: 50%;
   padding: 10px;
