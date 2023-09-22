@@ -153,8 +153,8 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                             <div class="container">
 
                                 <img class="foto2" src="../profilePictures/<?= $row['foto'] ?>">
+                                
                                 <div class="texto-sobre-imagem">
-
                                     <?= $primeiroUltimoNome ?>
                                 </div>
 
@@ -171,7 +171,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                             </div>
 
                             <div>
-                                <?= $row['ra'] ?>
+                                <?= "RA: " . $row['ra'] ?>
                             </div>
 
                             <div>
