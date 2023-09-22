@@ -157,7 +157,7 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--input-hover', 'var(--dark-input-hover)');
 }
 
-document.getElementById("formEgresso").addEventListener("submit", function(event) {
-    event.preventDefault();
-    alert("AAA");
-});
+// document.getElementById("formEgresso").addEventListener("submit", function(event) {
+//     event.preventDefault();
+//     alert("AAA");
+// });

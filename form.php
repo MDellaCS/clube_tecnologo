@@ -246,7 +246,7 @@
 
             <div>
                 <input type="button" class="btn" onclick="limparImagem(); abrirModal('modalReset')" value="Redefinir" />
-                <input id="submit" type="submit" onclick="loadingScreen()" class="tooltip btn" value="Finalizar" disabled />
+                <input id="submit" type="submit" class="tooltip btn" value="Finalizar" disabled />
                 <span class="tooltiptext">É necessário concordar com os Termos de Uso de Imagem e Informação antes de
                     enviar
                     seus dados.</span>

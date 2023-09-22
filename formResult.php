@@ -23,73 +23,16 @@
 
     // -------------------- ENVIAR A IMAGEM PARA O DIRETÓRIO --------------------
     
-    $targetDir = "profilePictures/";
-    $uploadOk = 1;
-    $dataAtual = microtime(true);
-    $nomeArquivo = $dataAtual . "_" . basename($_FILES["fotoTec"]["name"]);
-    $targetFile = $targetDir . $nomeArquivo;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+        if ($_FILES["fotoTec"]["error"] == 0) {
+            $nomeArquivo = $_FILES["fotoTec"]["name"];
+            $microsegundos = microtime(true);
+            $caminhoTemporario = $_FILES["fotoTec"]["tmp_name"];
 
-    if (isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["fotoTec"]["tmp_name"]);
-        if ($check !== false) {
-            $uploadOk = 1;
-        } else {
-            echo "O arquivo não é uma imagem real.";
-            $uploadOk = 0;
-        }
-    }
+            $path = "profilePictures/";
 
-    if (file_exists($targetFile)) {
-        echo "Desculpe, o arquivo já existe.";
-        $uploadOk = 0;
-    }
-
-    if ($_FILES["fotoTec"]["size"] > 4000000) { // 4MB
-        echo "Desculpe, seu arquivo é muito grande.";
-        $uploadOk = 0;
-    }
-
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "webp" && $imageFileType != "jfif") {
-        echo "Desculpe, apenas arquivos JPG, JPEG, PNG, JFIF e WEBP são permitidos.";
-        $uploadOk = 0;
-    }
-
-    if ($uploadOk == 0) {
-        echo "Desculpe, seu arquivo não foi enviado.";
-    } else {
-        if (move_uploaded_file($_FILES["fotoTec"]["tmp_name"], $targetFile)) {
-            // Redimensionar a imagem
-            $newWidth = 512;
-            $newHeight = 512;
-
-            list($width, $height) = getimagesize($targetFile);
-            $image = imagecreatetruecolor($newWidth, $newHeight);
-
-            if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
-                $source = imagecreatefromjpeg($targetFile);
-            } elseif ($imageFileType == "png") {
-                $source = imagecreatefrompng($targetFile);
-            } elseif ($imageFileType == "webp") {
-                $source = imagecreatefromwebp($targetFile);
-            }
-
-            imagecopyresampled($image, $source, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
-
-            if ($imageFileType == "jpg" || $imageFileType == "jpeg") {
-                imagejpeg($image, $targetFile);
-            } elseif ($imageFileType == "png") {
-                imagepng($image, $targetFile);
-            } elseif ($imageFileType == "webp") {
-                imagewebp($image, $targetFile);
-            }
-
-            imagedestroy($image);
-            imagedestroy($source);
-
-        } else {
-            echo "Desculpe, houve um erro ao enviar o arquivo.";
+            move_uploaded_file($caminhoTemporario, $path . $microsegundos . $nomeArquivo);
         }
     }
 
@@ -103,7 +46,7 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $foto = test_input($nomeArquivo);
+        $foto = test_input($microsegundos . $nomeArquivo);
         $nome = test_input($_POST["nomeTec"]);
         $idade = test_input($_POST["idadeTec"]);
         $ra = test_input($_POST["raTec"]);
@@ -150,7 +93,7 @@
         'Content-Type: text/plain; charset=utf-8' . "\r\n" .
         "X-Mailer: PHP/" . phpversion();
 
-    mail($to, $subject, $message, $headers);
+    //mail($to, $subject, $message, $headers);
     
     // -------------------- DISPLAY HTML --------------------
     
