@@ -10,7 +10,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
     ?>
 
     <!DOCTYPE html>
-    <html>
+    <html lang="pt-BR">
 
     <head>
         <meta charset="UTF-8">
@@ -153,7 +153,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                             <div class="container">
 
                                 <img class="foto2" src="../profilePictures/<?= $row['foto'] ?>">
-                                
+
                                 <div class="texto-sobre-imagem">
                                     <?= $primeiroUltimoNome ?>
                                 </div>
