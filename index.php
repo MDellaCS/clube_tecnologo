@@ -17,17 +17,84 @@
 
 <body>
 
-    <div>
+    <div class="sticky">
         <a href="form.php">
             <input type="button" class="btn floatL" value="Quero entrar no Mural!">
         </a>
-        <f onclick="invertTheme()" class="icon btn floatR" />
+        <img onclick="invertTheme()" class="icon btn floatR" />
     </div>
 
-    <div>
+    <div class="formulario">
+
         <h1>Mural</h1>
 
-        <h2>as127fiufshfiysatofd</h2>
+        <div class="carousel-container">
+            <button class="btn" id="prevBtn" onclick="moveL()" disabled>Anterior</button>
+            <button class="btn" id="nextBtn" onclick="moveR()">Próximo</button>
+            <div class="carousel">
+                <?php
+
+                include_once('admin/connection.php');
+
+                $sql = "SELECT id, nome, idade, ano_formacao, semestre_formacao, curso, foto, texto_sobre, texto_fatec, data_insercao, publicado
+        FROM tb_tecnologo
+        WHERE publicado = 1
+        ORDER BY data_insercao ASC";
+
+                $result = $con->query($sql);
+
+                if (!$result) {
+                    die("Query inválida! " . $con->error);
+                }
+
+                if (mysqli_num_rows($result) == 0) {
+                    echo "<a href='form.php'><input type='button' class='btn' value='Nenhum tecnólogo cadastrado. Esta é a sua chance de ser o primeiro!'></a>";
+                } else {
+
+                    while ($row = $result->fetch_assoc()) {
+                        if ($row['ano_formacao'] == "1901") {
+                            $formacao = "Cursando " . $row['curso'];
+                        } else {
+                            $formacao = "Formou-se no " . $row['semestre_formacao'] . " de " . $row['ano_formacao'];
+                        }
+
+                        $primeiroUltimoNome = explode(" ", $row['nome']);
+                        $primeiroUltimoNome = $primeiroUltimoNome[0] . " " . end($primeiroUltimoNome);
+                        ?>
+
+                        <div id="pessoa<?= $row['id'] ?>" class="carousel-item">
+
+                            <div class="floatR">
+                                <img src="profilePictures/<?= $row['foto'] ?>">
+                            </div>
+
+                            <h2>
+                                <div class="nomePessoa" id="<?= $row['nome'] ?>">
+                                    <?= $primeiroUltimoNome ?>
+                                </div>
+
+                                <div>
+                                    <?= $formacao ?>
+                                </div>
+
+                            </h2>
+
+                            <h3>
+                                <div class="textos">
+                                    <?= $row['texto_sobre'] ?>
+                                    <?= $row['texto_fatec'] ?>
+                                </div>
+                            </h3>
+
+                        </div>
+
+                        <?php
+                    }
+                }
+                ?>
+
+            </div>
+        </div>
     </div>
 
 </body>

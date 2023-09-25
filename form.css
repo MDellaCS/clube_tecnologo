@@ -49,7 +49,7 @@
 body {
     background-color: var(--bg);
     transition: 0.2s ease-out;
-}
+  }
 
 div {
     padding: 5px;
@@ -63,10 +63,10 @@ div.formulario {
     box-shadow: 0px 4px 20px 0px var(--shadow);
     background-color: var(--bg);
     width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 44px;
-    margin-bottom: 44px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 52px;
+    margin-bottom: 52px;
 }
 
 div.wrapper {
@@ -175,6 +175,7 @@ label[for=ano] {
     padding: 5px 15px 5px 15px;
     margin: 5px;
     transition: 0.2s ease-out;
+    z-index: 999;
 }
 
 .btn:hover {
@@ -387,3 +388,9 @@ input[type="checkbox"]:checked+label {
     margin: 4px;
     transition: 0.2s ease-out;
 }
+
+.sticky {
+    z-index: 999;
+    position: sticky;
+    top: 0;
+  }

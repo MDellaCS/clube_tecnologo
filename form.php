@@ -20,7 +20,7 @@
     <form name="formEgresso" id="formEgresso" method="post" enctype="multipart/form-data"
         action="<?= htmlspecialchars('formResult.php'); ?>" autocomplete="on">
 
-        <div>
+        <div class="sticky">
             <a href="index.php">
                 <input type="button" class="btn floatL" value="Voltar">
             </a>
@@ -185,7 +185,7 @@
                 <div>
 
                     <textarea class="tooltip formInput" oninput="contChars(this, 'contadorP')" id="textoPessoal"
-                        name="textoPessoalTec" maxlength="700" rows="3" required></textarea>
+                        name="textoPessoalTec" maxlength="700" rows="4" required></textarea>
                     <span class="tooltiptext">Escreva um pouco sobre si mesmo(a). Conte sobre suas atividades
                         e interesses profissionais. Isso pode incluir seu campo de trabalho e sua profissão, por
                         exemplo.</span>
@@ -200,7 +200,7 @@
 
                 <div>
                     <textarea class="tooltip formInput" oninput="contChars(this, 'contadorF')" id="textoFatec"
-                        name="textoFatecTec" rows="3" required></textarea>
+                        name="textoFatecTec" maxlength="700" rows="4" required></textarea>
                     <span class="tooltiptext">Compartilhe como a Instituição impactou positivamente sua vida.
                         Conte-nos as melhorias, as experiências enriquecedoras e os momentos que você valoriza graças à
                         nossa parceria.</span>
