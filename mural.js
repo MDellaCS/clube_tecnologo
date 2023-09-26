@@ -26,7 +26,11 @@ function invertTheme() {
 function toggleTheme() {
     if (localStorage.getItem("theme") == "light") {
 
-        document.getElementsByClassName("icon btn floatR")[0].src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
+        document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
+        document.getElementById("btnPrev").src = "https://img.icons8.com/ios-filled/480/FFFFFF/back.png";
+        document.getElementById("btnNext").src = "https://img.icons8.com/ios-filled/480/FFFFFF/forward.png";
+
+        https://img.icons8.com/ios-filled/100/back.png
 
         root.style.setProperty('--main', 'var(--light-main)');
         root.style.setProperty('--main-hover', 'var(--light-main-hover)');
@@ -38,7 +42,9 @@ function toggleTheme() {
         root.style.setProperty('--input-hover', 'var(--light-input-hover)');
     } else if (localStorage.getItem("theme") == "dark") {
 
-        document.getElementsByClassName("icon btn floatR")[0].src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
+        document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
+        document.getElementById("btnPrev").src = "https://img.icons8.com/ios-filled/480/back.png";
+        document.getElementById("btnNext").src = "https://img.icons8.com/ios-filled/480/forward.png";
 
         root.style.setProperty('--main', 'var(--dark-main)');
         root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
@@ -70,37 +76,3 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--tooltip', 'var(--dark-tooltip)');
     root.style.setProperty('--input-hover', 'var(--dark-input-hover)');
 }
-
-let currentIndex = 0;
-
-function moveL() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
-    }
-}
-
-function moveR() {
-    const totalItems = document.querySelectorAll('.carousel-item').length;
-    if (currentIndex < totalItems - 1) {
-        currentIndex++;
-        updateCarousel();
-    }
-}
-
-function updateCarousel() {
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const carousel = document.querySelector('.carousel');
-    const itemWidth = document.querySelector('.carousel-item').clientWidth;
-    const totalItems = document.querySelectorAll('.carousel-item').length;
-    const translateX = -currentIndex * itemWidth - 7.5;
-    carousel.style.transform = `translateX(${translateX}px)`;
-
-    // Habilita ou desabilita os botões com base no índice atual
-    prevBtn.disabled = currentIndex <= 0;
-    nextBtn.disabled = currentIndex >= totalItems - 1;
-}
-
-// Chamada inicial para configurar o estado dos botões
-updateCarousel();

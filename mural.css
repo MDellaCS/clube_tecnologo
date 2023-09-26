@@ -20,9 +20,9 @@
   --dark-input-hover: #111111;
 }
 
-* {
+/* * {
   border: 1px dashed red;
-}
+} */
 
 body {
   background-color: var(--bg);
@@ -47,11 +47,26 @@ div.formulario {
   margin-bottom: 52px;
 }
 
+.carousel{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+
+.carousel-item{
+  margin: 0 100px 0 100px;
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: 0px 4px 20px 0px var(--shadow);
+  background-color: var(--bg);
+}
+
 img {
   width: 240px;
   height: 240px;
   border: 0;
-  padding: 10px;
+  padding: 0;
 }
 
 .floatL {
@@ -128,36 +143,6 @@ h3 {
   background: #a1a1a1;
 }
 
-.icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 100%;
-  padding: 4px;
-  margin: 4px;
-  transition: 0.2s ease-out;
-}
-
-.carousel-container {
-  border: 2px solid red;
-  position: relative;
-  max-width: 80%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.carousel {
-  display: flex;
-  transition: transform .4s cubic-bezier(0.15, 0.75, 0.55, 1.25);
-}
-
-.carousel-item {
-  word-wrap: break-word;
-  border: 2px solid green;
-  flex: 0 0 100%;
-  min-width: 100%;
-  text-align: center;
-}
-
 .btn {
   cursor: pointer;
   border-radius: 30px;
@@ -189,7 +174,42 @@ h3 {
   top: 0;
 }
 
-.textos{
-  background-color: rgba(255, 0, 0, 0.182);
+.textos {
+  word-wrap: break-word;
   font-style: italic;
+}
+
+.lista {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.lista-item {
+  height: 400px;
+  border-radius: 30px;
+  padding: 10px;
+  box-shadow: 0px 4px 20px 0px var(--shadow);
+  background-color: var(--bg);
+}
+
+.lista-item img{
+  width: 120px;
+  height: 120px;
+  border: 0;
+  padding: 0;
+}
+
+
+.icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  padding: 4px;
+  margin: 4px;
+  transition: 0.2s ease-out;
+}
+
+.centerItems{
+  text-align: center;
 }
