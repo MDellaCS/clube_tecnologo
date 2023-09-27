@@ -42,8 +42,8 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                     </div>
                 </th>
                 <th class="formacao">Formação</th>
-                <th class="email">Email</th>
                 <th class="curso">Curso</th>
+                <th class="email">Email</th>
                 <th class="publicado">Publicado</th>
                 <th class="acoes">Ações</th>
             </tr>
@@ -51,7 +51,8 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
             <?php
 
             include_once('connection.php');
-            $sql = "SELECT id, nome, idade, ra, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado FROM tb_tecnologo";
+            $sql = "SELECT id, nome, idade, ra, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado
+            FROM tb_tecnologo";
 
             $result = $con->query($sql);
 
@@ -94,11 +95,11 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                     </td>
 
                     <td>
-                        <?= $row['email'] ?>
+                        <?= $row['curso'] ?>
                     </td>
 
                     <td>
-                        <?= $row['curso'] ?>
+                        <?= $row['email'] ?>
                     </td>
 
                     <td>
