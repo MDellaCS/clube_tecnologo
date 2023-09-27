@@ -20,7 +20,7 @@
 
     <div class="sticky">
         <a href="form.php">
-            <input type="button" class="btn floatL" value="Quero entrar no Mural!">
+            <input type="button" class="btn floatL" value="Entrar no Mural">
         </a>
         <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
     </div>
@@ -51,21 +51,23 @@
                 ?>
             </div>
 
-            <h2>Todos os Tecnólogos</h2>
-
-            <div class="centerItems">
-                <img id="btnPrev" class="icon btn" onclick="prevLista()">
-                <img id="btnNext" class="icon btn" onclick="nextLista()">
-            </div>
+            <h2>Todos os Tecnólogos </h2>
 
             <div class="lista">
                 <?php
                 $todosRegistros = getRegistros($con, '');
 
+                $count = 0;
                 foreach ($todosRegistros as $row) {
                     renderizarRegistro($row, false);
+                    $count++;
                 }
                 ?>
+            </div>
+
+            <div class="centerItems">
+                <img id="btnPrev" class="icon btn" onclick="prevLista()">
+                <img id="btnNext" class="icon btn" onclick="nextLista()">
             </div>
 
         <?php } ?>
@@ -114,33 +116,49 @@ function renderizarRegistro($row, $carousel)
     }
 
     if ($carousel) {
-        echo '<div id="pessoa' . $row['id'] . '" class="carousel-item">';
-        echo '<div class="floatR">';
-        echo '<img src="profilePictures/' . $row['foto'] . '">';
-        echo '</div>';
-        echo '<h2>';
-        echo '<div>' . $row['nome'] . '</div>';
-        echo '<div>' . $formacao . '</div>';
-        echo '</h2>';
-        echo '<h3>';
-        echo '<div class="textos">';
-        echo '<div>' . $row['texto_sobre'] . '</div>';
-        echo '<div>' . $row['texto_fatec'] . '</div>';
-        echo '</div>';
-        echo '</h3>';
-        echo '</div>';
+        ?>
+        <div id="pessoa<?= $row['id'] ?>" class="carousel-item">
+            <div class="floatR">
+                <img src="profilePictures/<?= $row['foto'] ?>">
+            </div>
+            <h2>
+                <?= $row['nome'] ?>
+            </h2>
+            <h3 class="centerItems">
+                <?= $formacao ?>
+            </h3>
+            <h3>
+                <div class="textos">
+                    <div>
+                        <?= $row['texto_sobre'] ?>
+                    </div>
+                    <div>
+                        <?= $row['texto_fatec'] ?>
+                    </div>
+                </div>
+            </h3>
+        </div>
+        <?php
     } else {
-        echo '<div id="pessoa' . $row['id'] . '" class="lista-item">';
-        echo '<div class="floatR">';
-        echo '<img src="profilePictures/' . $row['foto'] . '">';
-        echo '</div>';
-        echo '<h2>';
-        echo '<div>' . $row['nome'] . '</div>';
-        echo '<div>' . $formacao . '</div>';
-        echo '</h2>';
-        echo '</div>';
+        ?>
+        <div id="pessoa<?= $row['id'] ?>" class="lista-item">
+            <div class="floatR">
+                <img src="profilePictures/<?= $row['foto'] ?>">
+            </div>
+            <h2>
+                <?= $row['nome'] ?>
+            </h2>
+            <h3>
+                <?= $row['idade'] ?> anos
+                <br><br>
+                <?= $formacao ?>
+            </h3>
+
+            <img class="icon btn" src="https://img.icons8.com/android/480/FFFFFF/plus.png"
+                onclick="abrirModal(<?= $count ?>)" />
+
+        </div>
+        <?php
     }
-
-
 }
 ?>
