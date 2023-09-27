@@ -15,19 +15,20 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('.lista').slick({
         infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToShow: 3,
+        slidesToScroll: 3,
         autoplay: false,
-        speed: 1,
+        cssEase: 'cubic-bezier(0.15, 0.75, 0.55, 1.25)',
+        speed: 450,
         arrows: false,
-        rows: 1,
+        rows: 6,
     });
 });
 
-function prevLista(){
+function prevLista() {
     $('.lista').slick('slickPrev');
 }
 
-function nextLista(){
+function nextLista() {
     $('.lista').slick('slickNext');
 }
