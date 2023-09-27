@@ -27,10 +27,8 @@ function toggleTheme() {
     if (localStorage.getItem("theme") == "light") {
 
         document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
-        document.getElementById("btnPrev").src = "https://img.icons8.com/ios-filled/480/FFFFFF/back.png";
-        document.getElementById("btnNext").src = "https://img.icons8.com/ios-filled/480/FFFFFF/forward.png";
-
-        https://img.icons8.com/ios-filled/100/back.png
+        document.getElementById("btnPrev").src = "https://img.icons8.com/ios/480/FFFFFF/less-than.png";
+        document.getElementById("btnNext").src = "https://img.icons8.com/ios/480/FFFFFF/more-than.png";
 
         root.style.setProperty('--main', 'var(--light-main)');
         root.style.setProperty('--main-hover', 'var(--light-main-hover)');
@@ -43,8 +41,8 @@ function toggleTheme() {
     } else if (localStorage.getItem("theme") == "dark") {
 
         document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
-        document.getElementById("btnPrev").src = "https://img.icons8.com/ios-filled/480/back.png";
-        document.getElementById("btnNext").src = "https://img.icons8.com/ios-filled/480/forward.png";
+        document.getElementById("btnPrev").src = "https://img.icons8.com/ios/480/less-than.png";
+        document.getElementById("btnNext").src = "https://img.icons8.com/ios/480/more-than.png";
 
         root.style.setProperty('--main', 'var(--dark-main)');
         root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
