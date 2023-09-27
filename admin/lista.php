@@ -147,7 +147,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
 
                 </tr>
 
-                <div id="modal<?= $row['id'] ?>" class="modal" onclick="fecharModal()">
+                <div id="modal<?= $count ?>" class="modal" onclick="fecharModal()">
                     <div class="modal-content">
 
                         <h1>

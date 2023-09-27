@@ -12,7 +12,7 @@ function alterarCadastro(idCadastro, url) {
     setTimeout(F5, 500);
 }
 
-function F5(){
+function F5() {
     window.location.reload();
 }
 
@@ -24,23 +24,18 @@ function abrirDeletar(id) {
     document.getElementById("confirmDeletar" + id).style.display = "block";
 }
 
-function abrirModal(id) {
-    let modais = document.getElementsByClassName("modal");
-
-    for (let i = 0; i < modais.length; i++) {
-        if (id == i) {
-            modais[i].style.display = "block";
-        }
+function abrirModal(index) {
+    const modal = document.querySelector(`#modal${index}`);
+    if (modal) {
+        modal.style.display = "block";
     }
-
 }
 
 function fecharModal() {
-    let modais = document.getElementsByClassName("modal");
-
-    for (let i = 0; i < modais.length; i++) {
-        modais[i].style.display = "none";
-    }
+    const modais = document.querySelectorAll(".modal");
+    modais.forEach(modal => {
+        modal.style.display = "none";
+    });
 }
 
 function attBusca() {

@@ -1,12 +1,14 @@
-function abrirModal(idModal) {
-    document.getElementById(idModal).style.display = "block";
+function abrirModal(id) {
+    const modal = document.querySelector(`#modal${id}`);
+    if (modal) {
+        modal.style.display = "block";
+    }
 }
 
 function fecharModal() {
-    var modais = document.getElementsByClassName("modal");
-
-    Array.from(modais).forEach(elemento => {
-        elemento.style.display = "none";
+    const modais = document.querySelectorAll(".modal");
+    modais.forEach(modal => {
+        modal.style.display = "none";
     });
 }
 

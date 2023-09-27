@@ -1,6 +1,4 @@
 :root {
-  scroll-behavior: smooth;
-
   --light-main: #7E0000;
   --light-main-hover: #7E0000CC;
   --light-bg: #FFFFFF;
@@ -18,6 +16,19 @@
   --dark-shadow: #ffffff22;
   --dark-tooltip: #b3b3b3;
   --dark-input-hover: #111111;
+
+  --appear: appear .3s cubic-bezier(0.15, 0.75, 0.55, 1.25) forwards;
+}
+
+@keyframes appear {
+
+  0% {
+    transform: translate(-50%, 100%);
+  }
+
+  100% {
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* * {
@@ -112,6 +123,7 @@ h3 {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(3px);
+  z-index: 999;
 }
 
 .modal-content {
@@ -121,6 +133,8 @@ h3 {
   background-color: var(--bg);
   padding: 40px;
   border-radius: 30px;
+  width: 60%;
+  height: 50vh;
   box-shadow: 0px 4px 20px 0px var(--shadow);
   animation: var(--appear);
 }
@@ -154,7 +168,7 @@ h3 {
   padding: 5px 15px 5px 15px;
   margin: 5px;
   transition: 0.2s ease-out;
-  z-index: 999;
+  z-index: 3;
 }
 
 .btn:hover {
@@ -169,7 +183,7 @@ h3 {
 }
 
 .sticky {
-  z-index: 999;
+  z-index: 2;
   position: sticky;
   top: 0;
 }
@@ -180,32 +194,34 @@ h3 {
 }
 
 .lista {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
 }
 
 .lista-item {
-  width: 400px;
-  height: 400px;
+  width: 280px !important;
+  height: 392.5px !important;
   border-radius: 30px;
   box-shadow: 0px 4px 20px 0px var(--shadow);
   background-color: var(--bg);
-  margin: -15px;
-  padding: 10px;
+  margin: 10px;
   transition: transform 0.2s ease-out, z-index 0.2s ease-out;
+  cursor: pointer;
 }
 
 .lista-item:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
   z-index: 1;
 }
 
-.lista-item img {
+.lista-item img:not(.icon) {
   width: 120px;
   height: 120px;
   border: 0;
