@@ -7,9 +7,9 @@ function alterarCadastro(idCadastro, url) {
         body: formData
     };
 
-    fetch(url, config);
-
-    setTimeout(F5, 500);
+    fetch(url, config).then(() => {
+        setTimeout(F5, 500);
+    });
 }
 
 function F5() {
@@ -39,16 +39,12 @@ function fecharModal() {
 }
 
 function attBusca() {
-    var input, tr, i, nome, nomeAtual;
+    var input = document.getElementById("search").value.toLowerCase();
+    var tr = document.getElementsByClassName("pessoa");
+    var nome = document.getElementsByClassName("nomePessoa");
 
-    input = document.getElementById("search");
-    input = input.value.toLowerCase();
-
-    tr = document.getElementsByClassName("pessoa");
-    nome = document.getElementsByClassName("nomePessoa");
-
-    for (i = 0; i < tr.length; i++) {
-        nomeAtual = nome[i].id.toLowerCase();
+    for (var i = 0; i < tr.length; i++) {
+        var nomeAtual = nome[i].id.toLowerCase();
         var nomeOriginal = nome[i].id;
 
         if (nomeAtual.indexOf(input) !== -1) {
@@ -63,4 +59,3 @@ function attBusca() {
         nome[i].innerHTML = nomeDestacado;
     }
 }
-

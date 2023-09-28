@@ -24,7 +24,7 @@
             <a href="index.php">
                 <input type="button" class="btn floatL" value="Voltar">
             </a>
-            <img onclick="invertTheme()" class="icon btn floatR" />
+            <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
         </div>
 
         <div class="formulario">

@@ -1,47 +1,33 @@
 <?php
-
-$email = $senha = "";
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = test_input($_POST["emailAdm"]);
     $senha = test_input($_POST["senhaAdm"]);
-}
 
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+    include_once('connection.php');
 
-include_once('connection.php');
+    $sql = "SELECT email, senha FROM tb_admin WHERE email = ?";
+    $stmt = $con->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-$sql = "SELECT email, senha FROM tb_admin WHERE email = ? AND senha = ?";
-$stmt = $con->prepare($sql);
-$senha = hash('sha512', $senha);
-$stmt->bind_param("ss", $email, $senha);
-$stmt->execute();
-$result = $stmt->get_result();
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+        if (password_verify($senha, $row['senha'])) {
+            $_SESSION["email"] = $email;
+            $_SESSION["senha"] = $senha;
 
-if ($result->num_rows === 1) {
+            header("Location: lista.php");
+            exit();
+        }
+    }
+
     $stmt->close();
     $con->close();
-
-    session_start();
-    $_SESSION["email"] = $email;
-    $_SESSION["senha"] = $senha;
-
-    header("Location: lista.php");
-    exit();
-} else {
-    $stmt->close();
-    $con->close();
-
-    header("refresh:0.001;url=index.php");
-
-    echo "<script>alert('Email e/ou Senha inválidos');</script>";
-    exit();
 }
 
+header("Location: index.php?error=1");
+exit();
 ?>

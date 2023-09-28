@@ -23,6 +23,11 @@
     <form name="frmLogar" method="post" autocomplete="off" action="logarUsuario.php">
         <div class="formulario centerItems">
             <h1>Fazer Login</h1>
+            <?php
+            if (isset($_GET["error"])) {
+                echo "<p style='color: red;'>Login falhou. Por favor, verifique suas credenciais.</p>";
+            }
+            ?>
             <div>
                 <input id="email" type="email" name="emailAdm" class="formInput" placeholder="Email" required>
                 <input type="password" name="senhaAdm" class="formInput" placeholder="Senha" required>

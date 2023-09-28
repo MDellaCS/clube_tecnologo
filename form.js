@@ -21,7 +21,7 @@ function abrirModal(idModal) {
 }
 
 function fecharModal() {
-    var modais = document.getElementsByClassName("modal");
+    const modais = document.querySelectorAll(".modal");
 
     Array.from(modais).forEach(elemento => {
         elemento.style.display = "none";
@@ -112,7 +112,7 @@ function invertTheme() {
 function toggleTheme() {
     if (localStorage.getItem("theme") == "light") {
 
-        document.getElementsByClassName("icon btn floatR")[0].src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
+        document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
 
         root.style.setProperty('--main', 'var(--light-main)');
         root.style.setProperty('--main-hover', 'var(--light-main-hover)');
@@ -124,7 +124,7 @@ function toggleTheme() {
         root.style.setProperty('--input-hover', 'var(--light-input-hover)');
     } else if (localStorage.getItem("theme") == "dark") {
 
-        document.getElementsByClassName("icon btn floatR")[0].src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
+        document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
 
         root.style.setProperty('--main', 'var(--dark-main)');
         root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
