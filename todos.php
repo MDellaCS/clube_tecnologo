@@ -42,7 +42,7 @@
                     <img src="profilePictures/<?= $row['foto'] ?>">
                 </div>
                 <h2>
-                    <?= $count . $row['nome'] ?>
+                    <?= $row['nome'] ?>
                 </h2>
                 <h3>
                     <?= $row['idade'] ?> anos
