@@ -175,7 +175,7 @@ label[for=ano] {
     padding: 5px 15px 5px 15px;
     margin: 5px;
     transition: 0.2s ease-out;
-    z-index: 999;
+    z-index: 2;
 }
 
 .btn:hover {
@@ -203,7 +203,7 @@ textarea {
     position: absolute;
     margin-left: -256px;
     margin-top: -80px;
-    z-index: 999;
+    z-index: 3;
     background-color: var(--tooltip);
     color: var(--bg);
     text-align: center;
@@ -216,8 +216,8 @@ textarea {
     line-height: 20px;
 }
 
-.tooltip:hover+.tooltiptext,
-.tooltip:focus+.tooltiptext {
+.tooltiptext:hover,
+.tooltip:hover+.tooltiptext {
     animation: var(--float);
     visibility: visible;
     opacity: 1;
@@ -342,6 +342,7 @@ input[type="checkbox"]:checked+label {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(3px);
+    z-index: 999;
 }
 
 .modal-content {
@@ -390,7 +391,7 @@ input[type="checkbox"]:checked+label {
 }
 
 .sticky {
-    z-index: 999;
+    z-index: 1;
     position: sticky;
     top: 0;
 }
