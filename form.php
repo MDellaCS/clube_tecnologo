@@ -39,8 +39,7 @@
                     para os contratantes. É importante que:
                     <ul>
                         <li>As informações divulgadas estejam corretas;</li>
-                        <li>Seu e-mail esteja correto, pois faremos contato caso o texto seja aprovado, ou
-                            se o texto precisa de correções;
+                        <li>Seu e-mail esteja correto, pois faremos contato confirmando seus dados e notificaremos sua aprovação;
                         </li>
                         <li>O texto enviado não contenha palavras de baixo calão ou discurso de ódio;
                         </li>
