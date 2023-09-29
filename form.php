@@ -183,7 +183,6 @@
                 </div>
 
                 <div>
-
                     <textarea class="tooltip formInput" oninput="contChars(this, 'contadorP')" id="textoPessoal"
                         name="textoPessoalTec" maxlength="700" rows="4" required></textarea>
                     <span class="tooltiptext">Escreva um pouco sobre si mesmo(a). Conte sobre suas atividades
