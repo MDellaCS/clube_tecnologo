@@ -94,11 +94,11 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--input-hover', 'var(--dark-input-hover)');
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    if (!localStorage.getItem("modaisExibidas")) {
-    document.body.style.overflow = "hidden";
-    document.getElementById("init1").style.display = "block";
-    document.getElementById("btns").style.zIndex = 6;
-    localStorage.setItem("modaisExibidas", "true");
-    }
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//    if (!localStorage.getItem("modaisExibidas")) {
+//    document.body.style.overflow = "hidden";
+//    document.getElementById("init1").style.display = "block";
+//    document.getElementById("btns").style.zIndex = 6;
+//    localStorage.setItem("modaisExibidas", "true");
+//    }
+// });

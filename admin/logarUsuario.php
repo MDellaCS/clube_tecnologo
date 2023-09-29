@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
-        if ($senha === $row["senha"]) {
+        if (password_verify($senha, $row["senha"])) {
             $_SESSION["email"] = $email;
             $_SESSION["senha"] = $senha;
 

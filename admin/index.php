@@ -20,12 +20,12 @@
         <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
     </div>
 
-    <form name="frmLogar" method="post" autocomplete="off" action="logarUsuario.php">
+    <form name="frmLogar" method="post" autocomplete="off" action=<?= htmlspecialchars('logarUsuario.php'); ?>>
         <div class="formulario centerItems">
             <h1>Fazer Login</h1>
             <?php
             if (isset($_GET["error"])) {
-                echo "<p style='color: red;'>Login falhou. Por favor, verifique suas credenciais.</p>";
+                echo "<h2 class='centerItems' style='color: red;'>Login falhou. Por favor, verifique suas credenciais.</h2>";
             }
             ?>
             <div>
