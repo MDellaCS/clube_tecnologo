@@ -93,7 +93,7 @@
 
     $to = $email;
     $subject = "Confirmação de Dados FATEC-ZL Clube do Tecnólogo";
-    $message = "<h2 class='centerItems'>Segue seus dados inseridos no Banco de Dados do Clube do Tecnólogo:<br><br>Nome: $nome<br>Idade: $idade | RA: $ra<br>Formação: $formacao<br>Email: $email (Este email)<br><br>Sobre Mim:<br>$textoPessoal<br><br>Agradecimentos Fatec:<br>$textoFatec<h2>";
+    $message = "<h2>Segue seus dados inseridos no Banco de Dados do Clube do Tecnólogo:<br><br>Nome: $nome<br>Idade: $idade | RA: $ra<br>Formação: $formacao<br>Email: $email (Este email)<br><br>Sobre Mim:<br>$textoPessoal<br><br>Agradecimentos Fatec:<br>$textoFatec<h2>";
     $headers = "From: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
         "Reply-To: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
         'Content-Type: text/html; charset=utf-8' . "\r\n" .
