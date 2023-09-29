@@ -8,7 +8,6 @@ CREATE TABLE tb_tecnologo (
     id INT NOT NULL AUTO_INCREMENT,
     nome VARCHAR(60) NOT NULL,
     idade TINYINT(2) NOT NULL,
-    ra CHAR(13) NOT NULL,
     ano_formacao year(4),
     semestre_formacao VARCHAR(17),
     email VARCHAR(60) NOT NULL,
@@ -34,7 +33,6 @@ DROP PROCEDURE IF EXISTS deleteTecnologo;
 DELIMITER $$ CREATE PROCEDURE insertTecnologo(
   IN nome_Proc VARCHAR(60),
   IN idade_Proc TINYINT,
-  IN ra_Proc CHAR(13),
   IN ano_Proc year(4),
   IN semestre_Proc VARCHAR(17),
   IN email_Proc VARCHAR(60),
@@ -46,7 +44,6 @@ DELIMITER $$ CREATE PROCEDURE insertTecnologo(
 INSERT INTO tb_tecnologo (
     nome,
     idade,
-    ra,
     ano_formacao,
     semestre_formacao,
     email,
@@ -58,7 +55,6 @@ INSERT INTO tb_tecnologo (
 VALUES (
     nome_Proc,
     idade_Proc,
-    ra_Proc,
     ano_Proc,
     semestre_Proc,
     email_Proc,

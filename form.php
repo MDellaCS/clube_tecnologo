@@ -75,27 +75,13 @@
                 </div>
             </div>
 
-            <div class="flexRow">
+            <div>
                 <div>
-                    <div>
-                        <label for="ra" class="req res">RA</label>
-                    </div>
-
-                    <div>
-                        <input class="tooltip formInput" type="text" id="ra" name="raTec" maxlength="13" />
-                        <span class="tooltiptext">Insira o Registro Acadêmico relacionado à sua
-                            matricula na Fatec (este dado será validado).</span>
-                    </div>
+                    <label for="idade" class="req">Idade Atual</label>
                 </div>
 
                 <div>
-                    <div>
-                        <label for="idade" class="req">Idade Atual</label>
-                    </div>
-
-                    <div>
-                        <input type="number" class="formInput" id="idade" name="idadeTec" min="18" max="99" required />
-                    </div>
+                    <input type="number" class="formInput" id="idade" name="idadeTec" min="18" max="99" required />
                 </div>
             </div>
 
@@ -246,7 +232,8 @@
             <div>
                 <input type="button" class="btn" onclick="limparImagem(); abrirModal('modalReset')" value="Redefinir" />
                 <input id="submit" type="submit" class="tooltip btn" value="Finalizar" disabled />
-                <span class="tooltiptext ignore">É necessário concordar com os Termos de Uso de Imagem e Informação antes de
+                <span class="tooltiptext ignore">É necessário concordar com os Termos de Uso de Imagem e Informação
+                    antes de
                     enviar
                     seus dados.</span>
             </div>

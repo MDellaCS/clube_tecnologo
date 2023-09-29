@@ -51,7 +51,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
             <?php
 
             include_once('connection.php');
-            $sql = "SELECT id, nome, idade, ra, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado
+            $sql = "SELECT id, nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado
                     FROM tb_tecnologo
                     ORDER BY publicado ASC";
 
@@ -170,10 +170,6 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
 
                             <div>
                                 <?= $row['email'] ?>
-                            </div>
-
-                            <div>
-                                <?= "RA: " . $row['ra'] ?>
                             </div>
 
                             <div>
