@@ -18,9 +18,9 @@
 
 <body>
 
-    <div class="sticky">
+    <div id="btns" class="sticky">
         <a href="form.php">
-            <input type="button" class="btn floatL" value="Entrar no Mural">
+            <input id="btnForm" type="button" class="btn floatL" value="Entrar no Mural">
         </a>
         <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
     </div>
@@ -29,17 +29,41 @@
 
         <h1>Mural</h1>
 
-        <h2>Tecnólogos Recentes</h2>
+        <div id="recentes" style="position: relative">
+            <h2>Tecnólogos Recentes</h2>
 
-        <?php
-        include_once('recentes.php');
-        ?>
+            <?php
+            include_once('recentes.php');
+            ?>
+        </div>
+        <b id="alvo" class="alvo"></b>
+        <div id="todos" style="position: relative">
+            <h2>Todos os Tecnólogos</h2>
 
-        <h2 id="topoLista">Todos os Tecnólogos</h2>
+            <?php
+            include_once('todos.php');
+            ?>
+        </div>
 
-        <?php
-        include_once('todos.php');
-        ?>
+        <div id="init1" class="modal" onclick="fecharModal(1)">
+            <div class="init1">
+                Aqui está o formulário para entrar no mural e, lá na direita, o modo claro/escuro.<br>
+                <h4>(clique para continuar)</h4>
+            </div>
+        </div>
+
+        <div id="init2" class="modal" onclick="fecharModal(2)">
+            <div class="init2">
+                Aqui aparecem os 5 tecnólogos mais recentes. Você pode arrastar para o lado.
+            </div>
+        </div>
+
+        <div id="init3" class="modal" onclick="fecharModal()">
+            <div class="init3">
+                E aqui se encontram todos os tecnólogos do sistema.<br>
+                Se você está aqui, obrigado!
+            </div>
+        </div>
 
     </div>
 
