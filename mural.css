@@ -17,7 +17,20 @@
   --dark-tooltip: #b3b3b3;
   --dark-input-hover: #111111;
 
+  --float: float .3s cubic-bezier(0.15, 0.75, 0.55, 1.25);
   --appear: appear .3s cubic-bezier(0.15, 0.75, 0.55, 1.25) forwards;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 @keyframes appear {
@@ -72,6 +85,7 @@ div.formulario {
   box-shadow: 0px 4px 20px 0px var(--shadow);
   background-color: var(--bg);
   margin: 0 25px 0 25px;
+  transition: .2s ease-out;
 }
 
 img {
@@ -115,6 +129,16 @@ h3 {
   color: var(--h2);
 }
 
+h4 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+  padding: 0;
+  margin: 10px 0 0 0;
+  color: var(--bg);
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -124,7 +148,7 @@ h3 {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(3px);
-  z-index: 999;
+  z-index: 5;
 }
 
 .modal-content {
@@ -206,8 +230,8 @@ h3 {
   box-shadow: 0px 4px 20px 0px var(--shadow);
   background-color: var(--bg);
   margin: 10px;
-  transition: transform 0.2s ease-out, z-index 0.2s ease-out;
   cursor: pointer;
+  transition: .2s ease-out;
 }
 
 .lista-item:hover {
@@ -232,4 +256,44 @@ h3 {
 
 .centerItems {
   text-align: center;
+}
+
+.init1,
+.init2,
+.init3 {
+  animation: var(--float);
+  max-width: 25%;
+  position: absolute;
+  z-index: 999;
+  background-color: var(--tooltip);
+  color: var(--bg);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 30px;
+  padding: 15px;
+  transition: 0.2s ease-out;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.init1 {
+  left: 4%;
+  top: 8%;
+}
+
+.init2 {
+  left: 20%;
+  top: 15%;
+}
+
+.init3 {
+  left: 25.5%;
+  top: 16%;
+}
+
+.alvo{
+  position: absolute;
+  top: 55%;
 }
