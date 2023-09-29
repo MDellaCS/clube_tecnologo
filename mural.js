@@ -5,11 +5,28 @@ function abrirModal(id) {
     }
 }
 
-function fecharModal() {
+function fecharModal(num) {
+
+    if (num === undefined) {
+        document.getElementById("todos").style.zIndex = 0;
+        document.body.style.overflow = "auto";
+    }
+
     const modais = document.querySelectorAll(".modal");
     modais.forEach(modal => {
         modal.style.display = "none";
     });
+
+    if (num === 1) {
+        document.getElementById("btns").style.zIndex = 2;
+        document.getElementById("recentes").style.zIndex = 1000;
+        document.getElementById("init2").style.display = "block";
+    } else if (num === 2) {
+        document.getElementById("alvo").scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("recentes").style.zIndex = 0;
+        document.getElementById("todos").style.zIndex = 1000;
+        document.getElementById("init3").style.display = "block";
+    }
 }
 
 const root = document.documentElement;
@@ -76,3 +93,12 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--tooltip', 'var(--dark-tooltip)');
     root.style.setProperty('--input-hover', 'var(--dark-input-hover)');
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    if (!localStorage.getItem("modaisExibidas")) {
+    document.body.style.overflow = "hidden";
+    document.getElementById("init1").style.display = "block";
+    document.getElementById("btns").style.zIndex = 6;
+    localStorage.setItem("modaisExibidas", "true");
+    }
+});
