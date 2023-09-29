@@ -17,7 +17,7 @@
 
 <body>
     <div>
-        <img onclick="invertTheme()" class="icon btn floatR" />
+        <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
     </div>
 
     <form name="frmLogar" method="post" autocomplete="off" action="logarUsuario.php">
