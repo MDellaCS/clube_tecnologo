@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
-        if (password_verify($senha, $row['senha'])) {
+        if ($senha === $row["senha"]) {
             $_SESSION["email"] = $email;
             $_SESSION["senha"] = $senha;
 
@@ -26,6 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
     $con->close();
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
 header("Location: index.php?error=1");
