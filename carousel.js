@@ -33,7 +33,7 @@ function attLista(pagina) {
     });
 
     if (!isFirstTime) {
-        var alvoTopo = document.getElementById('topoLista');
+        var alvoTopo = document.getElementById('todos');
         if (alvoTopo) alvoTopo.scrollIntoView({ behavior: 'smooth' });
     } else {
         isFirstTime = false;
