@@ -109,10 +109,10 @@ if (localStorage.getItem("theme") == "light") {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    //    if (!localStorage.getItem("modaisExibidas")) {
-    document.body.style.overflow = "hidden";
-    document.getElementById("init1").style.display = "block";
-    document.getElementById("btns").style.zIndex = 6;
-    localStorage.setItem("modaisExibidas", "true");
-    //    }
+    if (!localStorage.getItem("modaisExibidas")) {
+        document.body.style.overflow = "hidden";
+        document.getElementById("init1").style.display = "block";
+        document.getElementById("btns").style.zIndex = 6;
+        localStorage.setItem("modaisExibidas", "true");
+    }
 });
