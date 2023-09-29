@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="../imagens/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="admin/imagens/favicon.ico">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -85,13 +85,21 @@
 
     // -------------------- ENVIAR EMAIL --------------------
     
+    if ($ano == "1901") {
+        $formacao = "Cursando " . $curso;
+    } else {
+        $formacao = "Formou-se no " . $semestre . " de " . $ano . " em " . $curso;
+    }
+
     $to = $email;
     $subject = "Confirmação de Dados FATEC-ZL Clube do Tecnólogo";
-    $message = "$nome, $idade, $ra, $ano, $semestre, $email, $curso, $foto, $textoPessoal, $textoFatec";
+    $message = "<h2 class='centerItems'>Segue seus dados inseridos no Banco de Dados do Clube do Tecnólogo:<br><br>Nome: $nome<br>Idade: $idade | RA: $ra<br>Formação: $formacao<br>Email: $email (Este email)<br><br>Sobre Mim:<br>$textoPessoal<br><br>Agradecimentos Fatec:<br>$textoFatec<h2>";
     $headers = "From: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
         "Reply-To: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
-        'Content-Type: text/plain; charset=utf-8' . "\r\n" .
+        'Content-Type: text/html; charset=utf-8' . "\r\n" .
         "X-Mailer: PHP/" . phpversion();
+
+    echo $message;
 
     //mail($to, $subject, $message, $headers);
     
@@ -103,7 +111,7 @@
     ?>
 
     <div>
-        <img onclick="invertTheme()" class="icon btn floatR" />
+        <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
     </div>
 
     <div class="formulario">
