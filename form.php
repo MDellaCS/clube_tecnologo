@@ -11,7 +11,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="form.css">
-    <script src="form.js"></script>
+    <script src="form.min.js"></script>
     <title>Cadastro | Clube do Tecnólogo</title>
 </head>
 
