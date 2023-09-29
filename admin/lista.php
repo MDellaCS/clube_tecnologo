@@ -22,7 +22,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
             rel="stylesheet">
 
         <link rel="stylesheet" href="lista.css">
-        <script src="lista.min.js"></script>
+        <script src="lista.js"></script>
         <title>Lista de Cadastros | Clube do Tecnólogo</title>
     </head>
 
