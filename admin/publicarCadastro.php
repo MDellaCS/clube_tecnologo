@@ -28,11 +28,13 @@ $email = $row['email'];
 
 $to = $email;
 $subject = "Aprovação de Post no Clube do Tecnólogo FATECZL";
-$message = "Parabéns $nome!\nRA: $ra\n\nSua publicação no Clube do Tecnólogo foi aprovada.";
+$message = "<h2 class='centerItems'>Parabéns $nome!<br>RA: $ra<br><br>Sua publicação no Clube do Tecnólogo foi aprovada.<br>https://clube_tecnologo/.com.br";
 $headers = "From: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
     "Reply-To: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
     'Content-Type: text/plain; charset=utf-8' . "\r\n" .
     "X-Mailer: PHP/" . phpversion();
+
+echo $message;
 
 //mail($to, $subject, $message, $headers);
 
