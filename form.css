@@ -351,17 +351,17 @@ input[type="checkbox"]:checked+label {
 }
 
 ::-webkit-scrollbar-track {
-    background: #e3e3e3;
+    background: var(--input-hover);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #565656;
+    background: var(--shadow);
     height: 15%;
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #a1a1a1;
+    background: var(--h2);
 }
 
 :disabled,
