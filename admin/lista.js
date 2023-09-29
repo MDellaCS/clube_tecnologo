@@ -7,12 +7,12 @@ function alterarCadastro(idCadastro, url) {
         body: formData
     };
 
-    fetch(url, config);
-
-    setTimeout(F5, 100);
+    fetch(url, config).then(() => {
+        setTimeout(F5, 500);
+    });
 }
 
-function F5(){
+function F5() {
     window.location.reload();
 }
 
@@ -24,36 +24,27 @@ function abrirDeletar(id) {
     document.getElementById("confirmDeletar" + id).style.display = "block";
 }
 
-function abrirModal(id) {
-    let modais = document.getElementsByClassName("modal");
-
-    for (let i = 0; i < modais.length; i++) {
-        if (id == i) {
-            modais[i].style.display = "block";
-        }
+function abrirModal(index) {
+    const modal = document.querySelector(`#modal${index}`);
+    if (modal) {
+        modal.style.display = "block";
     }
-
 }
 
 function fecharModal() {
-    let modais = document.getElementsByClassName("modal");
-
-    for (let i = 0; i < modais.length; i++) {
-        modais[i].style.display = "none";
-    }
+    const modais = document.querySelectorAll(".modal");
+    modais.forEach(modal => {
+        modal.style.display = "none";
+    });
 }
 
 function attBusca() {
-    var input, tr, i, nome, nomeAtual;
+    var input = document.getElementById("search").value.toLowerCase();
+    var tr = document.getElementsByClassName("pessoa");
+    var nome = document.getElementsByClassName("nomePessoa");
 
-    input = document.getElementById("search");
-    input = input.value.toLowerCase();
-
-    tr = document.getElementsByClassName("pessoa");
-    nome = document.getElementsByClassName("nomePessoa");
-
-    for (i = 0; i < tr.length; i++) {
-        nomeAtual = nome[i].id.toLowerCase();
+    for (var i = 0; i < tr.length; i++) {
+        var nomeAtual = nome[i].id.toLowerCase();
         var nomeOriginal = nome[i].id;
 
         if (nomeAtual.indexOf(input) !== -1) {
@@ -68,4 +59,3 @@ function attBusca() {
         nome[i].innerHTML = nomeDestacado;
     }
 }
-

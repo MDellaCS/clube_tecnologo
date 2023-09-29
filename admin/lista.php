@@ -10,7 +10,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
     ?>
 
     <!DOCTYPE html>
-    <html>
+    <html lang="pt-BR">
 
     <head>
         <meta charset="UTF-8">
@@ -42,8 +42,8 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                     </div>
                 </th>
                 <th class="formacao">Formação</th>
-                <th class="email">Email</th>
                 <th class="curso">Curso</th>
+                <th class="email">Email</th>
                 <th class="publicado">Publicado</th>
                 <th class="acoes">Ações</th>
             </tr>
@@ -51,7 +51,9 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
             <?php
 
             include_once('connection.php');
-            $sql = "SELECT id, nome, idade, ra, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado FROM tb_tecnologo";
+            $sql = "SELECT id, nome, idade, ra, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado
+                    FROM tb_tecnologo
+                    ORDER BY publicado ASC";
 
             $result = $con->query($sql);
 
@@ -94,11 +96,11 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                     </td>
 
                     <td>
-                        <?= $row['email'] ?>
+                        <?= $row['curso'] ?>
                     </td>
 
                     <td>
-                        <?= $row['curso'] ?>
+                        <?= $row['email'] ?>
                     </td>
 
                     <td>
@@ -146,14 +148,14 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
 
                 </tr>
 
-                <div id="modal<?= $row['id'] ?>" class="modal" onclick="fecharModal()">
+                <div id="modal<?= $count ?>" class="modal" onclick="fecharModal()">
                     <div class="modal-content">
 
                         <h1>
                             <div class="container">
 
                                 <img class="foto2" src="../profilePictures/<?= $row['foto'] ?>">
-                                
+
                                 <div class="texto-sobre-imagem">
                                     <?= $primeiroUltimoNome ?>
                                 </div>

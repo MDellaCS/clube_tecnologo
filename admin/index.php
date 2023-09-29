@@ -13,36 +13,31 @@
     <link rel="stylesheet" href="../form.css">
     <script src="../form.js"></script>
     <title>Login | Clube do Tecnólogo</title>
-
 </head>
 
 <body>
-
     <div>
-        <img onclick="invertTheme()" class="icon btn floatR" />
+        <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
     </div>
 
-    <form name="frmLogar" method="post" autocomplete="off" action="logarUsuario.php">
-
+    <form name="frmLogar" method="post" autocomplete="off" action=<?= htmlspecialchars('logarUsuario.php'); ?>>
         <div class="formulario centerItems">
-
             <h1>Fazer Login</h1>
-
+            <?php
+            if (isset($_GET["error"])) {
+                echo "<h2 class='centerItems' style='color: red;'>Login falhou. Por favor, verifique suas credenciais.</h2>";
+            }
+            ?>
             <div>
                 <input id="email" type="email" name="emailAdm" class="formInput" placeholder="Email" required>
                 <input type="password" name="senhaAdm" class="formInput" placeholder="Senha" required>
             </div>
-
             <span id="erroLogin"></span>
-
             <div>
                 <button type="submit" class="btn">Login</button>
             </div>
-
         </div>
-
     </form>
-
 </body>
 
 </html>

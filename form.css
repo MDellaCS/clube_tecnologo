@@ -21,7 +21,6 @@
 
     --float: float .3s cubic-bezier(0.15, 0.75, 0.55, 1.25);
     --appear: appear .3s cubic-bezier(0.15, 0.75, 0.55, 1.25) forwards;
-    --spin: spin 2s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -47,18 +46,6 @@
     }
 }
 
-@keyframes spin {
-
-    0% {
-        transform: rotate(0deg);
-    }
-
-    80%,
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 body {
     background-color: var(--bg);
     transition: 0.2s ease-out;
@@ -76,10 +63,10 @@ div.formulario {
     box-shadow: 0px 4px 20px 0px var(--shadow);
     background-color: var(--bg);
     width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 44px;
-    margin-bottom: 44px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 52px;
+    margin-bottom: 52px;
 }
 
 div.wrapper {
@@ -188,6 +175,7 @@ label[for=ano] {
     padding: 5px 15px 5px 15px;
     margin: 5px;
     transition: 0.2s ease-out;
+    z-index: 2;
 }
 
 .btn:hover {
@@ -215,7 +203,7 @@ textarea {
     position: absolute;
     margin-left: -256px;
     margin-top: -80px;
-    z-index: 999;
+    z-index: 3;
     background-color: var(--tooltip);
     color: var(--bg);
     text-align: center;
@@ -228,8 +216,8 @@ textarea {
     line-height: 20px;
 }
 
-.tooltip:hover+.tooltiptext,
-.tooltip:focus+.tooltiptext {
+.tooltiptext:hover,
+.tooltip:hover+.tooltiptext {
     animation: var(--float);
     visibility: visible;
     opacity: 1;
@@ -354,6 +342,7 @@ input[type="checkbox"]:checked+label {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(3px);
+    z-index: 999;
 }
 
 .modal-content {
@@ -399,4 +388,10 @@ input[type="checkbox"]:checked+label {
     padding: 4px;
     margin: 4px;
     transition: 0.2s ease-out;
+}
+
+.sticky {
+    z-index: 1;
+    position: sticky;
+    top: 0;
 }

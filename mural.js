@@ -1,98 +1,31 @@
-function contChars(campo, contID) {
-    const cont = document.getElementById(contID);
-
-    cont.innerHTML = "Caracteres Restantes: " + (700 - campo.value.length);
-}
-
-function resetForm() {
-
-    document.getElementById("formEgresso").reset();
-    mudarFormado();
-
-    const contadores = document.querySelectorAll(".contador");
-    contadores.forEach(contador => {
-        contador.textContent = "Caracteres Restantes: " + 700;
-    });
-
-}
-
-function abrirModal(idModal) {
-    document.getElementById(idModal).style.display = "block";
-}
-
-function fecharModal() {
-    const modais = document.querySelectorAll(".modal");
-
-    Array.from(modais).forEach(elemento => {
-        elemento.style.display = "none";
-    });
-}
-
-function mostrarImagem() {
-    const imgPreview = document.getElementById("img-preview");
-    const chooseFile = document.getElementById("foto");
-
-    const file = chooseFile.files[0];
-
-    if (file) {
-        const fileReader = new FileReader();
-
-        fileReader.onload = function () {
-            const image = new Image();
-            image.src = fileReader.result;
-            image.alt = "Imagem selecionada";
-            imgPreview.innerHTML = "";
-            imgPreview.appendChild(image);
-        };
-
-        fileReader.readAsDataURL(file);
-    } else {
-        imgPreview.innerHTML = "Nenhuma imagem selecionada";
+function abrirModal(id) {
+    const modal = document.querySelector(`#modal${id}`);
+    if (modal) {
+        modal.style.display = "block";
     }
 }
 
+function fecharModal(num) {
 
-function limparImagem() {
-    const imgPreview = document.getElementById("img-preview");
-    imgPreview.innerHTML = 'Sua foto aqui';
-}
+    if (num === undefined) {
+        document.getElementById("todos").style.zIndex = 0;
+        document.body.style.overflow = "auto";
+    }
 
-function mudarFormado() {
-    const formado = document.getElementById("formado");
-    const cursando = document.getElementById("cursando");
-    const wrapper = document.getElementById("dadosFormado");
-    const primeiro = document.getElementById("primeiro");
-    const segundo = document.getElementById("segundo");
-    const ano = document.getElementById("ano");
-    const wrapperContent = wrapper.children;
-
-    Array.from(wrapperContent).forEach(elemento => {
-        if (formado.checked) {
-            elemento.style.opacity = 1;
-            elemento.style.pointerEvents = "auto";
-            primeiro.required = true;
-            segundo.required = true;
-            ano.required = true;
-        } else if (cursando.checked) {
-            elemento.style.opacity = 0.15;
-            elemento.style.pointerEvents = "none";
-            primeiro.required = false;
-            segundo.required = false;
-            ano.required = false;
-        }
+    const modais = document.querySelectorAll(".modal");
+    modais.forEach(modal => {
+        modal.style.display = "none";
     });
-}
 
-function liberarEnviar() {
-    const btnSubmit = document.getElementById("submit");
-    const chkTermo = document.getElementById("chkTermo");
-
-    if (chkTermo.checked) {
-        btnSubmit.disabled = false;
-        btnSubmit.classList.remove("tooltip");
-    } else {
-        btnSubmit.disabled = true;
-        btnSubmit.classList.add("tooltip");
+    if (num === 1) {
+        document.getElementById("btns").style.zIndex = 2;
+        document.getElementById("recentes").style.zIndex = 1000;
+        document.getElementById("init2").style.display = "block";
+    } else if (num === 2) {
+        document.getElementById("alvo").scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("recentes").style.zIndex = 0;
+        document.getElementById("todos").style.zIndex = 1000;
+        document.getElementById("init3").style.display = "block";
     }
 }
 
@@ -113,6 +46,8 @@ function toggleTheme() {
     if (localStorage.getItem("theme") == "light") {
 
         document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
+        document.getElementById("btnPrev").src = "https://img.icons8.com/ios/480/FFFFFF/less-than.png";
+        document.getElementById("btnNext").src = "https://img.icons8.com/ios/480/FFFFFF/more-than.png";
 
         root.style.setProperty('--main', 'var(--light-main)');
         root.style.setProperty('--main-hover', 'var(--light-main-hover)');
@@ -125,6 +60,8 @@ function toggleTheme() {
     } else if (localStorage.getItem("theme") == "dark") {
 
         document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
+        document.getElementById("btnPrev").src = "https://img.icons8.com/ios/480/less-than.png";
+        document.getElementById("btnNext").src = "https://img.icons8.com/ios/480/more-than.png";
 
         root.style.setProperty('--main', 'var(--dark-main)');
         root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
@@ -156,3 +93,12 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--tooltip', 'var(--dark-tooltip)');
     root.style.setProperty('--input-hover', 'var(--dark-input-hover)');
 }
+
+// document.addEventListener('DOMContentLoaded', function () {
+//    if (!localStorage.getItem("modaisExibidas")) {
+//    document.body.style.overflow = "hidden";
+//    document.getElementById("init1").style.display = "block";
+//    document.getElementById("btns").style.zIndex = 6;
+//    localStorage.setItem("modaisExibidas", "true");
+//    }
+// });
