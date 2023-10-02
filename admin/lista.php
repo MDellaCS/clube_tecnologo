@@ -21,12 +21,21 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;700&display=swap"
             rel="stylesheet">
 
+        <link rel="stylesheet" href="../form.css">
         <link rel="stylesheet" href="lista.css">
         <script src="lista.js"></script>
         <title>Lista de Cadastros | Clube do Tecnólogo</title>
     </head>
 
     <body>
+
+        <div class="sticky">
+            <a href="index.php">
+                <input type="button" class="btn floatL" value="Voltar">
+            </a>
+            <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
+        </div>
+
         <div class="title">
             Egressos Cadastrados
         </div>
