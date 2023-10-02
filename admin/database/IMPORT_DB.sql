@@ -5,31 +5,32 @@ DROP DATABASE IF EXISTS fateczle_clubetecnologo;
 CREATE DATABASE fateczle_clubetecnologo;
 USE fateczle_clubetecnologo;
 CREATE TABLE tb_tecnologo (
-    id INT NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(60) NOT NULL,
-    idade TINYINT(2) NOT NULL,
-    ano_formacao year(4),
-    semestre_formacao VARCHAR(17),
-    email VARCHAR(60) NOT NULL,
-    curso VARCHAR(43) NOT NULL,
-    foto VARCHAR(261) NOT NULL,
-    texto_sobre VARCHAR(700) NOT NULL,
-    texto_fatec VARCHAR(700) NOT NULL,
-    data_insercao TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    publicado TINYINT(1) NOT NULL DEFAULT 0,
-    PRIMARY KEY(id)
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(60) NOT NULL,
+  idade TINYINT(2) NOT NULL,
+  ano_formacao year(4),
+  semestre_formacao VARCHAR(17),
+  email VARCHAR(60) NOT NULL,
+  curso VARCHAR(43) NOT NULL,
+  foto VARCHAR(261) NOT NULL,
+  texto_sobre VARCHAR(700) NOT NULL,
+  texto_fatec VARCHAR(700) NOT NULL,
+  data_insercao TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  publicado TINYINT(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 CREATE TABLE tb_admin (
-    id INT NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    senha VARCHAR(600) NOT NULL,
-    PRIMARY KEY(id)
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(60) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  senha VARCHAR(60) NOT NULL,
+  PRIMARY KEY(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 -- ----------------------------------------------------- PROCEDURES
 DROP PROCEDURE IF EXISTS insertTecnologo;
 DROP PROCEDURE IF EXISTS publishTecnologo;
 DROP PROCEDURE IF EXISTS deleteTecnologo;
+DROP PROCEDURE IF EXISTS insertAdmin;
 DELIMITER $$ CREATE PROCEDURE insertTecnologo(
   IN nome_Proc VARCHAR(60),
   IN idade_Proc TINYINT,
@@ -70,5 +71,16 @@ WHERE id = id_Proc;
 END $$ DELIMITER $$ CREATE PROCEDURE deleteTecnologo(IN id_Proc INT) BEGIN
 DELETE FROM tb_tecnologo
 WHERE id = id_Proc;
+END $$ DELIMITER $$ CREATE PROCEDURE insertAdmin(
+  IN nome_Proc VARCHAR(60),
+  IN email_Proc VARCHAR(100),
+  IN senha_Proc VARCHAR(60)
+) BEGIN
+INSERT INTO tb_admin (nome, email, senha)
+VALUES (
+    nome_Proc,
+    email_Proc,
+    senha_Proc
+  );
 END $$
 COMMIT;
