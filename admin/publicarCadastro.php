@@ -2,7 +2,9 @@
 
 $id = $_POST['id'];
 
-include_once('connection.php');
+// -------------------- PUBLICAR CADASTRO --------------------
+
+include('connection.php');
 
 $sql = "CALL publishTecnologo(?)";
 
@@ -10,32 +12,41 @@ $stmt = $con->prepare($sql);
 $stmt->bind_param("i", $id);
 $stmt->execute();
 
-// -------------------- ENVIAR EMAIL --------------------
-
-$sql = "SELECT nome, ra, email FROM tb_tecnologo WHERE id = ?";
-$stmt = $con->prepare($sql);
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$result = $stmt->get_result();
-$row = $result->fetch_assoc();
-
 $stmt->close();
 $con->close();
 
+// -------------------- ENVIAR EMAIL --------------------
+
+include('connection.php');
+
+$sql = "SELECT nome, email FROM tb_tecnologo WHERE id = ?";
+
+$stmt = $con->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
 $nome = $row['nome'];
-$ra = $row['ra'];
 $email = $row['email'];
 
 $to = $email;
-$subject = "Aprovação de Post no Clube do Tecnólogo FATECZL";
-$message = "<h2 class='centerItems'>Parabéns $nome!<br>RA: $ra<br><br>Sua publicação no Clube do Tecnólogo foi aprovada.<br>https://clube_tecnologo/.com.br";
-$headers = "From: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
+$subject = "Confirmação de Dados FATEC-ZL Clube do Tecnólogo";
+$message = "
+<div style='font-size:24px'>Parabéns $nome!</div>
+<div style='font-size:20px'>
+    Seu post no clube do tecnólogo foi aprovado.
+</div>
+    ";
+$headers = "From: FatecZL | Clube do Tecnólogo" . "\r\n" .
     "Reply-To: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
-    'Content-Type: text/plain; charset=utf-8' . "\r\n" .
+    'Content-Type: text/html; charset=utf-8' . "\r\n" .
     "X-Mailer: PHP/" . phpversion();
 
-echo $message;
+mail($to, $subject, $message, $headers);
 
-//mail($to, $subject, $message, $headers);
+$stmt->close();
+$con->close();
 
 ?>

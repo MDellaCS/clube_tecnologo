@@ -92,15 +92,25 @@
 
     $to = $email;
     $subject = "Confirmação de Dados FATEC-ZL Clube do Tecnólogo";
-    $message = "<h2>Segue seus dados inseridos no Banco de Dados do Clube do Tecnólogo:<br><br>Nome: $nome<br>Idade: $idade<br>Formação: $formacao<br>Email: $email (Este email)<br><br>Sobre Mim:<br>$textoPessoal<br><br>Agradecimentos Fatec:<br>$textoFatec<h2>";
-    $headers = "From: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
+    $message = "
+    <div style='font-size:24px'>Segue seus dados inseridos no Banco de Dados do Clube do Tecnólogo:</div>
+    <div style='font-size:20px'>
+        <div>Nome: $nome</div>
+        <div>Idade: $idade</div>
+        <div>Formação: $formacao</div>
+        <div>Email: $email (Este email)</div>
+        <div>Sobre Mim:</div>
+        <div style='font-size:16px;word-wrap:break-word'>$textoPessoal</div>
+        <div>Agradecimentos Fatec:</div>
+        <div style='font-size:16px;word-wrap:break-word'>$textoFatec</div>
+    </div>
+    ";
+    $headers = "From: FatecZL | Clube do Tecnólogo" . "\r\n" .
         "Reply-To: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
         'Content-Type: text/html; charset=utf-8' . "\r\n" .
         "X-Mailer: PHP/" . phpversion();
 
-    echo $message;
-
-    //mail($to, $subject, $message, $headers);
+    mail($to, $subject, $message, $headers);
     
     // -------------------- DISPLAY HTML --------------------
     
