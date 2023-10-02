@@ -1,3 +1,22 @@
+<?php
+
+session_start();
+
+include_once('connection.php');
+
+$sql = "SELECT id
+        FROM tb_admin";
+
+$result = $con->query($sql);
+
+if ($result->num_rows === 0 || isset($_SESSION["email"]) || isset($_SESSION["senha"])) {
+    $destino = "criarUsuario.php";
+}else{
+    $destino = "#";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -16,7 +35,11 @@
 </head>
 
 <body>
-    <div>
+
+    <div id="btns" class="sticky">
+        <a href="<?= $destino?>">
+            <input id="btnForm" type="button" class="btn floatL" value="Cadastrar">
+        </a>
         <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
     </div>
 
