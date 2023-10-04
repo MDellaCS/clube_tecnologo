@@ -11,8 +11,8 @@ $result = $con->query($sql);
 
 if ($result->num_rows === 0 || isset($_SESSION["email"]) || isset($_SESSION["senha"])) {
     $destino = "criarUsuario.php";
-}else{
-    $destino = "#";
+} else {
+    $destino = "?noLogin=1";
 }
 
 ?>
@@ -37,7 +37,7 @@ if ($result->num_rows === 0 || isset($_SESSION["email"]) || isset($_SESSION["sen
 <body>
 
     <div id="btns" class="sticky">
-        <a href="<?= $destino?>">
+        <a href="<?= $destino ?>">
             <input id="btnForm" type="button" class="btn floatL" value="Cadastrar">
         </a>
         <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
@@ -49,6 +49,9 @@ if ($result->num_rows === 0 || isset($_SESSION["email"]) || isset($_SESSION["sen
             <?php
             if (isset($_GET["error"])) {
                 echo "<h2 class='centerItems' style='color: red;'>Login falhou. Por favor, verifique suas credenciais.</h2>";
+            }
+            if (isset($_GET["noLogin"])) {
+                echo "<h2 class='centerItems' style='color: red;'>Faça o login para adicionar outro administrador.</h2>";
             }
             ?>
             <div>
