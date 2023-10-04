@@ -78,6 +78,22 @@ function toggleTheme() {
 
         document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/FFFFFF/sun--v1.png";
 
+        var classes = ["icon green", "icon yellow", "icon red"];
+
+        var urls = [
+            "https://img.icons8.com/sf-black/480/FFFFFF/checkmark.png",
+            "https://img.icons8.com/sf-black/480/FFFFFF/plus-math.png",
+            "https://img.icons8.com/sf-black/480/FFFFFF/multiply.png"
+        ];
+
+        for (var i = 0; i < classes.length; i++) {
+            var elements = document.getElementsByClassName(classes[i]);
+            for (var j = 0; j < elements.length; j++) {
+                elements[j].src = urls[i];
+            }
+        }
+
+
         root.style.setProperty('--main', 'var(--light-main)');
         root.style.setProperty('--main-hover', 'var(--light-main-hover)');
         root.style.setProperty('--bg', 'var(--light-bg)');
@@ -89,6 +105,21 @@ function toggleTheme() {
     } else if (localStorage.getItem("theme") == "dark") {
 
         document.getElementById("btnTheme").src = "https://img.icons8.com/ios-glyphs/480/moon-symbol.png";
+
+        var classes = ["icon green", "icon yellow", "icon red"];
+
+        var urls = [
+            "https://img.icons8.com/sf-black/480/checkmark.png",
+            "https://img.icons8.com/sf-black/480/plus-math.png",
+            "https://img.icons8.com/sf-black/480/multiply.png"
+        ];
+
+        for (var i = 0; i < classes.length; i++) {
+            var elements = document.getElementsByClassName(classes[i]);
+            for (var j = 0; j < elements.length; j++) {
+                elements[j].src = urls[i];
+            }
+        }
 
         root.style.setProperty('--main', 'var(--dark-main)');
         root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
@@ -102,6 +133,7 @@ function toggleTheme() {
 }
 
 if (localStorage.getItem("theme") == "light") {
+
     root.style.setProperty('--main', 'var(--light-main)');
     root.style.setProperty('--main-hover', 'var(--light-main-hover)');
     root.style.setProperty('--bg', 'var(--light-bg)');
@@ -111,6 +143,7 @@ if (localStorage.getItem("theme") == "light") {
     root.style.setProperty('--tooltip', 'var(--light-tooltip)');
     root.style.setProperty('--input-hover', 'var(--light-input-hover)');
 } else if (localStorage.getItem("theme") == "dark") {
+
     root.style.setProperty('--main', 'var(--dark-main)');
     root.style.setProperty('--main-hover', 'var(--dark-main-hover)');
     root.style.setProperty('--bg', 'var(--dark-bg)');
