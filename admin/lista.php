@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
+if (!isset($_SESSION["email"]) && !isset($_SESSION["senha"])) {
     header("Location: index.php");
     exit();
 } else {
@@ -21,28 +21,32 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;400;500;700&display=swap"
             rel="stylesheet">
 
+        <link rel="stylesheet" href="../form.css">
         <link rel="stylesheet" href="lista.css">
         <script src="lista.js"></script>
         <title>Lista de Cadastros | Clube do Tecnólogo</title>
     </head>
 
     <body>
-        <div class="title">
-            Egressos Cadastrados
+
+        <div>
+            <a href="index.php">
+                <input type="button" class="btn floatL" value="Voltar">
+            </a>
+            <img id="btnTheme" onclick="invertTheme()" class="icon btn floatR" />
         </div>
 
         <table>
 
-            <tr>
+            <tr class="sticky">
                 <th class="foto">Foto</th>
                 <th class="nome">
                     <div>
-                        <input type="text" id="search" class="formInput center" onkeyup="attBusca()" placeholder="Nome"
-                            autocomplete="off">
+                        <input type="text" id="search" class="formInput center" onkeyup="attBusca()"
+                            placeholder="Pesquisar Nome" autocomplete="off">
                     </div>
                 </th>
                 <th class="formacao">Formação</th>
-                <th class="curso">Curso</th>
                 <th class="email">Email</th>
                 <th class="publicado">Publicado</th>
                 <th class="acoes">Ações</th>
@@ -51,7 +55,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
             <?php
 
             include_once('connection.php');
-            $sql = "SELECT id, nome, idade, ra, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado
+            $sql = "SELECT id, nome, idade, ano_formacao, semestre_formacao, email, curso, foto, texto_sobre, texto_fatec, publicado
                     FROM tb_tecnologo
                     ORDER BY publicado ASC";
 
@@ -65,9 +69,9 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
 
             while ($row = $result->fetch_assoc()) {
                 if ($row['ano_formacao'] == "1901") {
-                    $row['ano_formacao'] = "Cursando";
+                    $formacao = "Cursando " . $row['curso'];
                 } else {
-                    $row['semestre_formacao'] .= " de ";
+                    $formacao = "Formou-se no " . $row['semestre_formacao'] . " de " . $row['ano_formacao'] . "<br>em " . $row['curso'];
                 }
 
                 if ($row['publicado'] == 0) {
@@ -91,12 +95,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                     </td>
 
                     <td>
-                        <?= $row['semestre_formacao'] ?>
-                        <?= $row['ano_formacao'] ?>
-                    </td>
-
-                    <td>
-                        <?= $row['curso'] ?>
+                        <?= $formacao ?>
                     </td>
 
                     <td>
@@ -109,10 +108,9 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
 
                     <td class="acoes center">
 
-                        <img class="icon green" src="https://img.icons8.com/ios-glyphs/480/FFFFFF/checkmark--v1.png"
-                            onclick="abrirPublicar(<?= $row['id'] ?>)" />
+                        <img class="icon green" onclick="abrirPublicar(<?= $row['id'] ?>)" />
 
-                        <div id="confirmPublicar<?= $row['id'] ?>" class="modal">
+                        <div id="confirmPublicar<?= $row['id'] ?>" class="modal" onclick="fecharModal()">
                             <div class="modal-content">
                                 <h1>Deseja publicar
                                     <?= $row['nome'] ?>?
@@ -125,13 +123,11 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
                             </div>
                         </div>
 
-                        <img class="icon yellow" src="https://img.icons8.com/android/480/FFFFFF/plus.png"
-                            onclick="abrirModal(<?= $count ?>)" />
+                        <img class="icon yellow" onclick="abrirModal(<?= $count ?>)" />
 
-                        <img class="icon red" src="https://img.icons8.com/ios/480/FFFFFF/delete-sign--v1.png"
-                            onclick="abrirDeletar(<?= $row['id'] ?>)" />
+                        <img class="icon red" onclick="abrirDeletar(<?= $row['id'] ?>)" />
 
-                        <div id="confirmDeletar<?= $row['id'] ?>" class="modal">
+                        <div id="confirmDeletar<?= $row['id'] ?>" class="modal" onclick="fecharModal()">
                             <div class="modal-content">
                                 <h1>Deseja deletar
                                     <?= $row['nome'] ?>?
@@ -150,63 +146,31 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["senha"])) {
 
                 <div id="modal<?= $count ?>" class="modal" onclick="fecharModal()">
                     <div class="modal-content">
-
-                        <h1>
-                            <div class="container">
-
-                                <img class="foto2" src="../profilePictures/<?= $row['foto'] ?>">
-
-                                <div class="texto-sobre-imagem">
-                                    <?= $primeiroUltimoNome ?>
-                                </div>
-
-                            </div>
+                        <div class="floatR">
+                            <img class="foto2" src="../profilePictures/<?= $row['foto'] ?>">
+                        </div>
+                        <h1 class="centerItems">
+                            <?= $row['nome'] ?>
                         </h1>
-
                         <h2>
-                            <div>
-                                <?= $row['idade'], " anos" ?>
-                            </div>
-
-                            <div>
-                                <?= $row['email'] ?>
-                            </div>
-
-                            <div>
-                                <?= "RA: " . $row['ra'] ?>
-                            </div>
-
-                            <div>
-                                <?= $row['curso'] ?>
-                            </div>
-
-                            <div>
-                                <?= $row['semestre_formacao'] ?>
-                                <?= $row['ano_formacao'] ?>
-                                <br><br>
-                            </div>
-
-                            <div>
-                                Texto Pessoal:
-                            </div>
-
-                            <div>
-                                <h3>
-                                    <?= $row['texto_sobre'] ?>
-                                </h3>
-                            </div>
-
-                            <div>
-                                Texto Agradecimentos:
-                            </div>
-
-                            <div>
-                                <h3>
-                                    <?= $row['texto_fatec'] ?>
-                                </h3>
-                            </div>
+                            <?= $row['idade'] ?> anos
                         </h2>
-
+                        <h2>
+                            <?= $row['email'] ?>
+                        </h2>
+                        <h2>
+                            <?= $formacao ?>
+                        </h2>
+                        <h3>
+                            <div class="textos">
+                                <div>
+                                    <?= $row['texto_sobre'] ?>
+                                </div>
+                                <div>
+                                    <?= $row['texto_fatec'] ?>
+                                </div>
+                            </div>
+                        </h3>
                     </div>
                 </div>
 
