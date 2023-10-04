@@ -75,9 +75,9 @@ div.formulario {
 }
 
 .carousel-item {
-  height: 45vh !important;
+  height: 48vh !important;
   border-radius: 30px;
-  padding: 30px;
+  padding: 26px;
   box-shadow: 0px 4px 20px 0px var(--shadow);
   background-color: var(--bg);
   margin: 0 25px 0 25px;
@@ -149,10 +149,10 @@ h4 {
 
 .modal-content {
   position: absolute;
-  top: 45%;
+  top: 48%;
   left: 50%;
   background-color: var(--bg);
-  padding: 40px;
+  padding: 20px;
   border-radius: 30px;
   width: 60%;
   height: auto;
@@ -170,13 +170,9 @@ h4 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--shadow);
+  background: var(--h2);
   height: 15%;
   border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--h2);
 }
 
 .btn {
