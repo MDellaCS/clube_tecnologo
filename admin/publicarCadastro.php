@@ -34,9 +34,18 @@ $email = $row['email'];
 $to = $email;
 $subject = "Confirmação de Dados FATEC-ZL Clube do Tecnólogo";
 $message = "
-<div style='font-size:24px'>Parabéns $nome!</div>
+<div style='margin-bottom: 64px; width: 50%; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between;'>
+    <img width='100' src='https://www.fateczl.edu.br/assets/logos/fatec-zl.png'>
+    <img width='70' src='https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/10/centro-paula-souza-logo.svg'>
+    <img width='110' style='background-color: black; padding: 7px;' src='https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2023/07/GOV_LOGO.svg'>
+</div>
+<div style='font-size:24px; text-align: center'>Parabéns, $nome!</div>
+<br>
+<br>
 <div style='font-size:20px'>
-    Seu post no clube do tecnólogo foi aprovado.
+    Seu post no Clube do Tecnólogo foi aprovado:
+    <br>
+    https://fateczl.edu.br/clube_tecnologo/
 </div>
     ";
 $headers = "From: FatecZL | Clube do Tecnólogo" . "\r\n" .
