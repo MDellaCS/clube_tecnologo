@@ -111,7 +111,7 @@
         "X-Mailer: PHP/" . phpversion();
 
     mail($to, $subject, $message, $headers);
-    
+
     // -------------------- DISPLAY HTML --------------------
     
     $nome = explode(" ", $nome);

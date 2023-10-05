@@ -241,7 +241,7 @@
 
     </form>
 
-    <?php include_once('footer.html') ?>
+    <?php include_once('footer.html'); ?>
 
 </body>
 
