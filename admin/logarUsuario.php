@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     include_once('connection.php');
 
-    $sql = "SELECT email, senha FROM tb_admin WHERE email = ?";
+    $sql = "SELECT nome, email, senha FROM tb_admin WHERE email = ?";
     $stmt = $con->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
         if (password_verify($senha, $row["senha"])) {
+            $_SESSION["nome"] = $row["nome"];
             $_SESSION["email"] = $email;
             $_SESSION["senha"] = $senha;
 

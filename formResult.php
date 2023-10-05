@@ -38,7 +38,7 @@
 
     // -------------------- PEGAR DADOS DO FORM --------------------
     
-    $foto = $nome = $idade = $ra = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = "";
+    $foto = $nome = $idade = $email = $ano = $semestre = $curso = $textoPessoal = $textoFatec = "";
 
     if ($_POST["formacaoTec"] == "Cursando") {
         $_POST["anoTec"] = 1901;
@@ -49,7 +49,6 @@
         $foto = test_input($microsegundos . $nomeArquivo);
         $nome = test_input($_POST["nomeTec"]);
         $idade = test_input($_POST["idadeTec"]);
-        $ra = test_input($_POST["raTec"]);
         $email = test_input($_POST["emailTec"]);
         $ano = test_input($_POST["anoTec"]);
         $semestre = test_input($_POST["semestreTec"]);
@@ -70,11 +69,11 @@
     
     include_once('admin/connection.php');
 
-    $sql = "CALL insertTecnologo(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "CALL insertTecnologo(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $con->prepare($sql);
 
-    $stmt->bind_param("sissssssss", $nome, $idade, $ra, $ano, $semestre, $email, $curso, $foto, $textoPessoal, $textoFatec);
+    $stmt->bind_param("sisssssss", $nome, $idade, $ano, $semestre, $email, $curso, $foto, $textoPessoal, $textoFatec);
 
     if (!$stmt->execute()) {
         echo "Erro na inserção: " . $stmt->error;
@@ -93,16 +92,37 @@
 
     $to = $email;
     $subject = "Confirmação de Dados FATEC-ZL Clube do Tecnólogo";
-    $message = "<h2 class='centerItems'>Segue seus dados inseridos no Banco de Dados do Clube do Tecnólogo:<br><br>Nome: $nome<br>Idade: $idade | RA: $ra<br>Formação: $formacao<br>Email: $email (Este email)<br><br>Sobre Mim:<br>$textoPessoal<br><br>Agradecimentos Fatec:<br>$textoFatec<h2>";
-    $headers = "From: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
+    $message = "
+    <div style='margin-bottom: 64px; width: 50%; margin-left: auto; margin-right: auto; display: flex; justify-content: space-between;'>
+    <img width='100' src='https://www.fateczl.edu.br/assets/logos/fatec-zl.png'>
+    <img width='70' src='https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2022/10/centro-paula-souza-logo.svg'>
+    <img width='110' style='background-color: black; padding: 7px;' src='https://bkpsitecpsnew.blob.core.windows.net/uploadsitecps/sites/1/2023/07/GOV_LOGO.svg'>
+</div>
+<div style='font-size:24px; text-align: center'>Segue seus dados inseridos no Clube do Tecnólogo:</div>
+<br>
+<br>
+<div style='font-size:20px'>
+    <img style='width:100px; height: 100px; float: right;' src='https://fateczl.edu.br/clube_tecnologo/profilePictures/$foto'>
+    <div>Email: $email (este email)</div>
+    <br>
+    <div>Nome: $nome</div>
+    <div>Idade: $idade anos</div>
+    <div>Formação: $formacao</div>
+    <br>
+    <div>Sobre Mim:</div>
+    <div style='font-size:16px; word-wrap:break-word;'>$textoPessoal</div>
+    <br>
+    <div>Agradecimentos Fatec:</div>
+    <div style='font-size:16px; word-wrap:break-word;'>$textoFatec</div>
+</div>
+    ";
+    $headers = "From: FatecZL | Clube do Tecnólogo" . "\r\n" .
         "Reply-To: f111.clubetecnologo@fatec.sp.gov.br" . "\r\n" .
         'Content-Type: text/html; charset=utf-8' . "\r\n" .
         "X-Mailer: PHP/" . phpversion();
 
-    echo $message;
+    mail($to, $subject, $message, $headers);
 
-    //mail($to, $subject, $message, $headers);
-    
     // -------------------- DISPLAY HTML --------------------
     
     $nome = explode(" ", $nome);
@@ -116,8 +136,12 @@
 
     <div class="formulario">
         <h1>Enviado com Sucesso!</h1>
-        <h2>Obrigado <strong><?= $nome ?></strong>!</h2>
-        <h2>Por favor, verifique o seu e-mail (<strong><?= $email ?></strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
+        <h2>Obrigado <strong>
+                <?= $nome ?>
+            </strong>!</h2>
+        <h2>Por favor, verifique o seu e-mail (<strong>
+                <?= $email ?>
+            </strong>) para verificar os seus dados, e, posteriormente, receber a confirmação de inclusão no clube.</h2>
 
         <div class="centerItems">
             <a href="index.php">
