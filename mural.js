@@ -8,7 +8,7 @@ function abrirModal(id) {
 function fecharModal(num) {
 
     if (num === undefined) {
-        document.getElementById("todos").style.zIndex = 2;
+        document.getElementById("todos").style.zIndex = 1;
         document.body.style.overflow = "auto";
     }
 
