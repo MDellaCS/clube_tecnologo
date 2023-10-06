@@ -86,13 +86,14 @@
     <?php
     if ($count == 0) {
         echo "<h1>Nenhum registro encontrado</h1>";
-    } else {
-        echo "<div class='centerItems'>";
-        echo "<img id='btnPrev' onclick='attLista(0)' class='icon btn' />";
-        echo "<img id='btnNext' onclick='attLista(1)' class='icon btn' />";
-        echo "</div>";
     }
     ?>
+
+    <div class="centerItems">
+        <img id="btnPrev" onclick="attLista(0)" class="icon btn" />
+        <img id="btnNext" onclick="attLista(1)" class="icon btn" />
+    </div>
+
 
     <script type="text/javascript">
         var numItens = <?php echo $numItens; ?>;

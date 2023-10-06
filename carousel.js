@@ -32,6 +32,18 @@ function attLista(pagina) {
         item.style.display = (index >= startIndex && index < endIndex) ? 'block' : 'none';
     });
 
+    var btnPrev = document.getElementById('btnPrev');
+    var btnNext = document.getElementById('btnNext');
+    if (btnPrev && btnNext) {
+        if (numItens > itemsPerPage) {
+            btnPrev.style.display = currentPage > 1 ? 'inline' : 'none';
+            btnNext.style.display = currentPage < Math.ceil(numItens / itemsPerPage) ? 'inline' : 'none';
+        } else {
+            btnPrev.style.display = 'none';
+            btnNext.style.display = 'none';
+        }
+    }
+
     if (!isFirstTime) {
         var alvoTopo = document.getElementById('todos');
         if (alvoTopo) alvoTopo.scrollIntoView({ behavior: 'smooth' });
