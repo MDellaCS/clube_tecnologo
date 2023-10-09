@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.style.overflow = "hidden";
             document.getElementById("init1").style.display = "block";
             document.getElementById("btns").style.zIndex = 6;
-            //localStorage.setItem("modaisExibidas", "true");
+            localStorage.setItem("modaisExibidas", "true");
         }
 
     }
