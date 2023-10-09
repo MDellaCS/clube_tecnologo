@@ -162,6 +162,11 @@ h4 {
   animation: var(--appear);
 }
 
+.modal-mobile {
+  width: 80%;
+  max-height: 95vh;
+}
+
 ::-webkit-scrollbar {
   width: 13px;
 }

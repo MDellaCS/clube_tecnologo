@@ -18,7 +18,7 @@ function fecharModal(num) {
     });
 
     if (num === 1) {
-        document.getElementById("btns").style.zIndex = 2;
+        document.getElementById("btns").style.zIndex = 1;
         document.getElementById("recentes").style.zIndex = 1000;
         document.getElementById("init2").style.display = "block";
     } else if (num === 2) {
@@ -109,10 +109,17 @@ if (localStorage.getItem("theme") == "light") {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+
     if (!localStorage.getItem("modaisExibidas")) {
-        document.body.style.overflow = "hidden";
-        document.getElementById("init1").style.display = "block";
-        document.getElementById("btns").style.zIndex = 6;
-        localStorage.setItem("modaisExibidas", "true");
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.getElementById("mobile").style.display = "block";
+        } else {
+            document.body.style.overflow = "hidden";
+            document.getElementById("init1").style.display = "block";
+            document.getElementById("btns").style.zIndex = 6;
+            //localStorage.setItem("modaisExibidas", "true");
+        }
+
     }
 });

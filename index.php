@@ -45,6 +45,17 @@
             ?>
         </div>
 
+        <div id="mobile" class="modal" onclick="fecharModal()">
+            <div class="modal-content modal-mobile centerItems">
+                <h1 style="color: red;">Alerta!</h1>
+                <h1>Parece que você está acessando o Clube do Tecnólogo em um dispositivo móvel. Recomendamos que
+                    você use nosso site em um PC (computador) sempre que possível para obter a melhor experiência. Caso
+                    esteja usando um dispositivo móvel, sugerimos que gire o seu dispositivo para a posição horizontal
+                    para aproveitar ao máximo a nossa plataforma. Obrigado por escolher o Clube do Tecnólogo!</h1><br>
+                <img class="img" src="https://img.icons8.com/ios-filled/480/rotate-screen.png">
+            </div>
+        </div>
+
         <div id="init1" class="modal" onclick="fecharModal(1)">
             <div class="init1">
                 Aqui está o formulário para entrar no mural e, lá na direita, o modo claro/escuro.<br>
